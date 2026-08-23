@@ -1,0 +1,30 @@
+{
+  "format": "uqm-hd-localization-v1",
+  "source_path": "base/lander/energy/zoqfotcolonyruins2.txt",
+  "resource_ids": [
+    "text.zoqfotcolonyruins2"
+  ],
+  "resource_types": [
+    "STRTAB"
+  ],
+  "auxiliary": false,
+  "source_sha256": "f201482cee95e85a83eec01166147fb9874b03f67903f26cd5e3160f01c1152a",
+  "newline": "\n",
+  "preamble": "",
+  "entries": [
+    {
+      "index": 0,
+      "label": "ZOQ_COLONY_RUINS 2",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n",
+      "body": "     ---- REPORT FROM SURFACE ----\n\nSIR, THIS MUST BE ONE OF THE ANNIHILATED ZOQ-FOT-PIK COLONIES.\n\nTHE DESTRUCTION IS TOTAL, ONLY THE STRONGEST SUPERSTRUCTURES OF BUILDINGS CONSTRUCTED FROM HIGH-DENSITY METAL ALLOYS STILL STAND. \n\nWE COULD NOT FIND MUCH IN THE WAY OF SALVAGEABLE ITEMS - EITHER THE INVADING UR-QUAN FORCES OR SALVAGE PARTIES SENT BY THE ZOQ-FOT-PIK HAVE BEATEN US TO THESE RUINS.\n\nAT LEAST WE WILL BE ABLE TO REPORT THE CURRENT STATE OF THIS COLONY TO THEIR HOMEWORLD.\n\n        ---- END OF REPORT ----",
+      "unit_kind": "whole",
+      "payload_start": 0,
+      "source": "     ---- REPORT FROM SURFACE ----\n\nSIR, THIS MUST BE ONE OF THE ANNIHILATED ZOQ-FOT-PIK COLONIES.\n\nTHE DESTRUCTION IS TOTAL, ONLY THE STRONGEST SUPERSTRUCTURES OF BUILDINGS CONSTRUCTED FROM HIGH-DENSITY METAL ALLOYS STILL STAND. \n\nWE COULD NOT FIND MUCH IN THE WAY OF SALVAGEABLE ITEMS - EITHER THE INVADING UR-QUAN FORCES OR SALVAGE PARTIES SENT BY THE ZOQ-FOT-PIK HAVE BEATEN US TO THESE RUINS.\n\nAT LEAST WE WILL BE ABLE TO REPORT THE CURRENT STATE OF THIS COLONY TO THEIR HOMEWORLD.\n\n        ---- END OF REPORT ----",
+      "translation": "     ---- 地表報告 ----\n\n長官，這裡必定是遭殲滅的 佐克－福特－皮克殖民地之 一。\n\n毀滅相當徹底， 只有以高密度金屬合金建 造、最堅固的建築上層結構 仍然矗立。 \n\n我們找不到多少能夠回收的 物品——不是入侵的烏爾關 部隊，就是佐克－福特－皮 克派出的回收隊， 已經搶先搜過這片廢墟。\n\n至少我們能向他們的母星回 報這座殖民地目前的狀況。\n\n        ---- 報告結束 ----"
+    }
+  ],
+  "contract_sha256": "25086317c8d161db4e54a48d79f232af6c24b156080be3973d407590d70b7f54"
+}

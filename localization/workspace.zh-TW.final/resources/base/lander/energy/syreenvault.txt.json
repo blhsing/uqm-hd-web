@@ -1,0 +1,56 @@
+{
+  "format": "uqm-hd-localization-v1",
+  "source_path": "base/lander/energy/syreenvault.txt",
+  "resource_ids": [
+    "text.syreenvault"
+  ],
+  "resource_types": [
+    "STRTAB"
+  ],
+  "auxiliary": false,
+  "source_sha256": "79678a14b0f603cf2ef932426dc501827b2cafd0c74ce34662c8e7b8d80fffda",
+  "newline": "\n",
+  "preamble": "",
+  "entries": [
+    {
+      "index": 0,
+      "label": "SYRVAULT 1",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n",
+      "body": "     ---- REPORT FROM SURFACE ----\n\nWE HAVE FOUND SOME KIND OF VAULT, BUILT INTO THE BEDROCK OF THIS PLANET.\n\nTHE VAULT'S METAL ALLOY IS IMPERVIOUS TO OUR WEAPONS, AND APPEARS TO BE SIMILAR TO THE UR-QUAN'S `ETERNA-TECH' METAL THEY USE TO REINFORCE THEIR DREADNOUGHT SUPER-STRUCTURES.\n\nTHERE IS SOME KIND OF COMPUTER ENTRY SYSTEM, BUT WE CANNOT FATHOM ITS DESIGN. FRUSTRATED AND DISAPPOINTED, WE ARE RETURNING TO THE FLAGSHIP.\n\n        ---- END OF REPORT ----",
+      "unit_kind": "whole",
+      "payload_start": 0,
+      "source": "     ---- REPORT FROM SURFACE ----\n\nWE HAVE FOUND SOME KIND OF VAULT, BUILT INTO THE BEDROCK OF THIS PLANET.\n\nTHE VAULT'S METAL ALLOY IS IMPERVIOUS TO OUR WEAPONS, AND APPEARS TO BE SIMILAR TO THE UR-QUAN'S `ETERNA-TECH' METAL THEY USE TO REINFORCE THEIR DREADNOUGHT SUPER-STRUCTURES.\n\nTHERE IS SOME KIND OF COMPUTER ENTRY SYSTEM, BUT WE CANNOT FATHOM ITS DESIGN. FRUSTRATED AND DISAPPOINTED, WE ARE RETURNING TO THE FLAGSHIP.\n\n        ---- END OF REPORT ----",
+      "translation": "     ---- 地表報告 ----\n\n我們發現某種建造於行星基 岩內部的保險庫。\n\n保險庫的金屬合金不受武器 影響，看來類似烏爾關用來 強化無畏艦上層結構的`永 恆科技'金屬。\n\n這裡有某種電腦進入系統， 但我們完全無法理解其設 計。既挫折又失望， 我們正返回旗艦。\n\n        ---- 報告結束 ----"
+    },
+    {
+      "index": 1,
+      "label": "SYRVAULT 2",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n",
+      "body": "     ---- REPORT FROM SURFACE ----\n\nWE HAVE OPENED THE SUBTERRANEAN VAULT WHICH CONTAINED THE SYREEN SPACE PATROL PENETRATOR STARSHIPS.\n\nTHE SYREEN CAPTAINS HAVE ASSUMED COMMAND OF THEIR VESSELS AND INSTRUCTED US TO RENDEZVOUS WITH THEM BACK AT BETELGEUSE.\n\n        ---- END OF REPORT ----",
+      "unit_kind": "whole",
+      "payload_start": 0,
+      "source": "     ---- REPORT FROM SURFACE ----\n\nWE HAVE OPENED THE SUBTERRANEAN VAULT WHICH CONTAINED THE SYREEN SPACE PATROL PENETRATOR STARSHIPS.\n\nTHE SYREEN CAPTAINS HAVE ASSUMED COMMAND OF THEIR VESSELS AND INSTRUCTED US TO RENDEZVOUS WITH THEM BACK AT BETELGEUSE.\n\n        ---- END OF REPORT ----",
+      "translation": "     ---- 地表報告 ----\n\n我們已開啟地下保險庫， 其中存放賽琳太空巡邏隊的 穿透艦星艦。\n\n賽琳船長已接管各自船隻， 並指示我們返回參宿四與他 們會合。\n\n        ---- 報告結束 ----"
+    },
+    {
+      "index": 2,
+      "label": "SYRVAULT 3",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n",
+      "body": "     ---- REPORT FROM SURFACE ----\n\nTHE SYREEN SHIP VAULT IS EMPTY AND CONTAINS NOTHING OF VALUE.\n\n        ---- END OF REPORT ----",
+      "unit_kind": "whole",
+      "payload_start": 0,
+      "source": "     ---- REPORT FROM SURFACE ----\n\nTHE SYREEN SHIP VAULT IS EMPTY AND CONTAINS NOTHING OF VALUE.\n\n        ---- END OF REPORT ----",
+      "translation": "     ---- 地表報告 ----\n\n賽琳船隻保險庫空無一物， 沒有任何值錢物品。\n\n        ---- 報告結束 ----"
+    }
+  ],
+  "contract_sha256": "5d3e4bf6187951c2d7e74e4e338a0d9a7a5ea5ffc37fdfe509fe8266f059dea8"
+}

@@ -1,0 +1,540 @@
+{
+  "records": 5177,
+  "source_characters": 606426,
+  "translated_characters": 208060,
+  "cjk_characters": 162905,
+  "unchanged_long_records": [
+    "base/cutscene/credits/credits.txt::36",
+    "base/cutscene/credits/credits.txt::38",
+    "base/cutscene/credits/credits.txt::40",
+    "base/cutscene/credits/credits.txt::49",
+    "base/cutscene/credits/credits.txt::53",
+    "base/cutscene/credits/credits.txt::60",
+    "base/cutscene/credits/credits.txt::62",
+    "base/cutscene/credits/credits.txt::64",
+    "base/cutscene/credits/credits.txt::66",
+    "base/cutscene/credits/credits.txt::68",
+    "base/cutscene/credits/credits.txt::70",
+    "base/cutscene/credits/credits.txt::75",
+    "base/cutscene/credits/credits.txt::77",
+    "base/cutscene/credits/credits.txt::79"
+  ],
+  "english_heavy_records": [
+    {
+      "id": "base/cutscene/credits/credits.txt::26",
+      "ascii_letters": 42,
+      "cjk": 2
+    },
+    {
+      "id": "base/cutscene/credits/credits.txt::27",
+      "ascii_letters": 42,
+      "cjk": 4
+    },
+    {
+      "id": "base/cutscene/credits/credits.txt::29",
+      "ascii_letters": 61,
+      "cjk": 4
+    },
+    {
+      "id": "base/cutscene/credits/credits.txt::31",
+      "ascii_letters": 36,
+      "cjk": 4
+    },
+    {
+      "id": "base/cutscene/credits/credits.txt::33",
+      "ascii_letters": 40,
+      "cjk": 5
+    },
+    {
+      "id": "base/cutscene/credits/credits.txt::36",
+      "ascii_letters": 71,
+      "cjk": 0
+    },
+    {
+      "id": "base/cutscene/credits/credits.txt::40",
+      "ascii_letters": 103,
+      "cjk": 0
+    },
+    {
+      "id": "base/cutscene/credits/credits.txt::42",
+      "ascii_letters": 264,
+      "cjk": 67
+    },
+    {
+      "id": "base/cutscene/credits/credits.txt::57",
+      "ascii_letters": 80,
+      "cjk": 54
+    },
+    {
+      "id": "base/cutscene/credits/credits.txt::58",
+      "ascii_letters": 103,
+      "cjk": 50
+    },
+    {
+      "id": "base/cutscene/credits/credits.txt::62",
+      "ascii_letters": 88,
+      "cjk": 0
+    },
+    {
+      "id": "base/cutscene/credits/credits.txt::64",
+      "ascii_letters": 124,
+      "cjk": 0
+    },
+    {
+      "id": "base/cutscene/credits/credits.txt::66",
+      "ascii_letters": 84,
+      "cjk": 0
+    },
+    {
+      "id": "base/cutscene/credits/credits.txt::68",
+      "ascii_letters": 101,
+      "cjk": 0
+    },
+    {
+      "id": "base/cutscene/credits/credits.txt::71",
+      "ascii_letters": 30,
+      "cjk": 7
+    },
+    {
+      "id": "base/cutscene/credits/credits.txt::75",
+      "ascii_letters": 166,
+      "cjk": 0
+    },
+    {
+      "id": "base/cutscene/credits/credits.txt::77",
+      "ascii_letters": 167,
+      "cjk": 0
+    }
+  ],
+  "simplified_character_warnings": [
+    {
+      "id": "base/comm/commander/commander.txt::30",
+      "characters": "泛"
+    },
+    {
+      "id": "base/comm/druuge/druuge.txt::4",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/druuge/druuge.txt::6",
+      "characters": "挽蠢"
+    },
+    {
+      "id": "base/comm/druuge/druuge.txt::56",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/ilwrath/ilwrath.txt::16",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/ilwrath/ilwrath.txt::25",
+      "characters": "斗蠢"
+    },
+    {
+      "id": "base/comm/ilwrath/ilwrath.txt::26",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/ilwrath/ilwrath.txt::28",
+      "characters": "斗"
+    },
+    {
+      "id": "base/comm/ilwrath/ilwrath.txt::30",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/ilwrath/ilwrath.txt::32",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/ilwrath/ilwrath.txt::46",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/orz/orz.txt::115",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/pkunk/pkunk.txt::60",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/pkunk/pkunk.txt::74",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/pkunk/pkunk.txt::119",
+      "characters": "泛"
+    },
+    {
+      "id": "base/comm/pkunk/pkunk.txt::138",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/pkunk/pkunk.txt::146",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/safeones/safeones.txt::84",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/safeones/safeones.txt::112",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/shofixti/shofixti.txt::50",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/slylandro/slylandro.txt::44",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/spathi/spathi.txt::54",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/spathi/spathi.txt::96",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/spathi/spathi.txt::98",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/starbase/starbase.txt::50",
+      "characters": "划"
+    },
+    {
+      "id": "base/comm/starbase/starbase.txt::140",
+      "characters": "斗"
+    },
+    {
+      "id": "base/comm/starbase/starbase.txt::163",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/starbase/starbase.txt::166",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/supox/supox.txt::34",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/syreen/syreen.txt::74",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/talkingpet/talkingpet.txt::13",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/talkingpet/talkingpet.txt::15",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/talkingpet/talkingpet.txt::19",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/talkingpet/talkingpet.txt::32",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/talkingpet/talkingpet.txt::40",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/talkingpet/talkingpet.txt::54",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/talkingpet/talkingpet.txt::107",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/thraddash/thraddash.txt::4",
+      "characters": "挽蠢"
+    },
+    {
+      "id": "base/comm/thraddash/thraddash.txt::7",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/thraddash/thraddash.txt::11",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/thraddash/thraddash.txt::12",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/thraddash/thraddash.txt::15",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/thraddash/thraddash.txt::19",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/thraddash/thraddash.txt::23",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/thraddash/thraddash.txt::31",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/thraddash/thraddash.txt::33",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/thraddash/thraddash.txt::51",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/thraddash/thraddash.txt::61",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/thraddash/thraddash.txt::125",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/thraddash/thraddash.txt::149",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/thraddash/thraddash.txt::151",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/umgah/umgah.txt::6",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/umgah/umgah.txt::52",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/urquan/urquan.txt::1",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/urquan/urquan.txt::35",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/urquan/urquan.txt::40",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/urquan/urquan.txt::56",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/urquan/urquan.txt::75",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/utwig/utwig.txt::52",
+      "characters": "挽"
+    },
+    {
+      "id": "base/comm/utwig/utwig.txt::54",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/vux/vux.txt::18",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/vux/vux.txt::30",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/vux/vux.txt::63",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/vux/vux.txt::78",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/yehat/yehat.txt::60",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/yehat/yehat.txt::67",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/zoqfotpik/zoqfotpik.txt::10",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/zoqfotpik/zoqfotpik.txt::32",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/zoqfotpik/zoqfotpik.txt::106",
+      "characters": "划"
+    },
+    {
+      "id": "base/comm/zoqfotpik/zoqfotpik.txt::289",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/zoqfotpik/zoqfotpik.txt::291",
+      "characters": "蠢"
+    },
+    {
+      "id": "base/comm/zoqfotpik/zoqfotpik.txt::296",
+      "characters": "泛"
+    },
+    {
+      "id": "base/ships/melnorme/trader.txt::5",
+      "characters": "泛"
+    },
+    {
+      "id": "base/ships/melnorme/trader.txt::16",
+      "characters": "泛"
+    },
+    {
+      "id": "base/ships/melnorme/trader.txt::19",
+      "characters": "泛"
+    }
+  ],
+  "invalid_unicode_records": [],
+  "glossary_warnings": [
+    {
+      "id": "base/ships/vux/intruder.txt::19",
+      "term": "Orz",
+      "target": "奧茲",
+      "source_occurrences": 1,
+      "target_occurrences": 0
+    },
+    {
+      "id": "base/comm/arilou/arilou.txt::69",
+      "term": "Umgah",
+      "target": "烏姆加",
+      "source_occurrences": 2,
+      "target_occurrences": 1
+    },
+    {
+      "id": "base/comm/arilou/arilou.txt::76",
+      "term": "Talking Pet",
+      "target": "會說話的寵物",
+      "source_occurrences": 3,
+      "target_occurrences": 2
+    },
+    {
+      "id": "base/cutscene/credits/credits.txt::23",
+      "term": "crew",
+      "target": "船員",
+      "source_occurrences": 1,
+      "target_occurrences": 0
+    },
+    {
+      "id": "base/cutscene/credits/credits.txt::30",
+      "term": "crew",
+      "target": "船員",
+      "source_occurrences": 1,
+      "target_occurrences": 0
+    },
+    {
+      "id": "base/cutscene/credits/credits.txt::34",
+      "term": "crew",
+      "target": "船員",
+      "source_occurrences": 1,
+      "target_occurrences": 0
+    },
+    {
+      "id": "base/cutscene/credits/credits.txt::43",
+      "term": "crew",
+      "target": "船員",
+      "source_occurrences": 1,
+      "target_occurrences": 0
+    },
+    {
+      "id": "base/comm/melnorme/melnorme.txt::1",
+      "term": "Trader",
+      "target": "商旅艦",
+      "source_occurrences": 1,
+      "target_occurrences": 0
+    },
+    {
+      "id": "base/comm/starbase/starbase.txt::166",
+      "term": "Trader",
+      "target": "商旅艦",
+      "source_occurrences": 1,
+      "target_occurrences": 0
+    },
+    {
+      "id": "base/comm/thraddash/thraddash.txt::24",
+      "term": "Fury",
+      "target": "狂怒艦",
+      "source_occurrences": 1,
+      "target_occurrences": 0
+    },
+    {
+      "id": "base/comm/melnorme/melnorme.txt::186",
+      "term": "Scout",
+      "target": "偵察艦",
+      "source_occurrences": 2,
+      "target_occurrences": 0
+    },
+    {
+      "id": "base/comm/zoqfotpik/zoqfotpik.txt::8",
+      "term": "Scout",
+      "target": "偵察艦",
+      "source_occurrences": 1,
+      "target_occurrences": 0
+    },
+    {
+      "id": "base/comm/urquan/urquan.txt::49",
+      "term": "Drone",
+      "target": "無人機",
+      "source_occurrences": 2,
+      "target_occurrences": 0
+    },
+    {
+      "id": "base/comm/thraddash/thraddash.txt::95",
+      "term": "Dreadnought",
+      "target": "無畏艦",
+      "source_occurrences": 2,
+      "target_occurrences": 1
+    },
+    {
+      "id": "base/comm/talkingpet/talkingpet.txt::21",
+      "term": "Intruder",
+      "target": "入侵艦",
+      "source_occurrences": 1,
+      "target_occurrences": 0
+    },
+    {
+      "id": "base/comm/zoqfotpik/zoqfotpik.txt::124",
+      "term": "Stinger",
+      "target": "毒刺艦",
+      "source_occurrences": 1,
+      "target_occurrences": 0
+    },
+    {
+      "id": "base/comm/zoqfotpik/zoqfotpik.txt::265",
+      "term": "Stinger",
+      "target": "毒刺艦",
+      "source_occurrences": 1,
+      "target_occurrences": 0
+    },
+    {
+      "id": "base/comm/thraddash/thraddash.txt::6",
+      "term": "Guardian",
+      "target": "守護艦",
+      "source_occurrences": 1,
+      "target_occurrences": 0
+    }
+  ]
+}

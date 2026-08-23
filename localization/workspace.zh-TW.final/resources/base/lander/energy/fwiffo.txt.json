@@ -1,0 +1,30 @@
+{
+  "format": "uqm-hd-localization-v1",
+  "source_path": "base/lander/energy/fwiffo.txt",
+  "resource_ids": [
+    "text.fwiffo"
+  ],
+  "resource_types": [
+    "STRTAB"
+  ],
+  "auxiliary": false,
+  "source_sha256": "48a8bc36dea787101d4be1895aa059a71bdfb1640c7a175f170cb2245c26f97e",
+  "newline": "\n",
+  "preamble": "",
+  "entries": [
+    {
+      "index": 0,
+      "label": "SPAPLUTO 1",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n",
+      "body": "     !!!! MAYDAY FROM SURFACE !!!!\n\nWE HAVE COME UNDER FIRE FROM AN ALIEN VESSEL WE FOUND HIDING ON THE SURFACE OF PLUTO!\n\nCAPTAIN! THEY KILLED KOWALSKI, FRITZ, CHIN, O'DONNELL, LUIGI AND ALL THREE OF THE LIEBERMANN TRIPLETS! WE HAVE RETURNED FIRE, BUT OUR STUNNER CAN'T PENETRATE THE SHIP'S HULL ARMOR.\n\nWE ARE INITIATING EMERGENCY LAUNCH PROCEDURES!\n\n     ---- END OF TRANSMISSION ----",
+      "unit_kind": "whole",
+      "payload_start": 0,
+      "source": "     !!!! MAYDAY FROM SURFACE !!!!\n\nWE HAVE COME UNDER FIRE FROM AN ALIEN VESSEL WE FOUND HIDING ON THE SURFACE OF PLUTO!\n\nCAPTAIN! THEY KILLED KOWALSKI, FRITZ, CHIN, O'DONNELL, LUIGI AND ALL THREE OF THE LIEBERMANN TRIPLETS! WE HAVE RETURNED FIRE, BUT OUR STUNNER CAN'T PENETRATE THE SHIP'S HULL ARMOR.\n\nWE ARE INITIATING EMERGENCY LAUNCH PROCEDURES!\n\n     ---- END OF TRANSMISSION ----",
+      "translation": "     !!!! 地表發出求救訊號 !!!!\n\n我們遭到一艘外星船艦開 火；它就藏在冥王星表面， 被我們發現！\n\n艦長！他們殺了 Kowalski、 Fritz、Chin、 O'Donnell、 Luigi，還有 Liebermann 三胞胎三個人！ 我們已還擊，但震擊器無法 穿透船艦裝甲。\n\n我們正在啟動緊急升空程 序！\n\n     ---- 傳訊結束 ----"
+    }
+  ],
+  "contract_sha256": "5b0017b6a331e4ff3e72ebcc1b5fde111fed0c51180149d0fbccea3afe23e09b"
+}

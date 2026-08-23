@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-08-19",
+  "artifact": {
+    "fileName": "msys2-base-x86_64-20260611.sfx.exe",
+    "length": 52898952,
+    "sha256": "c105946e64e08f099ac0e4647461ce762b95333ad211777666476a9a41451d65",
+    "sourceUrl": "https://repo.msys2.org/distrib/x86_64/msys2-base-x86_64-20260611.sfx.exe"
+  },
+  "note": "Preserve the hash-verified dated artifact and pacman package archives for an offline rebuild."
+}

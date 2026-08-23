@@ -1,0 +1,14 @@
+# Explicit packages in the portable build environment (`pacman -Qqe`).
+base 2022.06-1
+filesystem 2026.03.06-1
+make 4.4.1-3
+mingw-w64-i686-SDL 1.2.15+r419+gef3a6c05-1
+mingw-w64-i686-SDL_image 1.2.12-8
+mingw-w64-i686-gcc 16.2.0-3
+mingw-w64-i686-libogg 1.3.6-1
+mingw-w64-i686-libvorbis 1.3.7-3
+mingw-w64-i686-ntldd r19.7fb9365-4
+mingw-w64-i686-pkgconf 1~3.0.5-1
+mingw-w64-i686-zlib 1.3.2-2
+msys2-runtime 3.6.10-3
+pkgconf 3.0.5-1

@@ -1,0 +1,30 @@
+{
+  "format": "uqm-hd-localization-v1",
+  "source_path": "base/lander/bio/vuxbeast.txt",
+  "resource_ids": [
+    "text.vuxbeast"
+  ],
+  "resource_types": [
+    "STRTAB"
+  ],
+  "auxiliary": false,
+  "source_sha256": "ba88a24548c84ce6ccec12659f72340ae8462c1d42a43cea9a6818c34836d9d0",
+  "newline": "\n",
+  "preamble": "",
+  "entries": [
+    {
+      "index": 0,
+      "label": "VUXBEAST 1",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n",
+      "body": "     ---- REPORT FROM SURFACE ----\n\nWE HAVE FINALLY TRAPPED THE HIDEOUS BEAST WHICH HAS BEEN SO HARD TO CAPTURE THESE PAST FEW DAYS.\n\nI SWEAR, WE EMPTIED OUR STUN BATTERIES INTO THAT THING OVER A DOZEN TIMES BEFORE IT EVEN SLOWED DOWN. A FEW MORE SHOTS TO ITS BARBED HEAD, AND IT WENT DOWN, BUT WE HAD ONLY A FEW SECONDS TO GET IT INTO THE MAGNETIC RESTRAITS BEFORE IT STARTED THRASHING AROUND AGAIN.\n\nEVEN AS I MAKE THIS REPORT, THAT DAMN MONSTER IS SHRIEKING LIKE A STEAM ENGINE AND TRYING TO TEAR ITS WAY FREE.\n\nI HOPE WE KNOW WHAT WE ARE DOING, BRINGING THAT THING ABOARD. IF IT GETS FREE INSIDE THE SHIP, CAPTAIN, WELL... I JUST DON'T WANT TO THINK ABOUT IT.\n\nRETURNING TO SHIP.\n\n        ---- END OF REPORT ----",
+      "unit_kind": "whole",
+      "payload_start": 0,
+      "source": "     ---- REPORT FROM SURFACE ----\n\nWE HAVE FINALLY TRAPPED THE HIDEOUS BEAST WHICH HAS BEEN SO HARD TO CAPTURE THESE PAST FEW DAYS.\n\nI SWEAR, WE EMPTIED OUR STUN BATTERIES INTO THAT THING OVER A DOZEN TIMES BEFORE IT EVEN SLOWED DOWN. A FEW MORE SHOTS TO ITS BARBED HEAD, AND IT WENT DOWN, BUT WE HAD ONLY A FEW SECONDS TO GET IT INTO THE MAGNETIC RESTRAITS BEFORE IT STARTED THRASHING AROUND AGAIN.\n\nEVEN AS I MAKE THIS REPORT, THAT DAMN MONSTER IS SHRIEKING LIKE A STEAM ENGINE AND TRYING TO TEAR ITS WAY FREE.\n\nI HOPE WE KNOW WHAT WE ARE DOING, BRINGING THAT THING ABOARD. IF IT GETS FREE INSIDE THE SHIP, CAPTAIN, WELL... I JUST DON'T WANT TO THINK ABOUT IT.\n\nRETURNING TO SHIP.\n\n        ---- END OF REPORT ----",
+      "translation": "     ---- 地表報告 ----\n\n我們終於困住這頭醜陋野獸 了，過去幾天實在非常難 抓。\n\n我發誓，我們朝那東西打光 十幾組暈眩電池， 它才終於慢下來。 又朝帶倒鉤的頭部開了幾 槍，牠總算倒地， 但我們只有幾秒能把牠塞進 磁力拘束器，接著牠又開始 瘋狂掙扎。\n\n就連我提交報告的此刻， 那頭該死怪物都還像蒸汽引 擎一樣尖叫，試圖撕開束縛 逃走。\n\n希望把那東西帶上船是正確 決定。如果牠在船內掙脫， 船長，呃……我實在不願多 想。\n\n返回船上。\n\n        ---- 報告結束 ----"
+    }
+  ],
+  "contract_sha256": "ac8c3a2d860de15468795f0a24f4b0ebf41eeca69548881d523861150b41e637"
+}

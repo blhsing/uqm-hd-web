@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "productVersion": "0.7.0 + HD Mod BETA (revision 1347M)",
+  "sourceRevision": "1347M",
+  "systemDlls": [
+    "ADVAPI32.dll",
+    "GDI32.dll",
+    "KERNEL32.dll",
+    "msvcrt.dll",
+    "OPENGL32.DLL",
+    "USER32.dll",
+    "WINMM.DLL",
+    "WS2_32.dll"
+  ],
+  "packages": [
+    {
+      "name": "mingw-w64-i686-gcc-libs",
+      "license": "GPL-3.0-or-later WITH GCC-exception-3.1 AND LGPL-2.1-or-later",
+      "licenseSource": "mingw32/share/licenses/gcc-libs",
+      "binaries": ["libgcc_s_dw2-1.dll", "libstdc++-6.dll"]
+    },
+    {
+      "name": "mingw-w64-i686-jbigkit",
+      "license": "GPL-2.0-only",
+      "licenseSource": "mingw32/share/licenses/jbigkit",
+      "binaries": ["libjbig-0.dll"]
+    },
+    {
+      "name": "mingw-w64-i686-lerc",
+      "license": "Apache-2.0",
+      "licenseSource": "mingw32/share/licenses/lerc",
+      "binaries": ["libLerc.dll"]
+    },
+    {
+      "name": "mingw-w64-i686-libdeflate",
+      "license": "MIT",
+      "licenseSource": "mingw32/share/licenses/libdeflate",
+      "binaries": ["libdeflate.dll"]
+    },
+    {
+      "name": "mingw-w64-i686-libjpeg-turbo",
+      "license": "custom:BSD-like/IJG/Zlib",
+      "licenseSource": "mingw32/share/licenses/libjpeg-turbo",
+      "binaries": ["libjpeg-8.dll"]
+    },
+    {
+      "name": "mingw-w64-i686-libogg",
+      "license": "BSD-3-Clause",
+      "licenseSource": "mingw32/share/licenses/libogg",
+      "binaries": ["libogg-0.dll"]
+    },
+    {
+      "name": "mingw-w64-i686-libpng",
+      "license": "Libpng-2.0",
+      "licenseSource": "mingw32/share/licenses/libpng",
+      "binaries": ["libpng16-16.dll"]
+    },
+    {
+      "name": "mingw-w64-i686-libtiff",
+      "license": "libtiff",
+      "licenseSource": "mingw32/share/licenses/libtiff",
+      "binaries": ["libtiff-6.dll"]
+    },
+    {
+      "name": "mingw-w64-i686-libvorbis",
+      "license": "BSD-3-Clause",
+      "licenseSource": "repo:tools/build/windows-x86/licenses/libvorbis",
+      "licenseOrigin": "https://raw.githubusercontent.com/xiph/vorbis/v1.3.7/COPYING",
+      "binaries": ["libvorbis-0.dll", "libvorbisfile-3.dll"]
+    },
+    {
+      "name": "mingw-w64-i686-libwebp",
+      "license": "BSD-3-Clause",
+      "licenseSource": "mingw32/share/licenses/libwebp",
+      "binaries": ["libsharpyuv-0.dll", "libwebp-7.dll"]
+    },
+    {
+      "name": "mingw-w64-i686-libwinpthread",
+      "license": "MIT AND BSD-3-Clause-Clear",
+      "licenseSource": "mingw32/share/licenses/libwinpthread",
+      "binaries": ["libwinpthread-1.dll"]
+    },
+    {
+      "name": "mingw-w64-i686-SDL",
+      "license": "LGPL-2.1-or-later",
+      "licenseSource": "repo:tools/build/windows-x86/licenses/SDL",
+      "licenseOrigin": "https://raw.githubusercontent.com/libsdl-org/SDL-1.2/ef3a6c05/COPYING",
+      "binaries": ["SDL.dll"]
+    },
+    {
+      "name": "mingw-w64-i686-SDL_image",
+      "license": "Zlib",
+      "licenseSource": "mingw32/share/licenses/SDL_image",
+      "binaries": ["libSDL_image-1-2-0.dll"]
+    },
+    {
+      "name": "mingw-w64-i686-xz",
+      "license": "0BSD AND LGPL-2.1-or-later AND GPL-2.0-or-later",
+      "licenseSource": "mingw32/share/licenses/xz",
+      "binaries": ["liblzma-5.dll"]
+    },
+    {
+      "name": "mingw-w64-i686-zlib",
+      "license": "Zlib",
+      "licenseSource": "mingw32/share/licenses/zlib",
+      "binaries": ["zlib1.dll"]
+    },
+    {
+      "name": "mingw-w64-i686-zstd",
+      "license": "BSD-3-Clause OR GPL-2.0-or-later",
+      "licenseSource": "mingw32/share/licenses/zstd",
+      "binaries": ["libzstd.dll"]
+    }
+  ]
+}

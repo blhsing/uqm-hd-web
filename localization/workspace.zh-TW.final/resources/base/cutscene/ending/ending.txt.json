@@ -1,0 +1,147 @@
+{
+  "format": "uqm-hd-localization-v1",
+  "source_path": "base/cutscene/ending/ending.txt",
+  "resource_ids": [
+    "slides.ending"
+  ],
+  "resource_types": [
+    "STRTAB"
+  ],
+  "auxiliary": false,
+  "source_sha256": "b11e80ef2f686e21ba464fe050faf2e7b701fdba89f90404d238f31d2fdbf1a9",
+  "newline": "\n",
+  "preamble": "",
+  "entries": [
+    {
+      "index": 0,
+      "label": "=========== This is the PC ending script =========================",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n",
+      "body": "",
+      "unit_kind": "immutable",
+      "payload_start": null,
+      "source": null,
+      "translation": null
+    },
+    {
+      "index": 1,
+      "label": "**** This script is a wrapper for 3 sequences ****",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n",
+      "body": "",
+      "unit_kind": "immutable",
+      "payload_start": null,
+      "source": null,
+      "translation": null
+    },
+    {
+      "index": 2,
+      "label": "Clear entire screen first; set size...",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n\n",
+      "body": "DIMS 320 240",
+      "unit_kind": "immutable",
+      "payload_start": null,
+      "source": null,
+      "translation": null
+    },
+    {
+      "index": 3,
+      "label": "... and clear",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n\n",
+      "body": "CLS",
+      "unit_kind": "immutable",
+      "payload_start": null,
+      "source": null,
+      "translation": null
+    },
+    {
+      "index": 4,
+      "label": "Set sequence dimensions; param1=width; param2=height",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n",
+      "body": "DIMS 320 200",
+      "unit_kind": "immutable",
+      "payload_start": null,
+      "source": null,
+      "translation": null
+    },
+    {
+      "index": 5,
+      "label": "Everything is drawn within the clipping rect defined by DIMS, from 0, 0",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n",
+      "body": "",
+      "unit_kind": "immutable",
+      "payload_start": null,
+      "source": null,
+      "translation": null
+    },
+    {
+      "index": 6,
+      "label": "Sequence 1 -- position the bomb",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n\n",
+      "body": "CALL base/cutscene/ending/victory1.txt",
+      "unit_kind": "immutable",
+      "payload_start": null,
+      "source": null,
+      "translation": null
+    },
+    {
+      "index": 7,
+      "label": "Sequence 2 -- blow it up!",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n\n",
+      "body": "CALL base/cutscene/ending/victory2.txt",
+      "unit_kind": "immutable",
+      "payload_start": null,
+      "source": null,
+      "translation": null
+    },
+    {
+      "index": 8,
+      "label": "Sequence 3 -- final slide show",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n\n",
+      "body": "CALL base/cutscene/ending/final.txt",
+      "unit_kind": "immutable",
+      "payload_start": null,
+      "source": null,
+      "translation": null
+    },
+    {
+      "index": 9,
+      "label": "***************************** The End ********************************",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "",
+      "body": "",
+      "unit_kind": "immutable",
+      "payload_start": null,
+      "source": null,
+      "translation": null
+    }
+  ],
+  "contract_sha256": "813722f5314a0e569f937a8fecf50d2a9875101bd5effe49c0f3aaaaa5d6532a"
+}

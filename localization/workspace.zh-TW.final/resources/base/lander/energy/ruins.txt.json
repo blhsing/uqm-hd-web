@@ -1,0 +1,30 @@
+{
+  "format": "uqm-hd-localization-v1",
+  "source_path": "base/lander/energy/ruins.txt",
+  "resource_ids": [
+    "text.ruins"
+  ],
+  "resource_types": [
+    "STRTAB"
+  ],
+  "auxiliary": false,
+  "source_sha256": "8203da6a9102751b848af4aef7e670ee0843c73687e172f3e2c07ecb31e546eb",
+  "newline": "\n",
+  "preamble": "",
+  "entries": [
+    {
+      "index": 0,
+      "label": "RUINS 1",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n",
+      "body": "  ---- REPORT FROM SURFACE ----\n\nEVERYONE AND EVERYTHING ON THIS PLANET HAS BEEN DESTROYED, CAPTAIN.\n\n  ---- END OF REPORT ----",
+      "unit_kind": "whole",
+      "payload_start": 0,
+      "source": "  ---- REPORT FROM SURFACE ----\n\nEVERYONE AND EVERYTHING ON THIS PLANET HAS BEEN DESTROYED, CAPTAIN.\n\n  ---- END OF REPORT ----",
+      "translation": "  ---- 地表回報 ----\n\n船長，這顆星球上的所有人 和一切事物都已遭到毀滅。\n\n  ---- 回報完畢 ----"
+    }
+  ],
+  "contract_sha256": "cf48bea9ce91de0f790a96154d4d37040031f54d1c3d1f4dd72a28b9671fd3f3"
+}

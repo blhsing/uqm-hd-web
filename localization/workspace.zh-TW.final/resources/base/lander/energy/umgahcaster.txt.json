@@ -1,0 +1,30 @@
+{
+  "format": "uqm-hd-localization-v1",
+  "source_path": "base/lander/energy/umgahcaster.txt",
+  "resource_ids": [
+    "text.umgahcaster"
+  ],
+  "resource_types": [
+    "STRTAB"
+  ],
+  "auxiliary": false,
+  "source_sha256": "e440914c2e1a70e8c300d0eb5bae4446a1c342699ad61cc60a637d672714586c",
+  "newline": "\n",
+  "preamble": "",
+  "entries": [
+    {
+      "index": 0,
+      "label": "UMGTRANS 1",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n",
+      "body": "     ---- REPORT FROM SURFACE ----\n\nCAPTAIN. THIS IS LIEUTENANT ROBINSON, SIR. WE HAVE LOCATED AN ALIEN ARTIFACT DOWN HERE. PERHAPS MORE IMPORTANTLY, WE HAVE FOUND SOMETHING WHICH I THINK MAY EXPLAIN WHAT HAPPENED TO THE SPATHI... AND I DON'T THINK YOU ARE GOING TO LIKE IT. WE WERE INVESTIGATING A LARGE BLUE MACHINE WHEN OFFICER TALBOT DISCOVERED A MESSAGE GLUED TO THE SIDE OF THE DEVICE. SIR, IT'S A NOTE FROM THE SPATHI HIGH COUNCIL. I'LL READ IT TO YOU...\n\n    DEAR HUNAMS,\n\n      HOW ARE YOU?  WE ARE FINE.\n    HOWEVER CAN WE THANK YOU FOR\n    LETTING US STUDY YOUR PLANET\n    EARTH'S SLAVE SHIELD?\n\n    ADMITTEDLY, IT TOOK US SOME TIME\n    TO REPLICATE THE TECHNOLOGY\n    OURSELVES, BUT WE ARE SIMPLY\n    DELIGHTED WITH THE RESULTS!\n\n    YESSIREE, WE SURE LOVE THE IDEA\n    OF PUTTING AN IMPENETRABLE\n    SHIELD AROUND OUR PLANET! NOW\n    ALL THOSE EVIL MONSTERS THAT\n    WERE JUST ABOUT TO ATTACK WON'T\n    BE ABLE TO EAT US -- THANKS!\n\n\n    I GUESS THIS MEANS WE WON'T BE\n    ABLE TO SEND YOU ANY MORE\n    STARSHIP CAPTAINS -- SORRY!\n    WELL, THEY WANT TO TURN ON THE\n    SHIELD ABOUT NOW, SO WE'VE GOT\n    TO GET GOING. I'M SURE WE'LL\n    NEVER EVER TALK WITH YOU AGAIN,\n    SO GOODBYE AND THANKS AGAIN!\n\n                    YOUR FRIENDS,\n\n          THE SPATHI RULING COUNCIL\n\n    P.S. THIS MACHINE IS THE\n    SUPER-POWERFUL HYPERWAVE CASTER\n    THAT THE UMGAH USED TO TRICK US\n    INTO BELIEVING THAT THE `GRAND\n    MASTER PLANET EATERS' WERE COMING\n    TO DESTROY SPATHIWA. WE THOUGHT\n    MAYBE YOU'D LIKE TO HAVE IT.\n\n     ---- END OF TRANSMISSION ----",
+      "unit_kind": "whole",
+      "payload_start": 0,
+      "source": "     ---- REPORT FROM SURFACE ----\n\nCAPTAIN. THIS IS LIEUTENANT ROBINSON, SIR. WE HAVE LOCATED AN ALIEN ARTIFACT DOWN HERE. PERHAPS MORE IMPORTANTLY, WE HAVE FOUND SOMETHING WHICH I THINK MAY EXPLAIN WHAT HAPPENED TO THE SPATHI... AND I DON'T THINK YOU ARE GOING TO LIKE IT. WE WERE INVESTIGATING A LARGE BLUE MACHINE WHEN OFFICER TALBOT DISCOVERED A MESSAGE GLUED TO THE SIDE OF THE DEVICE. SIR, IT'S A NOTE FROM THE SPATHI HIGH COUNCIL. I'LL READ IT TO YOU...\n\n    DEAR HUNAMS,\n\n      HOW ARE YOU?  WE ARE FINE.\n    HOWEVER CAN WE THANK YOU FOR\n    LETTING US STUDY YOUR PLANET\n    EARTH'S SLAVE SHIELD?\n\n    ADMITTEDLY, IT TOOK US SOME TIME\n    TO REPLICATE THE TECHNOLOGY\n    OURSELVES, BUT WE ARE SIMPLY\n    DELIGHTED WITH THE RESULTS!\n\n    YESSIREE, WE SURE LOVE THE IDEA\n    OF PUTTING AN IMPENETRABLE\n    SHIELD AROUND OUR PLANET! NOW\n    ALL THOSE EVIL MONSTERS THAT\n    WERE JUST ABOUT TO ATTACK WON'T\n    BE ABLE TO EAT US -- THANKS!\n\n\n    I GUESS THIS MEANS WE WON'T BE\n    ABLE TO SEND YOU ANY MORE\n    STARSHIP CAPTAINS -- SORRY!\n    WELL, THEY WANT TO TURN ON THE\n    SHIELD ABOUT NOW, SO WE'VE GOT\n    TO GET GOING. I'M SURE WE'LL\n    NEVER EVER TALK WITH YOU AGAIN,\n    SO GOODBYE AND THANKS AGAIN!\n\n                    YOUR FRIENDS,\n\n          THE SPATHI RULING COUNCIL\n\n    P.S. THIS MACHINE IS THE\n    SUPER-POWERFUL HYPERWAVE CASTER\n    THAT THE UMGAH USED TO TRICK US\n    INTO BELIEVING THAT THE `GRAND\n    MASTER PLANET EATERS' WERE COMING\n    TO DESTROY SPATHIWA. WE THOUGHT\n    MAYBE YOU'D LIKE TO HAVE IT.\n\n     ---- END OF TRANSMISSION ----",
+      "translation": "     ---- 地表報告 ----\n\n艦長，我是 Robinson 中尉，長官。我們在這裡找 到了一件外星神器。 也許更重要的是， 我們發現了某樣東西， 我想它或許能解釋斯帕西出 了什麼事……而且您恐怕不 會喜歡。我們調查一部大型 藍色機器時，Talbot 軍官發現裝置側面黏著一則 訊息。長官，這是斯帕西最 高議會留下的紙條。 我現在唸給您聽……\n\n    親愛的休南人：\n\n      你們好嗎？  我們很好。\n    我們該如何感謝你們\n    讓我們研究你們行星\n    地球的奴役護盾？\n\n    我們承認，自己花了一些時 間\n    才成功複製這項技術，\n    但對成果實在\n    滿意極了！\n\n    是啊，我們真的太喜歡\n    在行星四周架起一道\n    無法穿透的護盾了！現在\n    那些邪惡怪物\n    正準備攻擊我們，現在\n    再也吃不到我們——謝啦！\n\n\n    看來這表示我們再也不能\n    派更多星艦艦長\n    給你們了——抱歉！\n    嗯，他們差不多現在就要\n    開啟護盾，所以我們得走 了。\n    我確信我們永遠永遠\n    不會再和你們說話，\n    所以再見，再次感謝！\n\n                    你們的朋友，\n\n          斯帕西統治議會\n\n    附註：這部機器就是\n    那具威力超強的超波發射 器，\n    烏姆加曾用它欺騙我們，\n    讓我們以為「行星吞噬者\n    大宗師」正要前來\n    摧毀斯帕西瓦。我們想\n    也許你們會想要它。\n\n     ---- 傳訊結束 ----"
+    }
+  ],
+  "contract_sha256": "b1386e99e12f2a9d4099a90e92729d44846932a5035e8566cf17a39ef6926d58"
+}

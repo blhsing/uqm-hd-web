@@ -1,0 +1,56 @@
+{
+  "format": "uqm-hd-localization-v1",
+  "source_path": "base/ui/joyalpha.txt",
+  "resource_ids": [
+    "text.joyalpha"
+  ],
+  "resource_types": [
+    "STRTAB"
+  ],
+  "auxiliary": false,
+  "source_sha256": "cfe25a8751e453735860e7b43622282752738536c234cd5c873f617c131881b0",
+  "newline": "\n",
+  "preamble": "",
+  "entries": [
+    {
+      "index": 0,
+      "label": "Joystick Alphabet",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n\n",
+      "body": " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,-!?&()",
+      "unit_kind": "whole",
+      "payload_start": 0,
+      "source": " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,-!?&()",
+      "translation": " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,-!?&()"
+    },
+    {
+      "index": 1,
+      "label": "Joystick upper register",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n\n",
+      "body": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+      "unit_kind": "whole",
+      "payload_start": 0,
+      "source": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+      "translation": "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    },
+    {
+      "index": 2,
+      "label": "Joystick lower register",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n",
+      "body": "abcdefghijklmnopqrstuvwxyz",
+      "unit_kind": "whole",
+      "payload_start": 0,
+      "source": "abcdefghijklmnopqrstuvwxyz",
+      "translation": "abcdefghijklmnopqrstuvwxyz"
+    }
+  ],
+  "contract_sha256": "3e9611d8ab12060c6a52e454182d58d3caa4b2e1a7235253c584c57faf8d4121"
+}

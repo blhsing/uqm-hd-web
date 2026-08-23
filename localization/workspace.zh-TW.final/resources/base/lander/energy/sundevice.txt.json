@@ -1,0 +1,30 @@
+{
+  "format": "uqm-hd-localization-v1",
+  "source_path": "base/lander/energy/sundevice.txt",
+  "resource_ids": [
+    "text.sundevice"
+  ],
+  "resource_types": [
+    "STRTAB"
+  ],
+  "auxiliary": false,
+  "source_sha256": "274de23db27a865dc0c8800d7d2937bcb05fbe05d1d5a6cf5c0d1eb4413585e2",
+  "newline": "\n",
+  "preamble": "",
+  "entries": [
+    {
+      "index": 0,
+      "label": "SUNDEVIC 1",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n",
+      "body": "     ---- REPORT FROM SURFACE ----\n\nS-SIR-R WE-E AR-RE EX-PER-IEN-CING MAJ-OR-R T-TECTON-N-IC SH-SH-OCKS HE-RE ON-N THE-E SUR-R-FACE...\n\nWAIT A MINUTE... THEY SEEM TO HAVE PASSED. WHEW! THAT WAS AWFUL!\n\n\nCAPTAIN, WHEN WE WEREN'T BOUNCING OFF THE CEILING OR BEING BASHED AGAINST THE LANDER WALLS, WE WERE LOOKING FOR WHATEVER IT WAS THAT THE MYCON WERE HIDING DOWN HERE. WE THINK WE'VE FOUND IT!\n\nI DON'T KNOW WHAT TO CALL IT -- IT KIND OF LOOKS LIKE A CROSS BETWEEN A SPIDER AND AN ANTENNA, BUT JEEVO THE ENGINEER WE BROUGHT ALONG, SAYS THE DEVICE HAS THE CAPACITY TO RADIATE INCREDIBLE AMOUNTS OF ENERGY IN THE FORM OF VISIBLE LIGHT.\n\nWE HAVE DECIDED NOT TO EXPERIMENT WITH THE ARTIFACT, AND WILL BRING IT ABOARD RIGHT AFTER WE EXPLORE THE IMMEDIATE VICIN-ITY-TY...\n\n...UH-OH CAP-P-TAIN! LOOK-K-S LIK-KE THE-E SHOCK-KS ARE-E ST-START-T-ING UP-P AG-GAIN! WE-E CAN'T-T TAK-KE M-MUCH M-MO-RE OF TH-H-IS!\n\nR-RET-URN-NING T-TO SHIP-P!\n\n        ---- END OF REPORT ----",
+      "unit_kind": "whole",
+      "payload_start": 0,
+      "source": "     ---- REPORT FROM SURFACE ----\n\nS-SIR-R WE-E AR-RE EX-PER-IEN-CING MAJ-OR-R T-TECTON-N-IC SH-SH-OCKS HE-RE ON-N THE-E SUR-R-FACE...\n\nWAIT A MINUTE... THEY SEEM TO HAVE PASSED. WHEW! THAT WAS AWFUL!\n\n\nCAPTAIN, WHEN WE WEREN'T BOUNCING OFF THE CEILING OR BEING BASHED AGAINST THE LANDER WALLS, WE WERE LOOKING FOR WHATEVER IT WAS THAT THE MYCON WERE HIDING DOWN HERE. WE THINK WE'VE FOUND IT!\n\nI DON'T KNOW WHAT TO CALL IT -- IT KIND OF LOOKS LIKE A CROSS BETWEEN A SPIDER AND AN ANTENNA, BUT JEEVO THE ENGINEER WE BROUGHT ALONG, SAYS THE DEVICE HAS THE CAPACITY TO RADIATE INCREDIBLE AMOUNTS OF ENERGY IN THE FORM OF VISIBLE LIGHT.\n\nWE HAVE DECIDED NOT TO EXPERIMENT WITH THE ARTIFACT, AND WILL BRING IT ABOARD RIGHT AFTER WE EXPLORE THE IMMEDIATE VICIN-ITY-TY...\n\n...UH-OH CAP-P-TAIN! LOOK-K-S LIK-KE THE-E SHOCK-KS ARE-E ST-START-T-ING UP-P AG-GAIN! WE-E CAN'T-T TAK-KE M-MUCH M-MO-RE OF TH-H-IS!\n\nR-RET-URN-NING T-TO SHIP-P!\n\n        ---- END OF REPORT ----",
+      "translation": "     ---- 地表回報 ----\n\n長－長官，我－我們在－在 地－地表遭－遭遇重－重大 地－地殼震－震動……\n\n等一下……震動好像停了。 呼！剛才真是可怕！\n\n\n船長，剛才我們不是彈上天 花板，就是撞上登陸艇內 壁，但還是一直在尋找邁康 藏在這裡的東西。 我們想自己找到了！\n\n我不知道該怎麼稱呼它—— 看起來有點像蜘蛛和天線的 混合物，但同行工程師吉沃 說，這部裝置能以可見光形 式放射難以置信的龐大能 量。\n\n我們決定不拿這件神器做實 驗，探索完周－周邊區－區 域後，就會立刻帶回船 上……\n\n……糟－糟了，船－船長！ 看－看來震－震動又－又開 －開始了！我－我們再－再 也受－受不住了！\n\n返－返回船－船上！\n\n        ---- 回報完畢 ----"
+    }
+  ],
+  "contract_sha256": "ae9e05aa58fa1af018e789bb8d165ed91a1ae88d404121959c0e9a12fb050768"
+}

@@ -1,0 +1,30 @@
+{
+  "format": "uqm-hd-localization-v1",
+  "source_path": "base/lander/energy/utwigbomb.txt",
+  "resource_ids": [
+    "text.utwigbomb"
+  ],
+  "resource_types": [
+    "STRTAB"
+  ],
+  "auxiliary": false,
+  "source_sha256": "a20b4c0bb3c62e1c86b33fc971462db19e5ea9ec097df11cc5d236411873cb17",
+  "newline": "\n",
+  "preamble": "",
+  "entries": [
+    {
+      "index": 0,
+      "label": "UTWBOMB 1",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n",
+      "body": "     ---- REPORT FROM SURFACE ----\n\nWE FOUND A HUGE PRECURSOR DEVICE ON THE PLANET'S SURFACE -- A GIANT BLACK CYLINDER SET WITHIN A SIMPLE DEFENSIVE GRID. WE HAVE ALREADY NEUTRALIZED THE GRID -- WELL, ACTUALLY JENKINS JUST DROVE THROUGH IT BY ACCIDENT, BUT THAT SEEMED TO WORK.\n\nTHE ARTIFACT IS COVERED WITH PRECURSOR SCRIPT AND ALTHOUGH WE CAN'T TRANSLATE ALL OF THE WRITING, IT IS PRETTY CLEAR THAT IT IS A WARNING, REPEATED AGAIN AND AGAIN.\n\nTHE ENERGY OUTPUT OF THIS ARTIFACT IS SCARY -- IT RIVALS ALL OUR SHIP'S ENGINES AT REDLINE! IF I MAY BE SO BOLD, CAPTAIN, I WOULD ADVISE THAT WE NOT EXPERIMENT WITH THIS DEVICE UNTIL WE ARE BACK AT THE STARBASE.\n\nWE SHALL NOW RETURN TO THE SHIP, WITH THE BLACK CYLINDER DEVICE CAREFULLY STOWED IN THE CARGO AREA.\n\n        ---- END OF REPORT ----",
+      "unit_kind": "whole",
+      "payload_start": 0,
+      "source": "     ---- REPORT FROM SURFACE ----\n\nWE FOUND A HUGE PRECURSOR DEVICE ON THE PLANET'S SURFACE -- A GIANT BLACK CYLINDER SET WITHIN A SIMPLE DEFENSIVE GRID. WE HAVE ALREADY NEUTRALIZED THE GRID -- WELL, ACTUALLY JENKINS JUST DROVE THROUGH IT BY ACCIDENT, BUT THAT SEEMED TO WORK.\n\nTHE ARTIFACT IS COVERED WITH PRECURSOR SCRIPT AND ALTHOUGH WE CAN'T TRANSLATE ALL OF THE WRITING, IT IS PRETTY CLEAR THAT IT IS A WARNING, REPEATED AGAIN AND AGAIN.\n\nTHE ENERGY OUTPUT OF THIS ARTIFACT IS SCARY -- IT RIVALS ALL OUR SHIP'S ENGINES AT REDLINE! IF I MAY BE SO BOLD, CAPTAIN, I WOULD ADVISE THAT WE NOT EXPERIMENT WITH THIS DEVICE UNTIL WE ARE BACK AT THE STARBASE.\n\nWE SHALL NOW RETURN TO THE SHIP, WITH THE BLACK CYLINDER DEVICE CAREFULLY STOWED IN THE CARGO AREA.\n\n        ---- END OF REPORT ----",
+      "translation": "     ---- 地表回報 ----\n\n我們在行星地表發現一部巨 大的先驅者裝置——一根設 置在簡易防禦網格內的黑色 巨柱。我們已使網格失效— —嗯，其實詹金斯只是意外 開車闖了過去， 但看來同樣有效。\n\n這件神器表面布滿先驅者文 字。雖然無法翻譯所有內 容，但相當明顯， 那是一段反覆重複的警告。\n\n這件神器的能量輸出非常嚇 人——足以比擬全船引擎推 到紅線極限！恕我冒昧， 船長，我建議在返回星際基 地以前，先別拿這部裝置做 實驗。\n\n現在我們會把黑色圓柱裝置 小心固定在貨艙， 再返回船上。\n\n        ---- 回報完畢 ----"
+    }
+  ],
+  "contract_sha256": "a1e223bff3537529a6f61e549b6aecdf03f09933d9de1047f160dc10e7383b8e"
+}

@@ -1,0 +1,43 @@
+{
+  "format": "uqm-hd-localization-v1",
+  "source_path": "base/lander/energy/urquanwreck.txt",
+  "resource_ids": [
+    "text.urquanwreck"
+  ],
+  "resource_types": [
+    "STRTAB"
+  ],
+  "auxiliary": false,
+  "source_sha256": "189882140d5019c1390fd0ec3f218ca9a2fc1f62c108abffe32a4ce9ea3f7135",
+  "newline": "\n",
+  "preamble": "",
+  "entries": [
+    {
+      "index": 0,
+      "label": "URQWRECK 1",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n",
+      "body": "     ---- REPORT FROM SURFACE ----\n\nCAPTAIN, WE HAVE LOCATED THE WRECK OF AN UR-QUAN DREADNOUGHT.\n\nTHE FACT THAT THERE IS ANYTHING BUT A HOLE IN THE GROUND INDICATES THAT THE VEHICLE HAD SOME ENGINE POWER LEFT TO SOFTEN ITS CRASH.\n\nMOST OF THE DREADNOUGHT IS JUST SO MUCH ALIEN JUNK. WE HAVE MADE HOLOS OF EVERYTHING, BUT I DON'T THINK IT WILL BE MUCH USE TO ANYONE BUT THOSE EGGHEAD XENOTECHS BACK AT THE BASE.\n\nWE HAVE FOUND ONE PIECE OF EQUIPMENT WHICH IS RELATIVELY INTACT. IT IS A HUGE HYPERSPACE WARP POD, THE STARBOARD UNIT, I THINK. WE WILL BRING IT ABOARD.\n\n        ---- END OF REPORT ----",
+      "unit_kind": "whole",
+      "payload_start": 0,
+      "source": "     ---- REPORT FROM SURFACE ----\n\nCAPTAIN, WE HAVE LOCATED THE WRECK OF AN UR-QUAN DREADNOUGHT.\n\nTHE FACT THAT THERE IS ANYTHING BUT A HOLE IN THE GROUND INDICATES THAT THE VEHICLE HAD SOME ENGINE POWER LEFT TO SOFTEN ITS CRASH.\n\nMOST OF THE DREADNOUGHT IS JUST SO MUCH ALIEN JUNK. WE HAVE MADE HOLOS OF EVERYTHING, BUT I DON'T THINK IT WILL BE MUCH USE TO ANYONE BUT THOSE EGGHEAD XENOTECHS BACK AT THE BASE.\n\nWE HAVE FOUND ONE PIECE OF EQUIPMENT WHICH IS RELATIVELY INTACT. IT IS A HUGE HYPERSPACE WARP POD, THE STARBOARD UNIT, I THINK. WE WILL BRING IT ABOARD.\n\n        ---- END OF REPORT ----",
+      "translation": "     ---- 地表報告 ----\n\n艦長，我們找到了烏爾關無 畏艦的殘骸。\n\n地面留下的不是一個大洞， 表示這具載具還保有一些引 擎動力，減緩了墜落衝擊。\n\n無畏艦大部分只是一堆外星 垃圾。我們已為所有東西拍 攝全像影像，但除了基地那 些書呆子外星科技專家， 我想誰也用不上。\n\n我們發現一件相對完整的設 備。那是一具巨大的超空間 曲速艙，我想是右舷裝置。 我們會把它帶上船。\n\n        ---- 報告結束 ----"
+    },
+    {
+      "index": 1,
+      "label": "URQWRECK 2",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n",
+      "body": "     ---- REPORT FROM SURFACE ----\n\nWE HAVE FOUND NOTHING NEW OF INTEREST IN THE WRECK OF THE UR-QUAN DREADNOUGHT.\n\n        ---- END OF REPORT ----",
+      "unit_kind": "whole",
+      "payload_start": 0,
+      "source": "     ---- REPORT FROM SURFACE ----\n\nWE HAVE FOUND NOTHING NEW OF INTEREST IN THE WRECK OF THE UR-QUAN DREADNOUGHT.\n\n        ---- END OF REPORT ----",
+      "translation": "     ---- 地表報告 ----\n\n我們沒有在烏爾關無畏艦殘 骸中發現任何值得注意的新 東西。\n\n        ---- 報告結束 ----"
+    }
+  ],
+  "contract_sha256": "b6201121b8af8b4a2813cb141fd2d3f7586b8fc7e0bdbbf42b2a1269d5305c89"
+}

@@ -1,0 +1,160 @@
+{
+  "format": "uqm-hd-localization-v1",
+  "source_path": "base/cutscene/spins/ship15.txt",
+  "resource_ids": [
+    "slides.spins.15"
+  ],
+  "resource_types": [
+    "STRTAB"
+  ],
+  "auxiliary": false,
+  "source_sha256": "4d83dcbd6bda812e104cdba868ddad95dc3d613a391a31603b33e886de692794",
+  "newline": "\n",
+  "preamble": "",
+  "entries": [
+    {
+      "index": 0,
+      "label": "Load font",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n\n",
+      "body": "FONT 0 base/fonts/starcon.fon",
+      "unit_kind": "whole",
+      "payload_start": 0,
+      "source": "FONT 0 base/fonts/starcon.fon",
+      "translation": "FONT 0 base/fonts/starcon.fon"
+    },
+    {
+      "index": 1,
+      "label": "... and BG",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n\n",
+      "body": "TBC 000000",
+      "unit_kind": "whole",
+      "payload_start": 0,
+      "source": "TBC 000000",
+      "translation": "TBC 000000"
+    },
+    {
+      "index": 2,
+      "label": "Load movie",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n\n",
+      "body": "ANI1X base/cutscene/spins/ship15.ani",
+      "unit_kind": "whole",
+      "payload_start": 0,
+      "source": "ANI1X base/cutscene/spins/ship15.ani",
+      "translation": "ANI1X base/cutscene/spins/ship15.ani"
+    },
+    {
+      "index": 3,
+      "label": "Load movie",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n\n",
+      "body": "ANI2X addons/hires2x/cutscene/spins/ship15.ani",
+      "unit_kind": "whole",
+      "payload_start": 0,
+      "source": "ANI2X addons/hires2x/cutscene/spins/ship15.ani",
+      "translation": "ANI2X addons/hires2x/cutscene/spins/ship15.ani"
+    },
+    {
+      "index": 4,
+      "label": "Load movie",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n\n",
+      "body": "ANI4X addons/hires4x/cutscene/spins/ship15.ani",
+      "unit_kind": "whole",
+      "payload_start": 0,
+      "source": "ANI4X addons/hires4x/cutscene/spins/ship15.ani",
+      "translation": "ANI4X addons/hires4x/cutscene/spins/ship15.ani"
+    },
+    {
+      "index": 5,
+      "label": "Take up entire screen",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n\n",
+      "body": "DIMS 320 240",
+      "unit_kind": "whole",
+      "payload_start": 0,
+      "source": "DIMS 320 240",
+      "translation": "DIMS 320 240"
+    },
+    {
+      "index": 6,
+      "label": "Fade out",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n\n",
+      "body": "FTB 250",
+      "unit_kind": "whole",
+      "payload_start": 0,
+      "source": "FTB 250",
+      "translation": "FTB 250"
+    },
+    {
+      "index": 7,
+      "label": "Draw first frame",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n\n",
+      "body": "DRAW 0",
+      "unit_kind": "whole",
+      "payload_start": 0,
+      "source": "DRAW 0",
+      "translation": "DRAW 0"
+    },
+    {
+      "index": 8,
+      "label": "Draw first frame",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n\n",
+      "body": "DRAW 1",
+      "unit_kind": "whole",
+      "payload_start": 0,
+      "source": "DRAW 1",
+      "translation": "DRAW 1"
+    },
+    {
+      "index": 9,
+      "label": "Fade in",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n\n",
+      "body": "FTC 250",
+      "unit_kind": "whole",
+      "payload_start": 0,
+      "source": "FTC 250",
+      "translation": "FTC 250"
+    },
+    {
+      "index": 10,
+      "label": "Wait for five minutes, or keypress",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n",
+      "body": "WAIT 300000",
+      "unit_kind": "whole",
+      "payload_start": 0,
+      "source": "WAIT 300000",
+      "translation": "WAIT 300000"
+    }
+  ],
+  "contract_sha256": "53bcb5d4cf8223638c60647059fc285a0fe219746d5d5da15a4ce6e61fa1c875"
+}

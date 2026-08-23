@@ -1,0 +1,30 @@
+{
+  "format": "uqm-hd-localization-v1",
+  "source_path": "base/lander/energy/burvixcaster.txt",
+  "resource_ids": [
+    "text.burvixcaster"
+  ],
+  "resource_types": [
+    "STRTAB"
+  ],
+  "auxiliary": false,
+  "source_sha256": "d665cec3b88d294f73ae0ef250a5d737a244b46b1dd24812a042729c8ac47386",
+  "newline": "\n",
+  "preamble": "",
+  "entries": [
+    {
+      "index": 0,
+      "label": "DRUTRANS 1",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n",
+      "body": "     ---- REPORT FROM SURFACE ----\n\nWE HAVE FOUND AN IMMENSELY POWERFUL HYPERWAVE TRANSMITTER HERE ON THE SURFACE OF THIS MOON.\n\nIT IS SENDING A STRONG HYPERWAVE SIGNAL OUTWARD, INTO THE UNEXPLORED, ANTI-SPINWARD REGION OF THE GALAXY. SINCE THIS EQUIPMENT IS EXTREMELY VALUABLE, AND WE HAVE FOUND NO SIGN OF ANY INTELLIGENT LIFE ON THIS MOON, WE HAVE DECIDED TO DISASSEMBLE THE TRANSMITTER AND BRING IT BACK TO THE SHIP.\n\n        ---- END OF REPORT ----",
+      "unit_kind": "whole",
+      "payload_start": 0,
+      "source": "     ---- REPORT FROM SURFACE ----\n\nWE HAVE FOUND AN IMMENSELY POWERFUL HYPERWAVE TRANSMITTER HERE ON THE SURFACE OF THIS MOON.\n\nIT IS SENDING A STRONG HYPERWAVE SIGNAL OUTWARD, INTO THE UNEXPLORED, ANTI-SPINWARD REGION OF THE GALAXY. SINCE THIS EQUIPMENT IS EXTREMELY VALUABLE, AND WE HAVE FOUND NO SIGN OF ANY INTELLIGENT LIFE ON THIS MOON, WE HAVE DECIDED TO DISASSEMBLE THE TRANSMITTER AND BRING IT BACK TO THE SHIP.\n\n        ---- END OF REPORT ----",
+      "translation": "     ---- 地表回報 ----\n\n我們在這顆衛星地表發現一 部功率極為強大的超波發射 器。\n\n它正向外傳送強烈超波訊 號，目標是銀河中尚未探索 的反旋向區域。 由於這套設備極為珍貴， 而且我們在衛星上找不到任 何智慧生命跡象， 因此決定拆解發射器並帶回 船上。\n\n        ---- 回報完畢 ----"
+    }
+  ],
+  "contract_sha256": "57e894787f42b3e598040a3c499ba522e2d21a05ddd89e52158f8153faee3b31"
+}

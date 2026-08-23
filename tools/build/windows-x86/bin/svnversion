@@ -1,0 +1,3 @@
+#!/bin/sh
+# The imported HD source identifies itself as upstream revision 1347M.
+printf '%s' '1347M'

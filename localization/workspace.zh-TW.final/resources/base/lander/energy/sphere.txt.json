@@ -1,0 +1,43 @@
+{
+  "format": "uqm-hd-localization-v1",
+  "source_path": "base/lander/energy/sphere.txt",
+  "resource_ids": [
+    "text.sphere"
+  ],
+  "resource_types": [
+    "STRTAB"
+  ],
+  "auxiliary": false,
+  "source_sha256": "6adc2c8ee6d813195aa0fba5021419acc103479f131629fec486e8f7456ea52e",
+  "newline": "\n",
+  "preamble": "",
+  "entries": [
+    {
+      "index": 0,
+      "label": "SPHERE 1",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n",
+      "body": "     ---- REPORT FROM SURFACE ----\n\nEVERYTHING WE HAVE FOUND IN THESE RUINS OF THIS ONCE-THRIVING DRUUGE METROPOLIS HAVE CONVINCED US THAT THEY HAVE BEEN UTTERLY DESTROYED BY PLANETARY BOMBARDMENT ATTACKS FROM THE KOHR-AH. WHAT A BUMMER, HUH?\n\nBASED ON AN ANOMALOUS ENERGY READING, WE LOCATED A HARDENED CHAMBER DEEP UNDER THE SURFACE, SOME KIND OF VAULT.\n\nINSIDE THE CHAMBER WE FOUND A SMALL GLOWING-RED SPHERE ABOUT THE SIZE OF A CLENCHED FIST.\n\nSINCE THE DRUUGE PLACED THE ARTIFACT IN THE PROTECTIVE VAULT, WE MUST ASSUME THAT IT HAS VALUE OF SOME KIND. THEREFORE, WE ARE BRINGING THE ROSY SPHERE UP TO THE SHIP.\n\n        ---- END OF REPORT ----",
+      "unit_kind": "whole",
+      "payload_start": 0,
+      "source": "     ---- REPORT FROM SURFACE ----\n\nEVERYTHING WE HAVE FOUND IN THESE RUINS OF THIS ONCE-THRIVING DRUUGE METROPOLIS HAVE CONVINCED US THAT THEY HAVE BEEN UTTERLY DESTROYED BY PLANETARY BOMBARDMENT ATTACKS FROM THE KOHR-AH. WHAT A BUMMER, HUH?\n\nBASED ON AN ANOMALOUS ENERGY READING, WE LOCATED A HARDENED CHAMBER DEEP UNDER THE SURFACE, SOME KIND OF VAULT.\n\nINSIDE THE CHAMBER WE FOUND A SMALL GLOWING-RED SPHERE ABOUT THE SIZE OF A CLENCHED FIST.\n\nSINCE THE DRUUGE PLACED THE ARTIFACT IN THE PROTECTIVE VAULT, WE MUST ASSUME THAT IT HAS VALUE OF SOME KIND. THEREFORE, WE ARE BRINGING THE ROSY SPHERE UP TO THE SHIP.\n\n        ---- END OF REPORT ----",
+      "translation": "     ---- 地表報告 ----\n\n我們在這座昔日繁榮的德魯 吉大都會廢墟中找到的一 切，都證明他們已遭克爾阿 從行星軌道發動轟炸， 徹底摧毀。真掃興，對吧？\n\n根據一項異常能量讀數， 我們在地表深處找到一間加 固密室，似乎是某種保險 庫。\n\n密室裡有一顆發出紅光的小 球，大小約如緊握的拳頭。\n\n既然德魯吉把這件遺物放進 防護保險庫，就必須假設它 具有某種價值。因此， 我們要把玫瑰球體帶回船 上。\n\n        ---- 報告結束 ----"
+    },
+    {
+      "index": 1,
+      "label": "SPHERE 2",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n",
+      "body": "     ---- REPORT FROM SURFACE ----\n\nTHE KOHR-AH HAVE DONE A THOROUGH JOB, CAPTAIN. THERE APPEARS TO BE NOTHING MORE OF VALUE HERE.\n\n        ---- END OF REPORT ----",
+      "unit_kind": "whole",
+      "payload_start": 0,
+      "source": "     ---- REPORT FROM SURFACE ----\n\nTHE KOHR-AH HAVE DONE A THOROUGH JOB, CAPTAIN. THERE APPEARS TO BE NOTHING MORE OF VALUE HERE.\n\n        ---- END OF REPORT ----",
+      "translation": "     ---- 地表報告 ----\n\n船長，克爾阿幹得十分徹 底。這裡似乎已沒有其他值 錢物品。\n\n        ---- 報告結束 ----"
+    }
+  ],
+  "contract_sha256": "c029921775daec25027e86e4ebdd677837836eb285a202e32292ae6aca63c033"
+}

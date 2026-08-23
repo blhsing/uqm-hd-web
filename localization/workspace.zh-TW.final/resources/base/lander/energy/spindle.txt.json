@@ -1,0 +1,43 @@
+{
+  "format": "uqm-hd-localization-v1",
+  "source_path": "base/lander/energy/spindle.txt",
+  "resource_ids": [
+    "text.spindle"
+  ],
+  "resource_types": [
+    "STRTAB"
+  ],
+  "auxiliary": false,
+  "source_sha256": "598526e1d3bae15ea7c6ea741ad02fce7a3f7c0c41bdf69493ea553b5416c34e",
+  "newline": "\n",
+  "preamble": "",
+  "entries": [
+    {
+      "index": 0,
+      "label": "SPINDLE 1",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n",
+      "body": "     ---- REPORT FROM SURFACE ----\n\nTHESE RUINS BEAR SAD EVIDENCE TO THE DEMISE OF THE PKUNK PEOPLES.\n\nCAPTAIN, IF YOU HAD ANY HOPE THAT THERE WOULD BE SURVIVORS -- SORRY, NO ONE COULD HAVE WITHSTOOD THE RAIN OF DEVASTATION THAT MUST HAVE FALLEN HERE NOT LONG AGO. IT WAS THE WORK OF THE KOHR-AH, I'D BET ON IT!\n\nALTHOUGH WE HAVE FOUND NO SURVIVORS, WE DID DISCOVER AN INTERESTING ARTIFACT!\n\nIT IS A CLEAR, CRYSTALLINE OBJECT, SHAPED SOMEWHAT LIKE A SPINDLE.\n\nSINCE THERE IS NOTHING MORE FOR US TO LEARN HERE, WE ARE RETURNING TO THE FLAGSHIP WITH THE SPINDLE OBJECT.\n\n        ---- END OF REPORT ----",
+      "unit_kind": "whole",
+      "payload_start": 0,
+      "source": "     ---- REPORT FROM SURFACE ----\n\nTHESE RUINS BEAR SAD EVIDENCE TO THE DEMISE OF THE PKUNK PEOPLES.\n\nCAPTAIN, IF YOU HAD ANY HOPE THAT THERE WOULD BE SURVIVORS -- SORRY, NO ONE COULD HAVE WITHSTOOD THE RAIN OF DEVASTATION THAT MUST HAVE FALLEN HERE NOT LONG AGO. IT WAS THE WORK OF THE KOHR-AH, I'D BET ON IT!\n\nALTHOUGH WE HAVE FOUND NO SURVIVORS, WE DID DISCOVER AN INTERESTING ARTIFACT!\n\nIT IS A CLEAR, CRYSTALLINE OBJECT, SHAPED SOMEWHAT LIKE A SPINDLE.\n\nSINCE THERE IS NOTHING MORE FOR US TO LEARN HERE, WE ARE RETURNING TO THE FLAGSHIP WITH THE SPINDLE OBJECT.\n\n        ---- END OF REPORT ----",
+      "translation": "     ---- 地表報告 ----\n\n這些廢墟留下令人哀傷的證 據，證明普坎克族人已經滅 亡。\n\n船長，如果你還曾希望這裡 會有倖存者——很抱歉， 沒有人能在不久前必定降臨 此地的毀滅之雨中存活。 這一定是克爾阿幹的， 我敢打賭！\n\n儘管沒找到任何倖存者， 我們確實發現了一件有趣的 造物！\n\n那是一件透明的晶體物體， 形狀有點像紡錘。\n\n由於這裡已沒有其他可供了 解的事，我們正帶著透明紡 錘返回旗艦。\n\n        ---- 報告結束 ----"
+    },
+    {
+      "index": 1,
+      "label": "SPINDLE 2",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n",
+      "body": "     ---- REPORT FROM SURFACE ----\n\nCAPTAIN, WE HAVE SEARCHED THE PKUNK RUINS AND FOUND NOTHING MORE OF NOTE.\n\n        ---- END OF REPORT ----",
+      "unit_kind": "whole",
+      "payload_start": 0,
+      "source": "     ---- REPORT FROM SURFACE ----\n\nCAPTAIN, WE HAVE SEARCHED THE PKUNK RUINS AND FOUND NOTHING MORE OF NOTE.\n\n        ---- END OF REPORT ----",
+      "translation": "     ---- 地表報告 ----\n\n船長，我們已搜索普坎克廢 墟，沒有發現其他值得注意 的東西。\n\n        ---- 報告結束 ----"
+    }
+  ],
+  "contract_sha256": "01651b984f426dfdfe5467dcbe8806bc7a2a08d284196094436fb3d7a78f445f"
+}

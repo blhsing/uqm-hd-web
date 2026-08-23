@@ -1,0 +1,30 @@
+{
+  "format": "uqm-hd-localization-v1",
+  "source_path": "base/lander/energy/eggcase.txt",
+  "resource_ids": [
+    "text.eggcase"
+  ],
+  "resource_types": [
+    "STRTAB"
+  ],
+  "auxiliary": false,
+  "source_sha256": "6e9c5c9bcfc88f50f598b7443707dc876082f8526fa97e74bca06a2e09279e9a",
+  "newline": "\n",
+  "preamble": "",
+  "entries": [
+    {
+      "index": 0,
+      "label": "EGGCASE 1",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n",
+      "body": "     ---- REPORT FROM SURFACE ----\n\nNEAR AN UNUSUAL VOLCANIC FUMAROLE, WE HAVE FOUND A FRAGMENT OF SOME KIND OF BIOLOGICAL ENCASEMENT OR SHELL WHICH IS MADE OF AN INCREDIBLY TOUGH, HEAT- RESISTANT MAT OF FUNGAL FIBERS.\n\nWE CAN FIND NO SIGN OF ANY LIFEFORM WHICH MAY HAVE `HATCHED' FROM THIS EGG SHELL, BUT WE WILL BRING IT BACK TO THE FLAGSHIP FOR FURTHER STUDY.\n\n        ---- END OF REPORT ----",
+      "unit_kind": "whole",
+      "payload_start": 0,
+      "source": "     ---- REPORT FROM SURFACE ----\n\nNEAR AN UNUSUAL VOLCANIC FUMAROLE, WE HAVE FOUND A FRAGMENT OF SOME KIND OF BIOLOGICAL ENCASEMENT OR SHELL WHICH IS MADE OF AN INCREDIBLY TOUGH, HEAT- RESISTANT MAT OF FUNGAL FIBERS.\n\nWE CAN FIND NO SIGN OF ANY LIFEFORM WHICH MAY HAVE `HATCHED' FROM THIS EGG SHELL, BUT WE WILL BRING IT BACK TO THE FLAGSHIP FOR FURTHER STUDY.\n\n        ---- END OF REPORT ----",
+      "translation": "     ---- 地表報告 ----\n\n我們在一個不尋常的火山噴 氣孔旁，發現某種生物外殼 或卵殼碎片；它是由堅韌得 難以置信、能夠耐熱的菌絲 纖維厚氈構成。\n\n找不到任何可能從這枚卵殼 中`孵化'的生命形態跡 象，但我們會將它帶回旗艦 深入研究。\n\n        ---- 報告結束 ----"
+    }
+  ],
+  "contract_sha256": "6234b9512d103113232c58b45f967721a3333e11a9df52d148dc2680bbe7893d"
+}

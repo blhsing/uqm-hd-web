@@ -1,0 +1,1394 @@
+{
+  "format": "uqm-hd-localization-v1",
+  "source_rmp": "uqm.rmp",
+  "source_rmp_sha256": "de1127d129e920a0b71a01ad4288315dcd0621e6915c8006b07500f0f12edb1a",
+  "text_resource_count": 104,
+  "document_count": 107,
+  "resources": [
+    {
+      "source_path": "base/comm/arilou/arilou.txt",
+      "json": "resources/base/comm/arilou/arilou.txt.json",
+      "resource_ids": [
+        "comm.arilou.dialogue"
+      ],
+      "resource_types": [
+        "CONVERSATION"
+      ],
+      "auxiliary": false,
+      "entry_count": 97,
+      "contract_sha256": "f556d5e90a5b82a65130f07fcdd59d004cfca408e605fe76be518486d3a44370"
+    },
+    {
+      "source_path": "base/comm/chmmr/chmmr.txt",
+      "json": "resources/base/comm/chmmr/chmmr.txt.json",
+      "resource_ids": [
+        "comm.chmmr.dialogue"
+      ],
+      "resource_types": [
+        "CONVERSATION"
+      ],
+      "auxiliary": false,
+      "entry_count": 78,
+      "contract_sha256": "1ef7dfd23cd7b91e8c886db98d9f9429e473d6ec73c9e3c5a6d86608e577a4e3"
+    },
+    {
+      "source_path": "base/comm/commander/commander.txt",
+      "json": "resources/base/comm/commander/commander.txt.json",
+      "resource_ids": [
+        "comm.commander.dialogue"
+      ],
+      "resource_types": [
+        "CONVERSATION"
+      ],
+      "auxiliary": false,
+      "entry_count": 101,
+      "contract_sha256": "798f09b8a91690f2e74efbcc6d7eee1dd3d8782028193f001789bdf85eb0ceac"
+    },
+    {
+      "source_path": "base/comm/druuge/druuge.txt",
+      "json": "resources/base/comm/druuge/druuge.txt.json",
+      "resource_ids": [
+        "comm.druuge.dialogue"
+      ],
+      "resource_types": [
+        "CONVERSATION"
+      ],
+      "auxiliary": false,
+      "entry_count": 105,
+      "contract_sha256": "14910a5727f3d417a38d1070f782cc5ab48d3fe2a7309c01ba91d83ce7823360"
+    },
+    {
+      "source_path": "base/comm/ilwrath/ilwrath.txt",
+      "json": "resources/base/comm/ilwrath/ilwrath.txt.json",
+      "resource_ids": [
+        "comm.ilwrath.dialogue"
+      ],
+      "resource_types": [
+        "CONVERSATION"
+      ],
+      "auxiliary": false,
+      "entry_count": 108,
+      "contract_sha256": "8ca84dcb6b4a445457ce726d2da7a9274c5972fff0871a12e33a7463dd5f54a3"
+    },
+    {
+      "source_path": "base/comm/kohrah/kohrah.txt",
+      "json": "resources/base/comm/kohrah/kohrah.txt.json",
+      "resource_ids": [
+        "comm.kohrah.dialogue"
+      ],
+      "resource_types": [
+        "CONVERSATION"
+      ],
+      "auxiliary": false,
+      "entry_count": 76,
+      "contract_sha256": "a6c782612db7781c844f885c55dad46e4be499381e572a27d2d997299b7da6ee"
+    },
+    {
+      "source_path": "base/comm/melnorme/melnorme.txt",
+      "json": "resources/base/comm/melnorme/melnorme.txt.json",
+      "resource_ids": [
+        "comm.melnorme.dialogue"
+      ],
+      "resource_types": [
+        "CONVERSATION"
+      ],
+      "auxiliary": false,
+      "entry_count": 282,
+      "contract_sha256": "77dc69b57fa270e7f8b33f061ea86338e054e73e17552782317029299fbfd4ec"
+    },
+    {
+      "source_path": "base/comm/mycon/mycon.txt",
+      "json": "resources/base/comm/mycon/mycon.txt.json",
+      "resource_ids": [
+        "comm.mycon.dialogue"
+      ],
+      "resource_types": [
+        "CONVERSATION"
+      ],
+      "auxiliary": false,
+      "entry_count": 109,
+      "contract_sha256": "01a18a83616b173129288a0f35ab140c2ea5ad84a242a4e585cebcabacf1cd42"
+    },
+    {
+      "source_path": "base/comm/orz/orz.txt",
+      "json": "resources/base/comm/orz/orz.txt.json",
+      "resource_ids": [
+        "comm.orz.dialogue"
+      ],
+      "resource_types": [
+        "CONVERSATION"
+      ],
+      "auxiliary": false,
+      "entry_count": 116,
+      "contract_sha256": "456232111438fe310323163d294c61269aa4f0923dfe206cb2b81f59fbee086f"
+    },
+    {
+      "source_path": "base/comm/pkunk/pkunk.txt",
+      "json": "resources/base/comm/pkunk/pkunk.txt.json",
+      "resource_ids": [
+        "comm.pkunk.dialogue"
+      ],
+      "resource_types": [
+        "CONVERSATION"
+      ],
+      "auxiliary": false,
+      "entry_count": 182,
+      "contract_sha256": "dac60136e7742d3c0f7543b40af03b3a61625a906480496abe8e1668e921e392"
+    },
+    {
+      "source_path": "base/comm/probe/probe.txt",
+      "json": "resources/base/comm/probe/probe.txt.json",
+      "resource_ids": [
+        "comm.probe.dialogue"
+      ],
+      "resource_types": [
+        "CONVERSATION"
+      ],
+      "auxiliary": false,
+      "entry_count": 86,
+      "contract_sha256": "b64a531f701414bb03b5f3ea2e422593b7c40645b249c2f9c456d0578f4aef43"
+    },
+    {
+      "source_path": "base/comm/safeones/safeones.txt",
+      "json": "resources/base/comm/safeones/safeones.txt.json",
+      "resource_ids": [
+        "comm.safeones.dialogue"
+      ],
+      "resource_types": [
+        "CONVERSATION"
+      ],
+      "auxiliary": false,
+      "entry_count": 145,
+      "contract_sha256": "ba8bde407903d0b2ec40d89267741e7ec0a834a5f1efdb64ba91b9906609169a"
+    },
+    {
+      "source_path": "base/comm/shofixti/shofixti.txt",
+      "json": "resources/base/comm/shofixti/shofixti.txt.json",
+      "resource_ids": [
+        "comm.shofixti.dialogue"
+      ],
+      "resource_types": [
+        "CONVERSATION"
+      ],
+      "auxiliary": false,
+      "entry_count": 95,
+      "contract_sha256": "581c6e9a39b58eaec4ec3060fa7320fd0333708e184fb29b7c044c07a047a31e"
+    },
+    {
+      "source_path": "base/comm/slylandro/slylandro.txt",
+      "json": "resources/base/comm/slylandro/slylandro.txt.json",
+      "resource_ids": [
+        "comm.slylandro.dialogue"
+      ],
+      "resource_types": [
+        "CONVERSATION"
+      ],
+      "auxiliary": false,
+      "entry_count": 116,
+      "contract_sha256": "ea190555dcbc94aae82e7889f487a1403687ffae0939da7f5fd7ea63e50d0d70"
+    },
+    {
+      "source_path": "base/comm/spathi/spathi.txt",
+      "json": "resources/base/comm/spathi/spathi.txt.json",
+      "resource_ids": [
+        "comm.spathi.dialogue"
+      ],
+      "resource_types": [
+        "CONVERSATION"
+      ],
+      "auxiliary": false,
+      "entry_count": 134,
+      "contract_sha256": "f684509b29f86d0ebc382615f0504349b425795bc0974d59548f130a0576c617"
+    },
+    {
+      "source_path": "base/comm/starbase/starbase.txt",
+      "json": "resources/base/comm/starbase/starbase.txt.json",
+      "resource_ids": [
+        "comm.starbase.dialogue"
+      ],
+      "resource_types": [
+        "CONVERSATION"
+      ],
+      "auxiliary": false,
+      "entry_count": 300,
+      "contract_sha256": "c15731ac010e74bb31663357cb6d338c55cb7e8fa99aa7c42eb8c5e54c70db5f"
+    },
+    {
+      "source_path": "base/comm/supox/supox.txt",
+      "json": "resources/base/comm/supox/supox.txt.json",
+      "resource_ids": [
+        "comm.supox.dialogue"
+      ],
+      "resource_types": [
+        "CONVERSATION"
+      ],
+      "auxiliary": false,
+      "entry_count": 97,
+      "contract_sha256": "7908d3334210139f03e593e8cd9e8b47153c61f2a050c22a7b1135ccbb371a2b"
+    },
+    {
+      "source_path": "base/comm/syreen/syreen.txt",
+      "json": "resources/base/comm/syreen/syreen.txt.json",
+      "resource_ids": [
+        "comm.syreen.dialogue"
+      ],
+      "resource_types": [
+        "CONVERSATION"
+      ],
+      "auxiliary": false,
+      "entry_count": 131,
+      "contract_sha256": "4c4bc96317202a91853cb7ff05482f2e88d4d72bdd189fe39862f956a8173fda"
+    },
+    {
+      "source_path": "base/comm/talkingpet/talkingpet.txt",
+      "json": "resources/base/comm/talkingpet/talkingpet.txt.json",
+      "resource_ids": [
+        "comm.talkingpet.dialogue"
+      ],
+      "resource_types": [
+        "CONVERSATION"
+      ],
+      "auxiliary": false,
+      "entry_count": 113,
+      "contract_sha256": "682b5656b3b4a7402377ed57ae343a105ee63b8e5429e836b680cea9c23e5605"
+    },
+    {
+      "source_path": "base/comm/thraddash/thraddash.txt",
+      "json": "resources/base/comm/thraddash/thraddash.txt.json",
+      "resource_ids": [
+        "comm.thraddash.dialogue"
+      ],
+      "resource_types": [
+        "CONVERSATION"
+      ],
+      "auxiliary": false,
+      "entry_count": 154,
+      "contract_sha256": "dc404b81b7692b46df2d7160df051cdc87d1d09787421f99725da7b83cd3f8d8"
+    },
+    {
+      "source_path": "base/comm/umgah/umgah.txt",
+      "json": "resources/base/comm/umgah/umgah.txt.json",
+      "resource_ids": [
+        "comm.umgah.dialogue"
+      ],
+      "resource_types": [
+        "CONVERSATION"
+      ],
+      "auxiliary": false,
+      "entry_count": 87,
+      "contract_sha256": "fff4ee92d6f5c740dd6bcdda2b28ac07dd16739fe694281d22362dfa12f8d2c2"
+    },
+    {
+      "source_path": "base/comm/urquan/urquan.txt",
+      "json": "resources/base/comm/urquan/urquan.txt.json",
+      "resource_ids": [
+        "comm.urquan.dialogue"
+      ],
+      "resource_types": [
+        "CONVERSATION"
+      ],
+      "auxiliary": false,
+      "entry_count": 76,
+      "contract_sha256": "b614e852cf144e62c7d961e9f343e14fa8b3c1e0bdaca53dd888cfe010cdb3a3"
+    },
+    {
+      "source_path": "base/comm/utwig/utwig.txt",
+      "json": "resources/base/comm/utwig/utwig.txt.json",
+      "resource_ids": [
+        "comm.utwig.dialogue"
+      ],
+      "resource_types": [
+        "CONVERSATION"
+      ],
+      "auxiliary": false,
+      "entry_count": 117,
+      "contract_sha256": "e4c9d3ec33901ee4e920692c0341ab6158fd02d0c74e3b53afb773d33bdd92b8"
+    },
+    {
+      "source_path": "base/comm/vux/vux.txt",
+      "json": "resources/base/comm/vux/vux.txt.json",
+      "resource_ids": [
+        "comm.vux.dialogue"
+      ],
+      "resource_types": [
+        "CONVERSATION"
+      ],
+      "auxiliary": false,
+      "entry_count": 102,
+      "contract_sha256": "0eb4a599f123876bc57535177391ae2e101743456c9b0e0fa55a944410fcb692"
+    },
+    {
+      "source_path": "base/comm/yehat/yehat.txt",
+      "json": "resources/base/comm/yehat/yehat.txt.json",
+      "resource_ids": [
+        "comm.yehat.dialogue"
+      ],
+      "resource_types": [
+        "CONVERSATION"
+      ],
+      "auxiliary": false,
+      "entry_count": 75,
+      "contract_sha256": "1eebb289f1539725c015873f8d4d1e7f0a3e2cac15a74e06c687cc90c47aa764"
+    },
+    {
+      "source_path": "base/comm/yehatrebels/yehatrebels.txt",
+      "json": "resources/base/comm/yehatrebels/yehatrebels.txt.json",
+      "resource_ids": [
+        "comm.yehat.rebel.dialogue"
+      ],
+      "resource_types": [
+        "CONVERSATION"
+      ],
+      "auxiliary": false,
+      "entry_count": 34,
+      "contract_sha256": "8e3be6c2151fbe296768de470789bd3fe022719f17e8772d4ac2837eca0c5d0e"
+    },
+    {
+      "source_path": "base/comm/zoqfotpik/zoqfotpik.txt",
+      "json": "resources/base/comm/zoqfotpik/zoqfotpik.txt.json",
+      "resource_ids": [
+        "comm.zoqfotpik.dialogue"
+      ],
+      "resource_types": [
+        "CONVERSATION"
+      ],
+      "auxiliary": false,
+      "entry_count": 337,
+      "contract_sha256": "e7ef165a93cdea72a6438a60ce59d14e5eb8b5ee29d1bd13937f1904677ed77b"
+    },
+    {
+      "source_path": "base/cutscene/credits/credits.txt",
+      "json": "resources/base/cutscene/credits/credits.txt.json",
+      "resource_ids": [
+        "credits.credits"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 85,
+      "contract_sha256": "3840cff08f226f8d764c2e6cae1bb5ab8b33cdae33a5a25d6e6178deb3ba697b"
+    },
+    {
+      "source_path": "base/cutscene/ending/ending.txt",
+      "json": "resources/base/cutscene/ending/ending.txt.json",
+      "resource_ids": [
+        "slides.ending"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 10,
+      "contract_sha256": "813722f5314a0e569f937a8fecf50d2a9875101bd5effe49c0f3aaaaa5d6532a"
+    },
+    {
+      "source_path": "base/cutscene/ending/final.txt",
+      "json": "resources/base/cutscene/ending/final.txt.json",
+      "resource_ids": [],
+      "resource_types": [
+        "SCRIPT"
+      ],
+      "auxiliary": true,
+      "entry_count": 262,
+      "contract_sha256": "76f32f4cc1af276ed1871d4221cfbe6f797f41c2bf056727ca58a6c01df11c93"
+    },
+    {
+      "source_path": "base/cutscene/ending/victory1.txt",
+      "json": "resources/base/cutscene/ending/victory1.txt.json",
+      "resource_ids": [],
+      "resource_types": [
+        "SCRIPT"
+      ],
+      "auxiliary": true,
+      "entry_count": 645,
+      "contract_sha256": "efeb5d839e1981c9a47bfdc5ed0874396d452b8c467313017cec153b564e8079"
+    },
+    {
+      "source_path": "base/cutscene/ending/victory2.txt",
+      "json": "resources/base/cutscene/ending/victory2.txt.json",
+      "resource_ids": [],
+      "resource_types": [
+        "SCRIPT"
+      ],
+      "auxiliary": true,
+      "entry_count": 535,
+      "contract_sha256": "7aa3abf62a1d78349ed6ddafc19cd475c36ac71af8a616c8769112366e38fe28"
+    },
+    {
+      "source_path": "base/cutscene/intro/intro.txt",
+      "json": "resources/base/cutscene/intro/intro.txt.json",
+      "resource_ids": [
+        "slides.intro"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 228,
+      "contract_sha256": "f86c916ee140056d0b21dc3edef385b099ee400b0e2f80a1486d926dbfacd80f"
+    },
+    {
+      "source_path": "base/cutscene/spins/ship00.txt",
+      "json": "resources/base/cutscene/spins/ship00.txt.json",
+      "resource_ids": [
+        "slides.spins.00"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 11,
+      "contract_sha256": "fe71be64e1dcb54d1d959e0b7bb04378a6325bcb80e29a2f048010cc33e94242"
+    },
+    {
+      "source_path": "base/cutscene/spins/ship01.txt",
+      "json": "resources/base/cutscene/spins/ship01.txt.json",
+      "resource_ids": [
+        "slides.spins.01"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 11,
+      "contract_sha256": "324d78095f879bd0458a1902be0d5c290cc795824f979c499e5172b9415f85ea"
+    },
+    {
+      "source_path": "base/cutscene/spins/ship02.txt",
+      "json": "resources/base/cutscene/spins/ship02.txt.json",
+      "resource_ids": [
+        "slides.spins.02"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 11,
+      "contract_sha256": "d687ebe75364f2f3ab0a32030cd97a5badf2ae8b76c23f476dc05229aad49386"
+    },
+    {
+      "source_path": "base/cutscene/spins/ship03.txt",
+      "json": "resources/base/cutscene/spins/ship03.txt.json",
+      "resource_ids": [
+        "slides.spins.03"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 11,
+      "contract_sha256": "0f0e6140da619576d8486e367f7b3ea93b075f969a1bd92554d4f45e58e070ec"
+    },
+    {
+      "source_path": "base/cutscene/spins/ship04.txt",
+      "json": "resources/base/cutscene/spins/ship04.txt.json",
+      "resource_ids": [
+        "slides.spins.04"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 11,
+      "contract_sha256": "91e97833a093b4ad227f3de1a56d1b4423afa0c1418bc0681e2659044764afd3"
+    },
+    {
+      "source_path": "base/cutscene/spins/ship05.txt",
+      "json": "resources/base/cutscene/spins/ship05.txt.json",
+      "resource_ids": [
+        "slides.spins.05"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 11,
+      "contract_sha256": "96d82b2a1b98e377f0229b97b633a48bcd1e3b31d0ee8ad8d16e05ea40cc1eab"
+    },
+    {
+      "source_path": "base/cutscene/spins/ship06.txt",
+      "json": "resources/base/cutscene/spins/ship06.txt.json",
+      "resource_ids": [
+        "slides.spins.06"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 11,
+      "contract_sha256": "68822b627fad172a7004e2bfe9d452114fd67702c9a15106c544ad207b32e087"
+    },
+    {
+      "source_path": "base/cutscene/spins/ship07.txt",
+      "json": "resources/base/cutscene/spins/ship07.txt.json",
+      "resource_ids": [
+        "slides.spins.07"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 11,
+      "contract_sha256": "073f7089c5d71567926f10cd32516374fa60aeff7e4cfc9dfc35a47ca2abb626"
+    },
+    {
+      "source_path": "base/cutscene/spins/ship08.txt",
+      "json": "resources/base/cutscene/spins/ship08.txt.json",
+      "resource_ids": [
+        "slides.spins.08"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 11,
+      "contract_sha256": "56be187a08fee9d58141a88e6b4066ec1198920fc2f6042eefe478cb2676b3a0"
+    },
+    {
+      "source_path": "base/cutscene/spins/ship09.txt",
+      "json": "resources/base/cutscene/spins/ship09.txt.json",
+      "resource_ids": [
+        "slides.spins.09"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 11,
+      "contract_sha256": "17d0f63ea87ac4967ae7af18f585cd846e94afeda26d6e9595ca80d360615ff5"
+    },
+    {
+      "source_path": "base/cutscene/spins/ship10.txt",
+      "json": "resources/base/cutscene/spins/ship10.txt.json",
+      "resource_ids": [
+        "slides.spins.10"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 11,
+      "contract_sha256": "3a60840231eea310e9d0571a98099117ba0c3013f22e69a0ef82886dd52b7df9"
+    },
+    {
+      "source_path": "base/cutscene/spins/ship11.txt",
+      "json": "resources/base/cutscene/spins/ship11.txt.json",
+      "resource_ids": [
+        "slides.spins.11"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 11,
+      "contract_sha256": "04355364bb91f7bc1dbf243cc7ad113041d0988d69b55a799fedc908b8e10cc7"
+    },
+    {
+      "source_path": "base/cutscene/spins/ship12.txt",
+      "json": "resources/base/cutscene/spins/ship12.txt.json",
+      "resource_ids": [
+        "slides.spins.12"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 11,
+      "contract_sha256": "358d957eeb18ce8fe6a27aae2c703844e245864085f49188170e58d5aed42b75"
+    },
+    {
+      "source_path": "base/cutscene/spins/ship13.txt",
+      "json": "resources/base/cutscene/spins/ship13.txt.json",
+      "resource_ids": [
+        "slides.spins.13"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 11,
+      "contract_sha256": "b3e932370dd12e60c830a679ccbad046c1410bfd2f698c3614328bddb5bf4d4e"
+    },
+    {
+      "source_path": "base/cutscene/spins/ship14.txt",
+      "json": "resources/base/cutscene/spins/ship14.txt.json",
+      "resource_ids": [
+        "slides.spins.14"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 11,
+      "contract_sha256": "41e1938b644e5ee77a65302547596492ec3cdc1e47c3d8b3e5ea49ff25e8253d"
+    },
+    {
+      "source_path": "base/cutscene/spins/ship15.txt",
+      "json": "resources/base/cutscene/spins/ship15.txt.json",
+      "resource_ids": [
+        "slides.spins.15"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 11,
+      "contract_sha256": "53bcb5d4cf8223638c60647059fc285a0fe219746d5d5da15a4ce6e61fa1c875"
+    },
+    {
+      "source_path": "base/cutscene/spins/ship16.txt",
+      "json": "resources/base/cutscene/spins/ship16.txt.json",
+      "resource_ids": [
+        "slides.spins.16"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 11,
+      "contract_sha256": "0106fa3e464e8647860226c58e35cfe5cf832d32eb2dbe0040abff25b8d997fa"
+    },
+    {
+      "source_path": "base/cutscene/spins/ship17.txt",
+      "json": "resources/base/cutscene/spins/ship17.txt.json",
+      "resource_ids": [
+        "slides.spins.17"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 11,
+      "contract_sha256": "63bfda0d3b4c5d66d2abb2d26935d057dee57960847d19e8f7a1e45e5835484d"
+    },
+    {
+      "source_path": "base/cutscene/spins/ship18.txt",
+      "json": "resources/base/cutscene/spins/ship18.txt.json",
+      "resource_ids": [
+        "slides.spins.18"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 11,
+      "contract_sha256": "19c73243dc119db9e12e204ed4eda3ca5ad9dc3605fe6913e2c1baefb59c33b1"
+    },
+    {
+      "source_path": "base/cutscene/spins/ship19.txt",
+      "json": "resources/base/cutscene/spins/ship19.txt.json",
+      "resource_ids": [
+        "slides.spins.19"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 11,
+      "contract_sha256": "b3b1ca7d6825ceee0ff1e5e864bf7486575c8f81224cccca8de5e65c17ea826a"
+    },
+    {
+      "source_path": "base/cutscene/spins/ship20.txt",
+      "json": "resources/base/cutscene/spins/ship20.txt.json",
+      "resource_ids": [
+        "slides.spins.20"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 11,
+      "contract_sha256": "92ccb349d43ed1f76f3495f65927be8c054cd78ba8a1449e9f4918b6af88b035"
+    },
+    {
+      "source_path": "base/cutscene/spins/ship21.txt",
+      "json": "resources/base/cutscene/spins/ship21.txt.json",
+      "resource_ids": [
+        "slides.spins.21"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 11,
+      "contract_sha256": "abfdbdbdbb43c422749444bb0d02be7a101c970e97616d27d7ba73e90ee2d202"
+    },
+    {
+      "source_path": "base/cutscene/spins/ship22.txt",
+      "json": "resources/base/cutscene/spins/ship22.txt.json",
+      "resource_ids": [
+        "slides.spins.22"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 11,
+      "contract_sha256": "49e95fe53d66a42255bacc52e5509a477bbe9d4d8e99dc24319f57621cf2ffc9"
+    },
+    {
+      "source_path": "base/cutscene/spins/ship23.txt",
+      "json": "resources/base/cutscene/spins/ship23.txt.json",
+      "resource_ids": [
+        "slides.spins.23"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 11,
+      "contract_sha256": "0051da9468c0e5f1e5a9eeb7667fe66c544bfbe6a9fb29c2bc51307421e2b261"
+    },
+    {
+      "source_path": "base/cutscene/spins/ship24.txt",
+      "json": "resources/base/cutscene/spins/ship24.txt.json",
+      "resource_ids": [
+        "slides.spins.24"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 11,
+      "contract_sha256": "2712535956bd632234e9f08e7f634b8c32c2ff663152427e81213833ab39cca8"
+    },
+    {
+      "source_path": "base/gamestrings.txt",
+      "json": "resources/base/gamestrings.txt.json",
+      "resource_ids": [
+        "text.starcon"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 620,
+      "contract_sha256": "d057012c6b1be7861b40a73b4310497f64cf95236b098db8313687ccb8f266ee"
+    },
+    {
+      "source_path": "base/lander/bio/vuxbeast.txt",
+      "json": "resources/base/lander/bio/vuxbeast.txt.json",
+      "resource_ids": [
+        "text.vuxbeast"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 1,
+      "contract_sha256": "ac8c3a2d860de15468795f0a24f4b0ebf41eeca69548881d523861150b41e637"
+    },
+    {
+      "source_path": "base/lander/energy/androsynth_ruins.txt",
+      "json": "resources/base/lander/energy/androsynth_ruins.txt.json",
+      "resource_ids": [
+        "text.androsynthruins"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 3,
+      "contract_sha256": "98489394c909e84a6541c14d2046be7fbb48c12dec7445cdd5c98da1f35af44c"
+    },
+    {
+      "source_path": "base/lander/energy/aquahelix.txt",
+      "json": "resources/base/lander/energy/aquahelix.txt.json",
+      "resource_ids": [
+        "text.aquahelix"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 1,
+      "contract_sha256": "5f1235c79d66edefad2e1e079dd5a204d865731974193616e1f4c0f44da8c8e5"
+    },
+    {
+      "source_path": "base/lander/energy/burvixcaster.txt",
+      "json": "resources/base/lander/energy/burvixcaster.txt.json",
+      "resource_ids": [
+        "text.burvixcaster"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 1,
+      "contract_sha256": "57e894787f42b3e598040a3c499ba522e2d21a05ddd89e52158f8153faee3b31"
+    },
+    {
+      "source_path": "base/lander/energy/burvixeseruins.txt",
+      "json": "resources/base/lander/energy/burvixeseruins.txt.json",
+      "resource_ids": [
+        "text.burvixeseruins"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 1,
+      "contract_sha256": "d72006991fb712946a830406268cb935ebb9d72c452c16996cc2fa0a65a1b6e0"
+    },
+    {
+      "source_path": "base/lander/energy/chmmrbase.txt",
+      "json": "resources/base/lander/energy/chmmrbase.txt.json",
+      "resource_ids": [
+        "text.chmmrbase"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 1,
+      "contract_sha256": "89ef12ba574c2c7f104a524ffeb59d853a0b0f341683e4338248857edfce26fc"
+    },
+    {
+      "source_path": "base/lander/energy/eggcase.txt",
+      "json": "resources/base/lander/energy/eggcase.txt.json",
+      "resource_ids": [
+        "text.eggcase"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 1,
+      "contract_sha256": "6234b9512d103113232c58b45f967721a3333e11a9df52d148dc2680bbe7893d"
+    },
+    {
+      "source_path": "base/lander/energy/fwiffo.txt",
+      "json": "resources/base/lander/energy/fwiffo.txt.json",
+      "resource_ids": [
+        "text.fwiffo"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 1,
+      "contract_sha256": "5b0017b6a331e4ff3e72ebcc1b5fde111fed0c51180149d0fbccea3afe23e09b"
+    },
+    {
+      "source_path": "base/lander/energy/maidens.txt",
+      "json": "resources/base/lander/energy/maidens.txt.json",
+      "resource_ids": [
+        "text.maidens"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 1,
+      "contract_sha256": "5c9a33e424f660c3d35d869f31b63608dc544a44e607fc787539cb0d527a777c"
+    },
+    {
+      "source_path": "base/lander/energy/moonbase.txt",
+      "json": "resources/base/lander/energy/moonbase.txt.json",
+      "resource_ids": [
+        "text.moonbase"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 1,
+      "contract_sha256": "76cf90138bc8c1d5ae96222daa491ceeeaed2fe0622cccebbfc2ad724097b3ca"
+    },
+    {
+      "source_path": "base/lander/energy/ruins.txt",
+      "json": "resources/base/lander/energy/ruins.txt.json",
+      "resource_ids": [
+        "text.ruins"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 1,
+      "contract_sha256": "cf48bea9ce91de0f790a96154d4d37040031f54d1c3d1f4dd72a28b9671fd3f3"
+    },
+    {
+      "source_path": "base/lander/energy/sphere.txt",
+      "json": "resources/base/lander/energy/sphere.txt.json",
+      "resource_ids": [
+        "text.sphere"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 2,
+      "contract_sha256": "c029921775daec25027e86e4ebdd677837836eb285a202e32292ae6aca63c033"
+    },
+    {
+      "source_path": "base/lander/energy/spindle.txt",
+      "json": "resources/base/lander/energy/spindle.txt.json",
+      "resource_ids": [
+        "text.spindle"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 2,
+      "contract_sha256": "01651b984f426dfdfe5467dcbe8806bc7a2a08d284196094436fb3d7a78f445f"
+    },
+    {
+      "source_path": "base/lander/energy/sundevice.txt",
+      "json": "resources/base/lander/energy/sundevice.txt.json",
+      "resource_ids": [
+        "text.sundevice"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 1,
+      "contract_sha256": "ae9e05aa58fa1af018e789bb8d165ed91a1ae88d404121959c0e9a12fb050768"
+    },
+    {
+      "source_path": "base/lander/energy/syreenvault.txt",
+      "json": "resources/base/lander/energy/syreenvault.txt.json",
+      "resource_ids": [
+        "text.syreenvault"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 3,
+      "contract_sha256": "5d3e4bf6187951c2d7e74e4e338a0d9a7a5ea5ffc37fdfe509fe8266f059dea8"
+    },
+    {
+      "source_path": "base/lander/energy/taalodevice.txt",
+      "json": "resources/base/lander/energy/taalodevice.txt.json",
+      "resource_ids": [
+        "text.taalodevice"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 1,
+      "contract_sha256": "6aa220008ebf2437d8e5129f48e0a6e1c5fcb22950dab85e056bd9294895022c"
+    },
+    {
+      "source_path": "base/lander/energy/umgahcaster.txt",
+      "json": "resources/base/lander/energy/umgahcaster.txt.json",
+      "resource_ids": [
+        "text.umgahcaster"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 1,
+      "contract_sha256": "b1386e99e12f2a9d4099a90e92729d44846932a5035e8566cf17a39ef6926d58"
+    },
+    {
+      "source_path": "base/lander/energy/urquanwreck.txt",
+      "json": "resources/base/lander/energy/urquanwreck.txt.json",
+      "resource_ids": [
+        "text.urquanwreck"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 2,
+      "contract_sha256": "b6201121b8af8b4a2813cb141fd2d3f7586b8fc7e0bdbbf42b2a1269d5305c89"
+    },
+    {
+      "source_path": "base/lander/energy/utwigbomb.txt",
+      "json": "resources/base/lander/energy/utwigbomb.txt.json",
+      "resource_ids": [
+        "text.utwigbomb"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 1,
+      "contract_sha256": "a1e223bff3537529a6f61e549b6aecdf03f09933d9de1047f160dc10e7383b8e"
+    },
+    {
+      "source_path": "base/lander/energy/zoqfotcolonyruins.txt",
+      "json": "resources/base/lander/energy/zoqfotcolonyruins.txt.json",
+      "resource_ids": [
+        "text.zoqfotcolonyruins1"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 1,
+      "contract_sha256": "631d5e3efd0169a8ed9af03f1182d89088a1dce21d28437ca0905235d90a95c8"
+    },
+    {
+      "source_path": "base/lander/energy/zoqfotcolonyruins2.txt",
+      "json": "resources/base/lander/energy/zoqfotcolonyruins2.txt.json",
+      "resource_ids": [
+        "text.zoqfotcolonyruins2"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 1,
+      "contract_sha256": "25086317c8d161db4e54a48d79f232af6c24b156080be3973d407590d70b7f54"
+    },
+    {
+      "source_path": "base/ships/androsynth/guardian.txt",
+      "json": "resources/base/ships/androsynth/guardian.txt.json",
+      "resource_ids": [
+        "ship.androsynth.text"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 21,
+      "contract_sha256": "298cd497385f5ba64dbf4b22c33cbf8ccbdeaa2f81d11e5f363a23d7eb71665d"
+    },
+    {
+      "source_path": "base/ships/arilou/skiff.txt",
+      "json": "resources/base/ships/arilou/skiff.txt.json",
+      "resource_ids": [
+        "ship.arilou.text"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 21,
+      "contract_sha256": "a9000230a537777ff0478a0eb1d036c5826f133d084ffa9d32d44c5ec0b89244"
+    },
+    {
+      "source_path": "base/ships/chenjesu/broodhome.txt",
+      "json": "resources/base/ships/chenjesu/broodhome.txt.json",
+      "resource_ids": [
+        "ship.chenjesu.text"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 21,
+      "contract_sha256": "27f026c511607d6d485343452a544fec5adcc272876d4ae98efdd7333be6e226"
+    },
+    {
+      "source_path": "base/ships/chmmr/avatar.txt",
+      "json": "resources/base/ships/chmmr/avatar.txt.json",
+      "resource_ids": [
+        "ship.chmmr.text"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 21,
+      "contract_sha256": "1ea223f215f9fde152cd9e8d2388bc9b981b108392d49edfb6efc252f1f9a538"
+    },
+    {
+      "source_path": "base/ships/druuge/mauler.txt",
+      "json": "resources/base/ships/druuge/mauler.txt.json",
+      "resource_ids": [
+        "ship.druuge.text"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 21,
+      "contract_sha256": "47128b5e3780e53287af68f4f3e0573ba963072601763dde42786461dd1a3b7e"
+    },
+    {
+      "source_path": "base/ships/human/cruiser.txt",
+      "json": "resources/base/ships/human/cruiser.txt.json",
+      "resource_ids": [
+        "ship.earthling.text"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 21,
+      "contract_sha256": "a802aea5d7e24fb46476eb9eab31f7d10317e0d498cc757af07aeab04e48c6f2"
+    },
+    {
+      "source_path": "base/ships/ilwrath/avenger.txt",
+      "json": "resources/base/ships/ilwrath/avenger.txt.json",
+      "resource_ids": [
+        "ship.ilwrath.text"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 21,
+      "contract_sha256": "2c105bef7188c80b4d4498174d33475def1ae37a2067cc595343b0ceffe287fd"
+    },
+    {
+      "source_path": "base/ships/kohrah/marauder.txt",
+      "json": "resources/base/ships/kohrah/marauder.txt.json",
+      "resource_ids": [
+        "ship.kohrah.text"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 21,
+      "contract_sha256": "7192f9e155b32d1f9b0b87608f98d37c81c8b5079186fe634f05ff9b7d26973d"
+    },
+    {
+      "source_path": "base/ships/melnorme/trader.txt",
+      "json": "resources/base/ships/melnorme/trader.txt.json",
+      "resource_ids": [
+        "ship.melnorme.text"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 21,
+      "contract_sha256": "449e46f81c0e5b75ca6355be781afb84348a69e5838d0fd4afd4c50294dd85ec"
+    },
+    {
+      "source_path": "base/ships/mmrnmhrm/xform.txt",
+      "json": "resources/base/ships/mmrnmhrm/xform.txt.json",
+      "resource_ids": [
+        "ship.mmrnmhrm.text"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 21,
+      "contract_sha256": "c3205ed10cf2bd4f626c66d753f68c96154d434663d382cb5f9a0542579ef0c3"
+    },
+    {
+      "source_path": "base/ships/mycon/podship.txt",
+      "json": "resources/base/ships/mycon/podship.txt.json",
+      "resource_ids": [
+        "ship.mycon.text"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 21,
+      "contract_sha256": "e7761a2593845151bdfc759ba3053d623cc0f00b14a6472b341c210f4b9abc68"
+    },
+    {
+      "source_path": "base/ships/orz/nemesis.txt",
+      "json": "resources/base/ships/orz/nemesis.txt.json",
+      "resource_ids": [
+        "ship.orz.text"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 21,
+      "contract_sha256": "e3b87bc3646fdd55e66db0077d20552ac17406de2ce9565c4161e89b3848e870"
+    },
+    {
+      "source_path": "base/ships/pkunk/fury.txt",
+      "json": "resources/base/ships/pkunk/fury.txt.json",
+      "resource_ids": [
+        "ship.pkunk.text"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 21,
+      "contract_sha256": "a5873723d0a613246ff232cb18acffa04dfdcb4900193e3016841075ee1c0069"
+    },
+    {
+      "source_path": "base/ships/shofixti/scout.txt",
+      "json": "resources/base/ships/shofixti/scout.txt.json",
+      "resource_ids": [
+        "ship.shofixti.text"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 23,
+      "contract_sha256": "39679262cf35a01ad6f776aad25abddca4005174f94f7a85c1898211e5dd1192"
+    },
+    {
+      "source_path": "base/ships/slylandro/probe.txt",
+      "json": "resources/base/ships/slylandro/probe.txt.json",
+      "resource_ids": [
+        "ship.slylandro.text"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 21,
+      "contract_sha256": "649de2e669e3f5380a479042b75fd2ad7a673fb5ed2e7879bd32eede5ebc16fb"
+    },
+    {
+      "source_path": "base/ships/spathi/eluder.txt",
+      "json": "resources/base/ships/spathi/eluder.txt.json",
+      "resource_ids": [
+        "ship.spathi.text"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 22,
+      "contract_sha256": "74b1ece2578e4e7a1a4e9a50d090963afe7825933a2eb25a085f5d7bea9f0d9d"
+    },
+    {
+      "source_path": "base/ships/supox/blade.txt",
+      "json": "resources/base/ships/supox/blade.txt.json",
+      "resource_ids": [
+        "ship.supox.text"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 21,
+      "contract_sha256": "77e6bb67c118c34013ba904c8c81743e91b1e5e344f5db76a180b108ba3b7693"
+    },
+    {
+      "source_path": "base/ships/syreen/penetrator.txt",
+      "json": "resources/base/ships/syreen/penetrator.txt.json",
+      "resource_ids": [
+        "ship.syreen.text"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 21,
+      "contract_sha256": "37be0af7e21a3ae6bd7cdc32e56526e303092086fa8639f2fbd3f96697401621"
+    },
+    {
+      "source_path": "base/ships/thraddash/torch.txt",
+      "json": "resources/base/ships/thraddash/torch.txt.json",
+      "resource_ids": [
+        "ship.thraddash.text"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 21,
+      "contract_sha256": "32e2104aa556abf52ec56daad921004fc2994435d214bd51e4ed73fe04ae399f"
+    },
+    {
+      "source_path": "base/ships/umgah/drone.txt",
+      "json": "resources/base/ships/umgah/drone.txt.json",
+      "resource_ids": [
+        "ship.umgah.text"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 21,
+      "contract_sha256": "8ff251963c8723357046a07a595a28d11e31a354e60d9bf342872122afeb4de0"
+    },
+    {
+      "source_path": "base/ships/urquan/dreadnought.txt",
+      "json": "resources/base/ships/urquan/dreadnought.txt.json",
+      "resource_ids": [
+        "ship.urquan.text"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 21,
+      "contract_sha256": "48cd167808e1ea8fd8c469d95903a00ffd2e02e566f32c7b7c4c0c5193a46401"
+    },
+    {
+      "source_path": "base/ships/utwig/jugger.txt",
+      "json": "resources/base/ships/utwig/jugger.txt.json",
+      "resource_ids": [
+        "ship.utwig.text"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 21,
+      "contract_sha256": "3855bde0a06be431feb2404f89a294ffbed61005cffe6348ed98b138ac18069d"
+    },
+    {
+      "source_path": "base/ships/vux/intruder.txt",
+      "json": "resources/base/ships/vux/intruder.txt.json",
+      "resource_ids": [
+        "ship.vux.text"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 21,
+      "contract_sha256": "19dd13377f036b265055fd3f8034f8ee7405b04f16b5a07af54fe8f257e38761"
+    },
+    {
+      "source_path": "base/ships/yehat/terminator.txt",
+      "json": "resources/base/ships/yehat/terminator.txt.json",
+      "resource_ids": [
+        "ship.yehat.text"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 21,
+      "contract_sha256": "d37f23dd3497df16b77c45d67ad53a91ee2a9782f983bd0923702b813bc430dd"
+    },
+    {
+      "source_path": "base/ships/zoqfotpik/stinger.txt",
+      "json": "resources/base/ships/zoqfotpik/stinger.txt.json",
+      "resource_ids": [
+        "ship.zoqfotpik.text"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 21,
+      "contract_sha256": "bf9525918bb2f2cb2d8fbc8b6b1cb7f4d77b5dca32e80a273cf9d06d5258c16e"
+    },
+    {
+      "source_path": "base/ui/joyalpha.txt",
+      "json": "resources/base/ui/joyalpha.txt.json",
+      "resource_ids": [
+        "text.joyalpha"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 3,
+      "contract_sha256": "3e9611d8ab12060c6a52e454182d58d3caa4b2e1a7235253c584c57faf8d4121"
+    },
+    {
+      "source_path": "base/ui/setupmenu.txt",
+      "json": "resources/base/ui/setupmenu.txt.json",
+      "resource_ids": [
+        "text.setupmenu"
+      ],
+      "resource_types": [
+        "STRTAB"
+      ],
+      "auxiliary": false,
+      "entry_count": 134,
+      "contract_sha256": "cff6307387c4e1df623f8abab3e66704b9f591af0202aac83c7cbc2936d906d4"
+    }
+  ]
+}

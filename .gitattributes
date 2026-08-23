@@ -1,0 +1,23 @@
+* text=auto
+
+*.sh text eol=lf
+engine/build/unix/** text eol=lf
+engine/Makeproject text eol=lf
+engine/Makefile* text eol=lf
+engine/**/Makeinfo text eol=lf
+engine/**/*.in text eol=lf
+engine/wasm/*.js text eol=lf
+engine/wasm/*.html text eol=lf
+
+*.ps1 text eol=crlf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.bmp binary
+*.ico binary
+*.ttf binary
+*.woff binary
+*.woff2 binary
+*.zip binary
+*.uqm binary

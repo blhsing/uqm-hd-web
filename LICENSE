@@ -1,0 +1,42 @@
+The Ur-Quan Masters HD Traditional-Chinese distribution is a
+multi-license repository. No single license applies to every file.
+
+1. Upstream game source under `game/`
+
+   The Ur-Quan Masters program source is generally licensed under the GNU
+   General Public License, version 2 or (at your option) any later version.
+   File-specific notices and exceptions remain controlling; some files state
+   GPL-2.0-only or another compatible license. See each source header and
+   `LICENSES/UPSTREAM-COPYING.txt`.
+
+2. New program code and source modifications
+
+   Unless a file says otherwise, new Python, PowerShell, and C code introduced
+   by this localization project is licensed under GPL-2.0-or-later. This
+   includes the localization/build/install/verification tools and the dated
+   modifications in `game/src/uqm/battle.c` and `game/src/uqm/restart.c`.
+
+3. Game content and localized derivatives
+
+   Original dialogue, graphics, sound, music, translated text, localized menu
+   artwork, and extracted vessel images are licensed under Creative Commons
+   Attribution-NonCommercial-ShareAlike 2.5 (CC BY-NC-SA 2.5). Commercial use
+   is not permitted under that license. See
+   `LICENSES/UPSTREAM-COPYING.txt` for the complete license and attribution.
+
+4. Documentation
+
+   Documentation prose, including the Traditional-Chinese gameplay guide, is
+   licensed under Creative Commons Attribution 2.0 (CC BY 2.0), except where a
+   file or embedded excerpt states otherwise. The complete text is included in
+   `LICENSES/UPSTREAM-COPYING.txt`.
+
+5. Noto-derived font output
+
+   Noto Sans CJK / Noto Sans TC font software and derived bitmap glyph output
+   remain subject to the SIL Open Font License 1.1. See
+   `LICENSES/OFL-1.1-NotoSansCJK.txt`.
+
+If this summary conflicts with a file-specific copyright or license notice,
+that specific notice takes precedence. The software and content are provided
+without warranty to the extent permitted by their respective licenses.

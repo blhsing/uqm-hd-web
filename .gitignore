@@ -1,0 +1,56 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+__pycache__/
+*.py[cod]
+*.tsbuildinfo
+
+# next.js
+/.next/
+/.vinext/
+/out/
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# local environment
+.env*
+
+# deployment and generated files
+.vercel
+next-env.d.ts
+/dist/
+/.wrangler/
+/outputs/
+/work/
+
+# Generated WebAssembly and locally supplied upstream game content
+/engine/content/
+/engine/build.vars
+/engine/config.state
+/engine/config_unix.h
+/engine/obj/
+/engine/uqm-hd*.data
+/engine/uqm-hd*.html
+/engine/uqm-hd*.js
+/engine/uqm-hd*.wasm
+/engine/uqm-hd*.worker.js
+/engine/uqm-hd*.rsp
+/engine/uqm-wrapper
+/public/game/

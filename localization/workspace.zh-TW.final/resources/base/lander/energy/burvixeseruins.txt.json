@@ -1,0 +1,30 @@
+{
+  "format": "uqm-hd-localization-v1",
+  "source_path": "base/lander/energy/burvixeseruins.txt",
+  "resource_ids": [
+    "text.burvixeseruins"
+  ],
+  "resource_types": [
+    "STRTAB"
+  ],
+  "auxiliary": false,
+  "source_sha256": "634f1ede88460bdb5cd1a5747ec000471d842e54db75ce588f244185da217241",
+  "newline": "\n",
+  "preamble": "",
+  "entries": [
+    {
+      "index": 0,
+      "label": "BURRUINS 1",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n",
+      "body": "     ---- REPORT FROM SURFACE ----\n\nTHESE RUINS SEEM TO BE REMNANTS OF A CIVILIZATION WHICH CALLED ITSELF THE `BURVIXESE'.\n\nALL THEIR CITIES HAVE BEEN REDUCED TO RADIOACTIVE SLAG BY SOME FORM OF ENERGY WEAPON SIMILAR TO THE UR-QUAN'S FUSION BLASTER. FROM EVIDENCE WE HAVE GATHERED HERE, WE CAN CONCLUDE THAT THIS ENTIRE CIVILIZATION WAS DESTROYED FROM ORBIT SOMETIME IN THE LAST 8-12 EARTH YEARS.\n\nTHERE ARE NO SURVIVORS.\n\n        ---- END OF REPORT ----",
+      "unit_kind": "whole",
+      "payload_start": 0,
+      "source": "     ---- REPORT FROM SURFACE ----\n\nTHESE RUINS SEEM TO BE REMNANTS OF A CIVILIZATION WHICH CALLED ITSELF THE `BURVIXESE'.\n\nALL THEIR CITIES HAVE BEEN REDUCED TO RADIOACTIVE SLAG BY SOME FORM OF ENERGY WEAPON SIMILAR TO THE UR-QUAN'S FUSION BLASTER. FROM EVIDENCE WE HAVE GATHERED HERE, WE CAN CONCLUDE THAT THIS ENTIRE CIVILIZATION WAS DESTROYED FROM ORBIT SOMETIME IN THE LAST 8-12 EARTH YEARS.\n\nTHERE ARE NO SURVIVORS.\n\n        ---- END OF REPORT ----",
+      "translation": "     ---- 地表報告 ----\n\n這些廢墟似乎是一個自稱 「伯維克斯」的文明所留下 的遺跡。\n\n他們所有城市都被某種能量 武器化為放射性熔渣， 這種武器與烏爾關的聚變爆 破砲相似。根據我們在此蒐 集的證據，可以斷定整個文 明是在過去 8 至 12 個地球年內，遭人從軌道上 摧毀。\n\n沒有任何生還者。\n\n        ---- 報告結束 ----"
+    }
+  ],
+  "contract_sha256": "d72006991fb712946a830406268cb935ebb9d72c452c16996cc2fa0a65a1b6e0"
+}

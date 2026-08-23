@@ -1,0 +1,30 @@
+{
+  "format": "uqm-hd-localization-v1",
+  "source_path": "base/lander/energy/maidens.txt",
+  "resource_ids": [
+    "text.maidens"
+  ],
+  "resource_types": [
+    "STRTAB"
+  ],
+  "auxiliary": false,
+  "source_sha256": "a0a3733c1431538b7b780cf4db0736549d8fa4739ea4ec2cce1e727f7fcce90d",
+  "newline": "\n",
+  "preamble": "",
+  "entries": [
+    {
+      "index": 0,
+      "label": "MAIDENS 1",
+      "header_suffix": "",
+      "audio": null,
+      "header_eol": "\n",
+      "body_suffix": "\n",
+      "body": "     ---- REPORT FROM SURFACE ----\n\nIN THE VUX COMMANDER'S MENAGERIE WE HAVE FOUND WHAT APPEARS TO BE FUNCTIONING CRYOTANKS CONTAINING A DOZEN BIPEDAL CREATURES. WE CAN'T BE SURE, BUT THROUGH THE TANK'S FOGGED VIEWPORTS WE THINK WE CAN SEE YOUNG SHOFIXTI FEMALES INSIDE THE FREEZER UNITS. WE HAVE TRANSFERRED THE CRYOTANKS TO THE LANDER AND ARE RETURNING TO THE SHIP.\n\n        ---- END OF REPORT ----",
+      "unit_kind": "whole",
+      "payload_start": 0,
+      "source": "     ---- REPORT FROM SURFACE ----\n\nIN THE VUX COMMANDER'S MENAGERIE WE HAVE FOUND WHAT APPEARS TO BE FUNCTIONING CRYOTANKS CONTAINING A DOZEN BIPEDAL CREATURES. WE CAN'T BE SURE, BUT THROUGH THE TANK'S FOGGED VIEWPORTS WE THINK WE CAN SEE YOUNG SHOFIXTI FEMALES INSIDE THE FREEZER UNITS. WE HAVE TRANSFERRED THE CRYOTANKS TO THE LANDER AND ARE RETURNING TO THE SHIP.\n\n        ---- END OF REPORT ----",
+      "translation": "     ---- 地表報告 ----\n\n我們在 VUX 指揮官的動物園裡， 發現了一批似乎仍能運作的 冷凍槽，內有十二隻雙足生 物。雖然無法確定， 但透過冷凍槽起霧的觀察 窗，我們認為冷凍設備裡是 年輕的索菲克斯提雌性。 我們已將冷凍槽轉移至登陸 艇，正返回船上。\n\n        ---- 報告結束 ----"
+    }
+  ],
+  "contract_sha256": "5c9a33e424f660c3d35d869f31b63608dc544a44e607fc787539cb0d527a777c"
+}
