@@ -51,23 +51,6 @@ function nextMessage(socket) {
 
 try {
   await waitForRelay();
-  for (const [name, bytes] of [
-    ['hires4x.zip', 369_756_672],
-    ['3dovoice.zip', 146_438_532],
-    ['3domusic.zip', 21_934_569],
-    ['native1080-zh_TW.uqm', 189_687_374],
-  ]) {
-    const asset = await fetch(`http://127.0.0.1:${port}/server.js?asset=${encodeURIComponent(name)}`, {
-      method: 'HEAD',
-    });
-    if (!asset.ok || Number(asset.headers.get('content-length')) !== bytes) {
-      throw new Error(`Asset relay metadata failed for ${name}.`);
-    }
-  }
-  const unknown = await fetch(`http://127.0.0.1:${port}/server.js?asset=unknown.zip`, {
-    method: 'HEAD',
-  });
-  if (unknown.status !== 404) throw new Error('Asset relay allowlist failed.');
   const [first, second] = await Promise.all([openSocket(), openSocket()]);
   first.send(Buffer.from('first-to-second'));
   if (String(await nextMessage(second)) !== 'first-to-second') throw new Error('First relay direction failed.');

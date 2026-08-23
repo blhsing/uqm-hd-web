@@ -41,18 +41,18 @@ for (const header of ['Cross-Origin-Opener-Policy', 'Cross-Origin-Embedder-Polic
   if (!config.includes(header)) throw new Error(`web.config is missing ${header}.`);
 }
 
-const relayed = ['hires4x.zip', '3dovoice.zip', '3domusic.zip', 'native1080-zh_TW.uqm'];
-for (const name of relayed) {
+const separatelyDeployed = ['hires4x.zip', '3dovoice.zip', '3domusic.zip', 'native1080-zh_TW.uqm'];
+const deployment = readFileSync(join(root, 'scripts', 'deploy-azure.ps1'), 'utf8');
+for (const name of separatelyDeployed) {
   if (existsSync(join(game, 'content', 'addons', name))) {
-    throw new Error(`Large relayed asset was unexpectedly bundled: ${name}`);
+    throw new Error(`Separately deployed asset was unexpectedly bundled: ${name}`);
   }
-  if (!config.includes(name.replaceAll('.', '\\.'))) {
-    throw new Error(`web.config does not relay ${name}.`);
+  if (!deployment.includes(name)) {
+    throw new Error(`Azure deployment does not include ${name}.`);
   }
 }
-const relay = readFileSync(join(output, 'server.js'), 'utf8');
-for (const marker of ['github.com/blhsing/uqm-hd-web/releases/download/assets-v0.1.0']) {
-  if (!relay.includes(marker)) throw new Error(`Asset relay is missing ${marker}.`);
+for (const marker of ['--type static', '--clean false', '--timeout 3600000']) {
+  if (!deployment.includes(marker)) throw new Error(`Azure asset deployment is missing ${marker}.`);
 }
 
 console.log(JSON.stringify({

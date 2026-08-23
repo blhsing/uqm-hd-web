@@ -22,9 +22,8 @@ OpenAI Codex 語言模型完成，再經格式契約、字型生成、封裝測�
 - 網路超級對戰使用同站的加密 WebSocket 配對中繼；兩位玩家不需開放路由器連入連接埠。
 - 首次啟動會下載高解析度圖像、語音、音樂及所選語言資源；瀏覽器之後可重用
   HTTP 快取。建議使用桌面版 Chrome、Edge、Firefox 或 Safari 的目前版本。
-- 正式站的大型資產由同站端點串流本專案
-  [GitHub Release](https://github.com/blhsing/uqm-hd-web/releases/tag/assets-v0.1.0) 中經瀏覽器實戰驗證的精確套件；
-  Git 儲存庫及 Azure ZIP 均不重複收錄這些大檔。
+- 正式站使用與本機實戰測試相同且經 SHA-256 鎖定的高解析度、語音、音樂與繁中套件；
+  發布腳本會把它們逐檔部署到 Azure 虛擬應用程式。Git 儲存庫及精簡程式 ZIP 均不重複收錄這些大檔。
 
 ## 從原始碼建置
 

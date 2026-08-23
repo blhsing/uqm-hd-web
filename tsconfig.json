@@ -44,6 +44,9 @@
     "node_modules",
     ".next",
     ".vinext",
+    "dist",
+    "work",
+    "engine",
     "out",
     "public/game"
   ]

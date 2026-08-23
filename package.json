@@ -10,7 +10,7 @@
     "build": "node scripts/build-sites.mjs",
     "build:azure": "node scripts/build-azure.mjs",
     "verify:azure": "node scripts/verify-web-build.mjs",
-    "test:assets": "node scripts/test-upstream-assets.mjs",
+    "test:assets": "node scripts/verify-staged-assets.mjs",
     "test:relay": "node scripts/test-netplay-relay.mjs",
     "start": "vinext start",
     "lint": "eslint app server scripts next.config.ts vite.config.ts eslint.config.mjs"
