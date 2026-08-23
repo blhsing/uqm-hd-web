@@ -74,8 +74,14 @@ export default defineConfig(async ({ command }) => {
       });
     },
   };
+  const publicDirectory: string | false = process.env.SITES_BUILD === '1'
+    ? false
+    : 'public';
 
   return {
+    // The Sites launcher embeds the full Azure game engine. Its build must not
+    // duplicate the ignored 760 MiB local game output into the worker bundle.
+    publicDir: publicDirectory,
     css: { postcss: { plugins: [tailwindcss()] } },
     server: {
       headers: isolationHeaders,
