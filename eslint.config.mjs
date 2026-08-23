@@ -8,7 +8,9 @@ const eslintConfig = defineConfig([
   globalIgnores([
     '.next/**',
     '.vinext/**',
+    'dist/**',
     'out/**',
+    'work/**',
     'build/**',
     'engine/uqm-hd*.js',
     'public/game/**',

@@ -10,9 +10,10 @@
     "build": "node scripts/build-sites.mjs",
     "build:azure": "node scripts/build-azure.mjs",
     "verify:azure": "node scripts/verify-web-build.mjs",
+    "test:assets": "node scripts/test-upstream-assets.mjs",
     "test:relay": "node scripts/test-netplay-relay.mjs",
     "start": "vinext start",
-    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next"
+    "lint": "eslint app server scripts next.config.ts vite.config.ts eslint.config.mjs"
   },
   "dependencies": {
     "next": "^16.3.2",

@@ -26,11 +26,7 @@ const required = [
   ['game/uqm-hd.js', 10_000],
   ['game/uqm-hd.wasm', 100_000],
   ['game/uqm-hd.data', 10_000_000],
-  ['game/content/addons/3domusic.zip', 20_000_000],
-  ['game/content/addons/3dovoice.zip', 140_000_000],
   ['game/content/addons/3dovideo.zip', 500],
-  ['game/content/addons/hires4x.zip', 360_000_000],
-  ['game/content/addons/native1080-zh_TW.uqm', 180_000_000],
 ];
 
 const sizes = Object.fromEntries(required.map(([relative, minimum]) => [relative, requireFile(join(output, relative), minimum)]));
@@ -43,6 +39,20 @@ if (!shell.includes('uqm-hd.js')) throw new Error('WebAssembly shell does not lo
 const config = readFileSync(join(output, 'web.config'), 'utf8');
 for (const header of ['Cross-Origin-Opener-Policy', 'Cross-Origin-Embedder-Policy', 'Cross-Origin-Resource-Policy']) {
   if (!config.includes(header)) throw new Error(`web.config is missing ${header}.`);
+}
+
+const relayed = ['hires4x.zip', '3dovoice.zip', '3domusic.zip', 'native1080-zh_TW.uqm'];
+for (const name of relayed) {
+  if (existsSync(join(game, 'content', 'addons', name))) {
+    throw new Error(`Large relayed asset was unexpectedly bundled: ${name}`);
+  }
+  if (!config.includes(name.replaceAll('.', '\\.'))) {
+    throw new Error(`web.config does not relay ${name}.`);
+  }
+}
+const relay = readFileSync(join(output, 'server.js'), 'utf8');
+for (const marker of ['github.com/blhsing/uqm-hd-web/releases/download/assets-v0.1.0']) {
+  if (!relay.includes(marker)) throw new Error(`Asset relay is missing ${marker}.`);
 }
 
 console.log(JSON.stringify({
