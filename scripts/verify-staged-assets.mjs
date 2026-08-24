@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { createReadStream } from 'node:fs';
+import { createReadStream, readFileSync } from 'node:fs';
 import { stat } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 
@@ -11,6 +11,7 @@ const assets = [
   ['3dovideo.zip', 885, '0fedb35025a8ff0cd9ff09aabe50e4dc4efc702b34471bf0f11de4aa501f7cbe'],
   ['native1080-zh_TW.uqm', 189_687_374, 'f24d1f55e326fe20bb577c53eb12836ecff71af7a8b34ea2520537ec4ef1aef2'],
 ];
+const preloadSource = readFileSync(resolve(import.meta.dirname, '..', 'engine', 'wasm', 'pre.js'), 'utf8');
 
 async function sha256(path) {
   const hash = createHash('sha256');
@@ -27,6 +28,10 @@ for (const [name, expectedBytes, expectedHash] of assets) {
   const actualHash = await sha256(path);
   if (actualHash !== expectedHash) {
     throw new Error(`${name} has SHA-256 ${actualHash}; expected ${expectedHash}.`);
+  }
+  if (!preloadSource.includes(name) || !preloadSource.includes(String(expectedBytes)) ||
+      !preloadSource.includes(expectedHash)) {
+    throw new Error(`${name}: browser cache manifest is not aligned with the verified asset.`);
   }
   console.log(`${name}: ${size} bytes, SHA-256 verified`);
 }

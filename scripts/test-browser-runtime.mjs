@@ -142,7 +142,12 @@ async function main() {
   const targetUrl = process.env.UQM_TEST_URL || 'http://localhost:3000/';
   const requestedLanguage = process.env.UQM_TEST_LANGUAGE === 'en' ? 'en' : 'zh-TW';
   const emulateMobile = process.env.UQM_TEST_MOBILE === '1';
-  const profileDirectory = await mkdtemp(path.join(tmpdir(), 'uqm-web-chrome-'));
+  const reusableProfile = process.env.UQM_TEST_PROFILE
+    ? path.resolve(process.env.UQM_TEST_PROFILE)
+    : null;
+  const profileDirectory = reusableProfile || await mkdtemp(path.join(tmpdir(), 'uqm-web-chrome-'));
+  if (reusableProfile) await mkdir(profileDirectory, { recursive: true });
+  await rm(path.join(profileDirectory, 'DevToolsActivePort'), { force: true });
   const browserPath = await existingBrowser();
   const browserProcess = spawn(browserPath, [
     '--headless=new',
@@ -238,6 +243,7 @@ async function main() {
           canvasHeight: game.document.querySelector('#canvas')?.height || 0,
           status: game.document.querySelector('#engine-status-text')?.textContent || '',
           language: game.uqmWeb?.language || '',
+          assetCacheStats: game.uqmWeb?.assetCacheStats || null,
           parentProgress: document.querySelector('.loading-screen')?.textContent?.replace(/\s+/g, ' ').trim() || '',
         };
       })()`);
@@ -262,6 +268,10 @@ async function main() {
     }
 
     await delay(Number(process.env.UQM_TEST_STABILITY_MS) || 5_000);
+    const expectedCacheHits = Number(process.env.UQM_TEST_EXPECT_CACHE_HITS) || 0;
+    if (expectedCacheHits > 0 && runtime.assetCacheStats?.hits < expectedCacheHits) {
+      throw new Error(`Expected at least ${expectedCacheHits} persistent asset-cache hits: ${JSON.stringify(runtime.assetCacheStats)}.`);
+    }
     const visual = await client.evaluate(`(() => {
       const canvas = document.querySelector('iframe')?.contentDocument?.querySelector('#canvas');
       const context = canvas?.getContext('2d');
@@ -426,6 +436,20 @@ async function main() {
             throw new Error(`Actual battle touch controls failed: ${JSON.stringify(mobile)}.`);
           }
         }
+        const combatStressMilliseconds = Number(process.env.UQM_TEST_COMBAT_STRESS_MS) || 0;
+        if (combatStressMilliseconds > 0) {
+          const stress = await client.evaluate(`(async () => {
+            const game = document.querySelector('iframe')?.contentWindow;
+            game.uqmWeb.keyDown('stress-p1-fire', {
+              key: 'Control', code: 'ControlRight', keyCode: 17, location: 2,
+            });
+            game.uqmWeb.keyDown('stress-p2-fire', { key: 'q', code: 'KeyQ', keyCode: 81 });
+            await new Promise((resolve) => setTimeout(resolve, ${combatStressMilliseconds}));
+            game.uqmWeb.releaseAll();
+            return { milliseconds: ${combatStressMilliseconds}, battleState: game.uqmWeb.battleState() };
+          })()`);
+          flow = { ...flow, combatStress: stress };
+        }
       }
       if (process.env.UQM_TEST_FLOW === 'super-melee-back') {
         const back = await client.evaluate(`(async () => {
@@ -477,7 +501,7 @@ async function main() {
     if (browserProcess.exitCode === null) {
       await terminateProcessTree(browserProcess.pid);
     }
-    await removeProfile(profileDirectory);
+    if (!reusableProfile) await removeProfile(profileDirectory);
   }
 }
 

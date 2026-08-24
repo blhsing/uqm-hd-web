@@ -16,6 +16,7 @@ const copy = {
     description: 'The complete campaign and Super Melee, with browser saves and touch controls.',
     loading: 'Loading the complete game…',
     downloading: 'Downloading high-resolution game content',
+    cached: 'Loading cached high-resolution game content',
     play: 'Launch game',
     back: 'Back',
     fullscreen: 'Fullscreen',
@@ -37,6 +38,7 @@ const copy = {
     description: '完整戰役與超級對戰，支援瀏覽器存檔及觸控操作。',
     loading: '正在載入完整遊戲…',
     downloading: '正在下載高解析度遊戲內容',
+    cached: '正在載入已快取的高解析度遊戲內容',
     play: '啟動遊戲',
     back: '返回',
     fullscreen: '全螢幕',
@@ -160,7 +162,7 @@ export default function Home() {
         const fileIndex = Math.max(1, Number(event.data.file) || 1);
         const fileCount = Math.max(fileIndex, Number(event.data.files) || fileIndex);
         setLoadingDetail({
-          label: `${text.downloading} · ${fileIndex}/${fileCount}`,
+          label: `${event.data.cached ? text.cached : text.downloading} · ${fileIndex}/${fileCount}`,
           progress: Math.min(1, Math.max(0, (fileIndex - 1 + fileProgress) / fileCount)),
         });
       } else if (event.data?.type === 'uqm-error') {
@@ -173,7 +175,7 @@ export default function Home() {
       window.removeEventListener('message', onMessage);
       sendCommand('releaseAll');
     };
-  }, [running, sendCommand, text.downloading, text.loading]);
+  }, [running, sendCommand, text.cached, text.downloading, text.loading]);
 
   const selectLanguage = (next: Language) => {
     window.localStorage.setItem('uqm-language', next);

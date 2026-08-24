@@ -21,7 +21,16 @@ function json(response, status, body) {
 
 function parseRoom(request) {
   const url = new URL(request.url, 'http://localhost');
-  const room = url.searchParams.get('room') || '';
+  const pathMatch = /\/netplay\/([^/?]+)\/?$/.exec(url.pathname);
+  let pathRoom = '';
+  if (pathMatch) {
+    try {
+      pathRoom = decodeURIComponent(pathMatch[1]);
+    } catch {
+      return null;
+    }
+  }
+  const room = url.searchParams.get('room') || pathRoom;
   const match = /^(\d{1,3}(?:\.\d{1,3}){3}):(\d{1,5})$/.exec(room);
   if (!match) return null;
   const octets = match[1].split('.').map(Number);
@@ -85,7 +94,7 @@ function flush(endpoint) {
 
 const server = http.createServer((request, response) => {
   const url = new URL(request.url, 'http://localhost');
-  if (url.searchParams.get('status') === '1') {
+  if (url.searchParams.get('status') === '1' || /\/netplay\/status\/?$/.test(url.pathname)) {
     json(response, 200, { ok: true, waitingRooms: [...rooms.values()].filter(room => room.endpoints.length === 1).length });
   } else {
     json(response, 426, { error: 'This endpoint accepts WebSocket connections for network Super Melee.' });

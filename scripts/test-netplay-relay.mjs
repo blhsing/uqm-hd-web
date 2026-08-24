@@ -9,7 +9,7 @@ const child = spawn(process.execPath, ['server/netplay-server.cjs'], {
   stdio: ['ignore', 'pipe', 'pipe'],
 });
 
-const endpoint = `ws://localhost:${port}/server.js?room=127.0.0.1:45678`;
+const endpoint = `ws://localhost:${port}/netplay/127.0.0.1%3A45678`;
 const options = { headers: { Origin: 'http://localhost' } };
 
 async function waitForRelay() {
@@ -24,7 +24,7 @@ async function waitForRelay() {
       throw new Error(`Relay exited before startup (${child.exitCode}): ${stderr}`);
     }
     try {
-      const response = await fetch(`http://127.0.0.1:${port}/server.js?status=1`);
+      const response = await fetch(`http://127.0.0.1:${port}/netplay/status/`);
       if (response.ok) return;
     } catch {
       // The listen socket may not have been created yet.

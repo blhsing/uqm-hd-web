@@ -42,6 +42,18 @@ if (-not $SubscriptionId) {
     $SubscriptionId = (az account show --query id -o tsv).Trim()
 }
 
+# App Service otherwise lets the legacy iisnode handler select its bundled
+# Node 0.x runtime, which cannot execute the relay. Keep this aligned with the
+# package.json runtime requirement.
+az webapp config appsettings set `
+    --resource-group $ResourceGroup `
+    --name $AppName `
+    --settings WEBSITE_NODE_DEFAULT_VERSION=~24 `
+    --output none
+if ($LASTEXITCODE -ne 0) {
+    throw 'Could not configure the Node.js runtime required by the network relay.'
+}
+
 New-Item -ItemType Directory -Path $dist -Force | Out-Null
 if (Test-Path -LiteralPath $archive) {
     Remove-Item -LiteralPath $archive -Force
@@ -94,19 +106,30 @@ foreach ($asset in $assetSpecs) {
     $assetPath = Join-Path $addonRoot $asset.Name
     $targetPath = "/home/site/starcontrol2-app/game/content/addons/$($asset.Name)"
     Write-Host "Deploying verified game asset $($asset.Name)..."
-    az webapp deploy `
-        --resource-group $ResourceGroup `
-        --name $AppName `
-        --src-path $assetPath `
-        --type static `
-        --target-path $targetPath `
-        --clean false `
-        --restart false `
-        --track-status false `
-        --timeout 3600000 `
-        --only-show-errors `
-        --output none
-    if ($LASTEXITCODE -ne 0) {
+    $assetDeployed = $false
+    for ($attempt = 1; $attempt -le 3; $attempt++) {
+        & az webapp deploy `
+            --resource-group $ResourceGroup `
+            --name $AppName `
+            --src-path $assetPath `
+            --type static `
+            --target-path $targetPath `
+            --clean false `
+            --restart false `
+            --track-status false `
+            --timeout 3600000 `
+            --only-show-errors `
+            --output none
+        if ($LASTEXITCODE -eq 0) {
+            $assetDeployed = $true
+            break
+        }
+        if ($attempt -lt 3) {
+            Write-Warning "$($asset.Name) deployment attempt $attempt failed; retrying."
+            Start-Sleep -Seconds 15
+        }
+    }
+    if (-not $assetDeployed) {
         throw "The application was uploaded, but $($asset.Name) could not be deployed."
     }
 }

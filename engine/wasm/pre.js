@@ -75,6 +75,7 @@ function dispatchWebKey(type, definition) {
 
 window.uqmWeb = {
     language: webLanguage,
+    assetCacheStats: { hits: 0, misses: 0, writeFailures: 0 },
     keyDown(id, definition) {
         if (pressedWebKeys.has(id)) {
             return;
@@ -233,16 +234,62 @@ Module.preRun.push(function () {
 });
 
 Module.preRun.push(function () {
-    const commonAddons = [
-        "hires4x.zip",
-        "3domusic.zip",
-        "3dovoice.zip",
-        "3dovideo.zip",
-    ];
+    const addonManifest = {
+        "hires4x.zip": {
+            bytes: 369756672,
+            version: "76af440bd845a63bd42b88913347374eb62c40c149d0bea37045a10bd0bd6618",
+        },
+        "3domusic.zip": {
+            bytes: 21934569,
+            version: "7142332040c13a153856d22487aaf82e6b30fc4d22333bcf7607712843bca689",
+        },
+        "3dovoice.zip": {
+            bytes: 146438532,
+            version: "a14dc7d655297e1b6c6eedc2a4dee30a164646e6525e353bb7fdc5da75232b09",
+        },
+        "3dovideo.zip": {
+            bytes: 885,
+            version: "0fedb35025a8ff0cd9ff09aabe50e4dc4efc702b34471bf0f11de4aa501f7cbe",
+        },
+        "native1080-zh_TW.uqm": {
+            bytes: 189687374,
+            version: "f24d1f55e326fe20bb577c53eb12836ecff71af7a8b34ea2520537ec4ef1aef2",
+        },
+    };
+    const commonAddons = ["hires4x.zip", "3domusic.zip", "3dovoice.zip", "3dovideo.zip"];
     const addonNames = webLanguage === "zh-TW"
         ? [...commonAddons, "native1080-zh_TW.uqm"]
         : commonAddons;
     const dependency = "web-addon-packages";
+    const cacheName = "uqm-hd-game-assets-v1";
+
+    function addonUrl(name) {
+        const url = new URL(`content/addons/${name}`, window.location.href);
+        url.searchParams.set("v", addonManifest[name].version);
+        return url;
+    }
+
+    async function openAssetCache() {
+        if (!("caches" in window)) {
+            return null;
+        }
+        try {
+            navigator.storage?.persist?.().catch(() => {});
+            const cache = await caches.open(cacheName);
+            const currentUrls = new Set(Object.keys(addonManifest).map(name => addonUrl(name).href));
+            for (const request of await cache.keys()) {
+                if (!currentUrls.has(request.url)) {
+                    await cache.delete(request);
+                }
+            }
+            return cache;
+        } catch (error) {
+            console.warn("Persistent game asset cache is unavailable.", error);
+            return null;
+        }
+    }
+
+    const assetCachePromise = openAssetCache();
 
     function ensureDirectory(path) {
         const parts = path.split("/").filter(Boolean);
@@ -260,7 +307,8 @@ Module.preRun.push(function () {
     }
 
     async function loadAddon(name, index) {
-        const url = new URL(`content/addons/${name}`, window.location.href);
+        const spec = addonManifest[name];
+        const url = addonUrl(name);
         postToParent({
             type: "uqm-loading",
             file: index + 1,
@@ -269,12 +317,55 @@ Module.preRun.push(function () {
             progress: 0,
         });
 
-        const response = await fetch(url);
+        const cache = await assetCachePromise;
+        let response = null;
+        let cached = false;
+        if (cache) {
+            try {
+                response = await cache.match(url.href);
+                if (response && Number(response.headers.get("content-length")) !== spec.bytes) {
+                    await cache.delete(url.href);
+                    response = null;
+                }
+                cached = Boolean(response);
+            } catch (error) {
+                console.warn(`Could not read ${name} from the persistent cache.`, error);
+            }
+        }
+
+        let cacheWrite = Promise.resolve();
+        if (!response) {
+            response = await fetch(url.href);
+        }
         if (!response.ok) {
             throw new Error(`Unable to download ${name}: HTTP ${response.status}`);
         }
 
         const total = Number(response.headers.get("content-length")) || 0;
+        if (total && total !== spec.bytes) {
+            throw new Error(`${name} has ${total} bytes; expected ${spec.bytes}.`);
+        }
+        if (cached) {
+            window.uqmWeb.assetCacheStats.hits += 1;
+            console.log(`Loading ${name} from persistent browser cache.`);
+        } else {
+            window.uqmWeb.assetCacheStats.misses += 1;
+            if (cache) {
+                cacheWrite = cache.put(url.href, response.clone()).catch(error => {
+                    window.uqmWeb.assetCacheStats.writeFailures += 1;
+                    console.warn(`Could not persist ${name} in the browser cache.`, error);
+                });
+            }
+        }
+        postToParent({
+            type: "uqm-loading",
+            file: index + 1,
+            files: addonNames.length,
+            name,
+            progress: 0,
+            cached,
+        });
+
         let bytes;
         if (response.body && total) {
             const reader = response.body.getReader();
@@ -291,6 +382,7 @@ Module.preRun.push(function () {
                     files: addonNames.length,
                     name,
                     progress: offset / total,
+                    cached,
                 });
             }
             bytes = offset === data.length ? data : data.slice(0, offset);
@@ -298,7 +390,15 @@ Module.preRun.push(function () {
             bytes = new Uint8Array(await response.arrayBuffer());
         }
 
+        if (bytes.length !== spec.bytes) {
+            if (cache) {
+                await cache.delete(url.href);
+            }
+            throw new Error(`${name} has ${bytes.length} bytes; expected ${spec.bytes}.`);
+        }
+
         FS.writeFile(`/content/addons/${name}`, bytes, { canOwn: true });
+        await cacheWrite;
     }
 
     addRunDependency(dependency);
