@@ -40,6 +40,9 @@ const config = readFileSync(join(output, 'web.config'), 'utf8');
 for (const header of ['Cross-Origin-Opener-Policy', 'Cross-Origin-Embedder-Policy', 'Cross-Origin-Resource-Policy']) {
   if (!config.includes(header)) throw new Error(`web.config is missing ${header}.`);
 }
+if (!config.includes('fileExtension=".uqm"') || !config.includes('mimeType="application/octet-stream"')) {
+  throw new Error('web.config does not serve the Traditional-Chinese .uqm package.');
+}
 
 const separatelyDeployed = ['hires4x.zip', '3dovoice.zip', '3domusic.zip', 'native1080-zh_TW.uqm'];
 const deployment = readFileSync(join(root, 'scripts', 'deploy-azure.ps1'), 'utf8');
