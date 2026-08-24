@@ -220,9 +220,8 @@ async function main() {
     if (!launcher.autoStarted || launcher.launchButtonVisible) {
       throw new Error(`The game did not skip the launch screen: ${JSON.stringify(launcher)}.`);
     }
-    const expectedLanguageLabel = requestedLanguage === 'en' ? 'English' : '繁體中文';
-    if (launcher.activeLanguage !== expectedLanguageLabel) {
-      throw new Error(`Expected ${expectedLanguageLabel}, got ${launcher.activeLanguage}.`);
+    if (launcher.activeLanguage !== undefined) {
+      throw new Error(`Main-menu language controls appeared while the game was loading: ${launcher.activeLanguage}.`);
     }
     if (launcher.touchControlsVisible) {
       throw new Error('Desktop browser unexpectedly displayed touch battle controls.');
@@ -273,6 +272,16 @@ async function main() {
     }
 
     await delay(Number(process.env.UQM_TEST_STABILITY_MS) || 5_000);
+    const expectedLanguageLabel = requestedLanguage === 'en' ? 'English' : '繁體中文';
+    const readyChrome = await client.evaluate(`(() => ({
+      activeLanguage: document.querySelector('.language-switch .active')?.textContent?.trim(),
+      headerActionsVisible: Boolean(document.querySelector('.header-actions')),
+      backVisible: Boolean(document.querySelector('.back-button')),
+    }))()`);
+    if (runtime.mainMenu && (readyChrome.activeLanguage !== expectedLanguageLabel ||
+        !readyChrome.headerActionsVisible || readyChrome.backVisible)) {
+      throw new Error(`Main-menu controls failed: ${JSON.stringify(readyChrome)}.`);
+    }
     const expectedCacheHits = Number(process.env.UQM_TEST_EXPECT_CACHE_HITS) || 0;
     if (expectedCacheHits > 0 && runtime.assetCacheStats?.hits < expectedCacheHits) {
       throw new Error(`Expected at least ${expectedCacheHits} persistent asset-cache hits: ${JSON.stringify(runtime.assetCacheStats)}.`);
@@ -319,6 +328,10 @@ async function main() {
         const game = frame?.contentWindow;
         game.Module._uqm_web_battle_state = () => 7;
         game.Module._uqm_web_main_menu_state = () => 0;
+        let pauseCalls = 0;
+        let resumeCalls = 0;
+        game.Module._uqm_web_pause_combat = () => { pauseCalls += 1; return 1; };
+        game.Module._uqm_web_resume_combat = () => { resumeCalls += 1; };
         await new Promise((resolve) => setTimeout(resolve, 400));
         const labels = Array.from(document.querySelectorAll('.battle-controls button'))
           .map((button) => button.getAttribute('aria-label'));
@@ -365,7 +378,12 @@ async function main() {
         fire?.dispatchEvent(new PointerEvent('pointerup', { bubbles: true, pointerId: 2 }));
         if (fire && originalCapture) fire.setPointerCapture = originalCapture;
         const back = document.querySelector('.back-button');
+        const mainMenuActionsHiddenOutsideMainMenu = !document.querySelector('.header-actions');
         back?.click();
+        await new Promise((resolve) => setTimeout(resolve, 100));
+        window.dispatchEvent(new Event('blur'));
+        await new Promise((resolve) => setTimeout(resolve, 100));
+        window.dispatchEvent(new Event('focus'));
         await new Promise((resolve) => setTimeout(resolve, 100));
         game.Module._uqm_web_main_menu_state = () => 1;
         await new Promise((resolve) => setTimeout(resolve, 300));
@@ -376,6 +394,10 @@ async function main() {
           actionsOnRight: fireRect.left > innerWidth * 0.5,
           backVisibleOutsideMainMenu: Boolean(back),
           backHiddenOnMainMenu: !document.querySelector('.back-button'),
+          mainMenuActionsHiddenOutsideMainMenu,
+          mainMenuActionsVisibleOnMainMenu: Boolean(document.querySelector('.header-actions')),
+          pauseCalls,
+          resumeCalls,
           observed,
         };
       })()`);
@@ -383,6 +405,9 @@ async function main() {
       if (mobile.labels.length !== 4 || mobile.joystickCount !== 2 ||
           !mobile.joystickOnLeft || !mobile.actionsOnRight ||
           !mobile.backVisibleOutsideMainMenu || !mobile.backHiddenOnMainMenu ||
+          !mobile.mainMenuActionsHiddenOutsideMainMenu ||
+          !mobile.mainMenuActionsVisibleOnMainMenu ||
+          mobile.pauseCalls !== 1 || mobile.resumeCalls !== 1 ||
           !observedCodes.has('ArrowLeft') || !observedCodes.has('ArrowUp') ||
           !observedCodes.has('ControlRight') || !observedCodes.has('Escape')) {
         throw new Error(`Mobile battle controls failed: ${JSON.stringify(mobile)}.`);
@@ -391,7 +416,7 @@ async function main() {
 
     let flow = null;
     if (process.env.UQM_TEST_FLOW?.startsWith('super-melee')) {
-      const mainMenuUi = await waitFor(async () => {
+      await waitFor(async () => {
         const state = await client.evaluate(`(() => {
           const game = document.querySelector('iframe')?.contentWindow;
           return {
@@ -399,11 +424,8 @@ async function main() {
             backVisible: Boolean(document.querySelector('.back-button')),
           };
         })()`);
-        return state.nativeState ? state : null;
+        return state.nativeState && !state.backVisible ? state : null;
       }, Number(process.env.UQM_TEST_MENU_WAIT_MS) || 90_000, 'the native main menu');
-      if (mainMenuUi.backVisible) {
-        throw new Error(`Main-menu back-button visibility failed: ${JSON.stringify(mainMenuUi)}.`);
-      }
       let selectSuperMelee;
       if (['super-melee-click', 'super-melee-touch', 'super-melee-battle']
         .includes(process.env.UQM_TEST_FLOW)) {
@@ -415,7 +437,7 @@ async function main() {
           const canvasRect = canvas.getBoundingClientRect();
           return {
             x: frameRect.left + canvasRect.left + canvasRect.width * 0.5,
-            y: frameRect.top + canvasRect.top + canvasRect.height * 0.545,
+            y: frameRect.top + canvasRect.top + canvasRect.height * 0.505,
           };
         })()`);
         if (process.env.UQM_TEST_FLOW === 'super-melee-touch') {
@@ -445,7 +467,7 @@ async function main() {
             clickCount: 1,
           });
         }
-        await delay(3_000);
+        await delay(15_000);
         selectSuperMelee = await client.evaluate(`(() => {
           const game = document.querySelector('iframe')?.contentWindow;
           return {
@@ -464,7 +486,7 @@ async function main() {
         await tap({ key: 'ArrowDown', code: 'ArrowDown', keyCode: 40 });
         await tap({ key: 'ArrowDown', code: 'ArrowDown', keyCode: 40 });
         await tap({ key: 'Enter', code: 'Enter', keyCode: 13 });
-        await new Promise((resolve) => setTimeout(resolve, 3_000));
+        await new Promise((resolve) => setTimeout(resolve, 15_000));
         return { method: 'keyboard', battleState: game.uqmWeb.battleState() };
       })()`);
       }
@@ -534,15 +556,17 @@ async function main() {
             if (event.code === 'Escape') escapeObserved = true;
           }, { once: true, capture: true });
           button?.click();
-          await new Promise((resolve) => setTimeout(resolve, 250));
+          await new Promise((resolve) => setTimeout(resolve, 1_000));
           return {
             buttonPresent: Boolean(button),
             escapeObserved,
+            returnedToMainMenu: Boolean(game?.uqmWeb?.mainMenuState?.()),
             launchScreenPresent: Boolean(document.querySelector('.launch-button')),
           };
         })()`);
         flow = { ...flow, ...back };
-        if (!flow.buttonPresent || !flow.escapeObserved || flow.launchScreenPresent) {
+        if (!flow.buttonPresent || flow.escapeObserved || !flow.returnedToMainMenu ||
+            flow.launchScreenPresent) {
           throw new Error(`Universal back control failed: ${JSON.stringify(flow)}.`);
         }
       }

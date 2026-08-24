@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#000000">
-  <title>Star Control II — Web Edition</title>
+  <title>Star Control II</title>
   <style>
     * { box-sizing: border-box; }
     html, body {
@@ -47,7 +47,7 @@
   </style>
 </head>
 <body>
-  <div id="engine-status">
+  <div id="engine-status" hidden>
     <span id="engine-status-text">Loading Star Control II…</span>
     <progress id="engine-progress" value="0" max="100"></progress>
   </div>
@@ -70,7 +70,9 @@
         } else {
           progress.hidden = true;
         }
-        root.hidden = !message;
+        // The parent page owns normal loading progress. Keep this fallback
+        // invisible unless the embedded engine itself reports an error.
+        root.hidden = !/^Game (?:content|engine) error:/.test(message);
       },
       monitorRunDependencies(left) {
         Module.setStatus(left ? `Loading game data… (${Module.totalDependencies - left}/${Module.totalDependencies})` : '');

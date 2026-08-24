@@ -93,7 +93,29 @@ window.uqmWeb = {
     },
     tapKey(definition) {
         dispatchWebKey("keydown", definition);
-        window.setTimeout(() => dispatchWebKey("keyup", definition), 60);
+        window.setTimeout(() => dispatchWebKey("keyup", definition), 120);
+    },
+    requestBack(definition) {
+        const handled = typeof Module._uqm_web_request_back === "function" &&
+            Module._uqm_web_request_back();
+        if (!handled) {
+            window.uqmWeb.tapKey(definition);
+        }
+    },
+    pausedForBlur: false,
+    pauseCombat() {
+        if (!window.uqmWeb.pausedForBlur &&
+                typeof Module._uqm_web_pause_combat === "function" &&
+                Module._uqm_web_pause_combat()) {
+            window.uqmWeb.pausedForBlur = true;
+        }
+    },
+    resumeCombat() {
+        if (!window.uqmWeb.pausedForBlur) {
+            return;
+        }
+        window.uqmWeb.pausedForBlur = false;
+        Module._uqm_web_resume_combat?.();
     },
     releaseAll() {
         for (const [id, definition] of pressedWebKeys) {
@@ -183,6 +205,12 @@ window.addEventListener("message", event => {
         window.uqmWeb.keyUp(String(event.data.id));
     } else if (command === "tapKey") {
         window.uqmWeb.tapKey(event.data.definition);
+    } else if (command === "requestBack") {
+        window.uqmWeb.requestBack(event.data.definition);
+    } else if (command === "pauseCombat") {
+        window.uqmWeb.pauseCombat();
+    } else if (command === "resumeCombat") {
+        window.uqmWeb.resumeCombat();
     } else if (command === "releaseAll") {
         window.uqmWeb.releaseAll();
     } else if (command === "focus") {
@@ -262,8 +290,8 @@ Module.preRun.push(function () {
             version: "0fedb35025a8ff0cd9ff09aabe50e4dc4efc702b34471bf0f11de4aa501f7cbe",
         },
         "native1080-zh_TW.uqm": {
-            bytes: 189687374,
-            version: "f24d1f55e326fe20bb577c53eb12836ecff71af7a8b34ea2520537ec4ef1aef2",
+            bytes: 189574489,
+            version: "f9a5e11aec783ef03c1e471ff097b57a7e1e7116ab0f72b74d6032257efdd455",
         },
     };
     const commonAddons = ["hires4x.zip", "3domusic.zip", "3dovoice.zip", "3dovideo.zip"];

@@ -88,6 +88,25 @@ uqm_web_main_menu_state (void)
 {
 	return uqm_web_main_menu_active;
 }
+
+EMSCRIPTEN_KEEPALIVE int
+uqm_web_pause_combat (void)
+{
+	ACTIVITY activity = GLOBAL (CurrentActivity);
+
+	if ((activity & IN_BATTLE) == 0 || GamePaused ||
+			(activity & CHECK_PAUSE) != 0)
+		return 0;
+
+	GamePaused = TRUE;
+	return 1;
+}
+
+EMSCRIPTEN_KEEPALIVE void
+uqm_web_resume_combat (void)
+{
+	GamePaused = FALSE;
+}
 #endif
 
 

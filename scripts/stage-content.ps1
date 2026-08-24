@@ -31,6 +31,57 @@ $addonFiles = @(
     'native1080-zh_TW.uqm'
 )
 
+function Remove-UqmVisibleEditionWording {
+    param([Parameter(Mandatory = $true)][string]$ArchivePath)
+
+    Add-Type -AssemblyName System.IO.Compression.FileSystem
+    $utf8 = [Text.UTF8Encoding]::new($false)
+    $archive = [IO.Compression.ZipFile]::Open(
+        $ArchivePath,
+        [IO.Compression.ZipArchiveMode]::Update
+    )
+    try {
+        $entries = @($archive.Entries | Where-Object { $_.FullName.EndsWith('.txt') })
+        foreach ($entry in $entries) {
+            $reader = [IO.StreamReader]::new($entry.Open(), $utf8, $true)
+            try {
+                $original = $reader.ReadToEnd()
+            } finally {
+                $reader.Dispose()
+            }
+
+            $updated = $original.Replace('The Ur-Quan Masters HD', 'The Ur-Quan Masters')
+            $updated = $updated.Replace('Ur-Quan Masters HD', 'Ur-Quan Masters')
+            $updated = $updated.Replace('UQM-HD', 'UQM')
+            $updated = $updated.Replace('Web Edition', '')
+            $updated = $updated.Replace('較高解析度', '較細緻畫面')
+            $updated = $updated.Replace('高解析度', '解析度')
+            $updated = $updated.Replace('烏爾關霸主 HD', '烏爾關霸主')
+            $updated = $updated.Replace('網頁版', '')
+
+            if ($updated -eq $original) {
+                continue
+            }
+
+            $stream = $entry.Open()
+            try {
+                $stream.SetLength(0)
+                $writer = [IO.StreamWriter]::new($stream, $utf8, 1024, $true)
+                try {
+                    $writer.Write($updated)
+                    $writer.Flush()
+                } finally {
+                    $writer.Dispose()
+                }
+            } finally {
+                $stream.Dispose()
+            }
+        }
+    } finally {
+        $archive.Dispose()
+    }
+}
+
 foreach ($name in @($baseArchive) + $baseFiles) {
     if (-not (Test-Path -LiteralPath (Join-Path $source $name))) {
         throw "Required upstream content is missing: $name"
@@ -66,13 +117,16 @@ foreach ($name in $baseFiles) {
 }
 $packagesTarget = Join-Path $targetFull 'packages'
 New-Item -ItemType Directory -Path $packagesTarget -Force | Out-Null
-Copy-Item -LiteralPath (Join-Path $source $baseArchive) -Destination $packagesTarget
+$basePackageTarget = Join-Path $packagesTarget $baseArchive
+Copy-Item -LiteralPath (Join-Path $source $baseArchive) -Destination $basePackageTarget
+Remove-UqmVisibleEditionWording -ArchivePath $basePackageTarget
 
 if (-not $Minimal) {
     New-Item -ItemType Directory -Path $addonTarget -Force | Out-Null
     foreach ($name in $addonFiles) {
         Copy-Item -LiteralPath (Join-Path $source 'addons' $name) -Destination $addonTarget
     }
+    Remove-UqmVisibleEditionWording -ArchivePath (Join-Path $addonTarget 'native1080-zh_TW.uqm')
 }
 
 $files = @(

@@ -72,6 +72,9 @@
 
 #include <assert.h>
 #include <string.h>
+#ifdef __EMSCRIPTEN__
+#	include <emscripten/emscripten.h>
+#endif
 
 
 static void StartMelee (MELEE_STATE *pMS);
@@ -204,6 +207,26 @@ BOOLEAN DoMelee (MELEE_STATE *pMS);
 static BOOLEAN DoEdit (MELEE_STATE *pMS);
 static BOOLEAN DoConfirmSettings (MELEE_STATE *pMS);
 
+#ifdef __EMSCRIPTEN__
+static volatile int webBackRequested = 0;
+
+// The Super Melee setup screen maps Escape to fleet editing, not exit.  Let
+// the browser Back button request the same action as its red X button while
+// retaining Escape as the fallback everywhere else.
+EMSCRIPTEN_KEEPALIVE int
+uqm_web_request_back (void)
+{
+	if (pMeleeState != NULL &&
+			LOBYTE (GLOBAL (CurrentActivity)) == SUPER_MELEE &&
+			pMeleeState->InputFunc == DoMelee)
+	{
+		webBackRequested = 1;
+		return 1;
+	}
+	return 0;
+}
+#endif
+
 #define DTSHS_NORMAL   0
 #define DTSHS_EDIT     1
 #define DTSHS_SELECTED 2
@@ -229,6 +252,36 @@ DrawMeleeIcon (COUNT which_icon)
 	s.origin.y = 0;
 	s.frame = SetAbsFrameIndex (MeleeFrame, which_icon);
 	DrawStamp (&s);
+}
+
+// Highlighted localized labels can be wider than their normal frames.  Since
+// these sprites are transparent, drawing the normal frame alone leaves the
+// outer highlight pixels behind.  Restore the complete union from the static
+// background before drawing the normal label.
+static void
+RestoreMeleeIcon (COUNT normalIcon, COUNT highlightedIcon)
+{
+	FRAME normalFrame = SetAbsFrameIndex (MeleeFrame, normalIcon);
+	FRAME highlightedFrame = SetAbsFrameIndex (MeleeFrame, highlightedIcon);
+	RECT normalRect, highlightedRect, repairRect, oldClip;
+	BOOLEAN hadClip;
+
+	if (!GetFrameRect (normalFrame, &normalRect) ||
+			!GetFrameRect (highlightedFrame, &highlightedRect))
+	{
+		DrawMeleeIcon (normalIcon);
+		return;
+	}
+
+	BoxUnion (&normalRect, &highlightedRect, &repairRect);
+	hadClip = GetContextClipRect (&oldClip);
+	if (hadClip && !BoxIntersect (&repairRect, &oldClip, &repairRect))
+		return;
+
+	SetContextClipRect (&repairRect);
+	DrawMeleeIcon (0);
+	SetContextClipRect (hadClip ? &oldClip : NULL);
+	DrawMeleeIcon (normalIcon);
 }
 
 static FleetShipIndex
@@ -863,30 +916,30 @@ Deselect (BYTE opt)
 	switch (opt)
 	{
 		case START_MELEE:
-			DrawMeleeIcon (25);  /* "Battle!" (not highlighted) */
+			RestoreMeleeIcon (25, 26);  /* "Battle!" */
 			break;
 		case LOAD_TOP:
-			DrawMeleeIcon (17); /* "Load" (top, not highlighted) */
+			RestoreMeleeIcon (17, 19); /* "Load" (top) */
 			break;
 		case LOAD_BOT:
-			DrawMeleeIcon (22); /* "Load" (bottom, not highlighted) */
+			RestoreMeleeIcon (22, 24); /* "Load" (bottom) */
 			break;
 		case SAVE_TOP:
-			DrawMeleeIcon (18);  /* "Save" (top, not highlighted) */
+			RestoreMeleeIcon (18, 20);  /* "Save" (top) */
 			break;
 		case SAVE_BOT:
-			DrawMeleeIcon (21);  /* "Save" (bottom, not highlighted) */
+			RestoreMeleeIcon (21, 23);  /* "Save" (bottom) */
 			break;
 #ifdef NETPLAY
 		case NET_TOP:
-			DrawMeleeIcon (35);  /* "Net..." (top, not highlighted) */
+			RestoreMeleeIcon (35, 36);  /* "Net..." (top) */
 			break;
 		case NET_BOT:
-			DrawMeleeIcon (37);  /* "Net..." (bottom, not highlighted) */
+			RestoreMeleeIcon (37, 38);  /* "Net..." (bottom) */
 			break;
 #endif
 		case QUIT_BOT:
-			DrawMeleeIcon (29);  /* "Quit" (not highlighted) */
+			RestoreMeleeIcon (29, 30);  /* "Quit" */
 			break;
 		case CONTROLS_TOP:
 		case CONTROLS_BOT:
@@ -2282,6 +2335,15 @@ DoMelee (MELEE_STATE *pMS)
 	if (GLOBAL (CurrentActivity) & CHECK_ABORT)
 		return FALSE;
 
+#ifdef __EMSCRIPTEN__
+	if (webBackRequested)
+	{
+		webBackRequested = 0;
+		GLOBAL (CurrentActivity) |= CHECK_ABORT;
+		return FALSE;
+	}
+#endif
+
 	SetMenuSounds (MENU_SOUND_ARROWS, MENU_SOUND_SELECT);
 	if (!pMS->Initialized)
 	{
@@ -2530,6 +2592,11 @@ Melee (void)
 		RandomContext_Delete (MenuState.randomContext);
 		
 		MeleeSetup_delete (MenuState.meleeSetup);
+
+#ifdef __EMSCRIPTEN__
+		webBackRequested = 0;
+#endif
+		pMeleeState = NULL;
 
 		FlushInput ();
 	}

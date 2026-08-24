@@ -4,7 +4,7 @@ import { PointerEvent, useCallback, useEffect, useMemo, useRef, useState } from 
 
 type Language = 'en' | 'zh-TW';
 type WebKey = { key: string; code: string; keyCode: number; location?: number };
-type WebCommand = 'keyDown' | 'keyUp' | 'tapKey' | 'releaseAll' | 'focus' | 'resumeAudio';
+type WebCommand = 'keyDown' | 'keyUp' | 'tapKey' | 'requestBack' | 'pauseCombat' | 'resumeCombat' | 'releaseAll' | 'focus' | 'resumeAudio';
 type CommandSender = (command: WebCommand, payload?: Record<string, unknown>) => void;
 type JoystickDirection = 'left' | 'right' | 'thrust';
 
@@ -12,10 +12,10 @@ const AZURE_GAME_BASE = 'https://test-officialwebsite.azurewebsites.net/starcont
 
 const copy = {
   en: {
-    title: 'Star Control II — Web Edition',
+    title: 'Star Control II',
     loading: 'Loading the complete game…',
-    downloading: 'Downloading high-resolution game content',
-    cached: 'Loading cached high-resolution game content',
+    downloading: 'Downloading game content',
+    cached: 'Loading cached game content',
     back: 'Back',
     fullscreen: 'Fullscreen',
     controls: 'Battle controls',
@@ -29,10 +29,10 @@ const copy = {
     special: 'Special',
   },
   'zh-TW': {
-    title: '星際控制 II — 網頁版',
+    title: '星際控制 II',
     loading: '正在載入完整遊戲…',
-    downloading: '正在下載高解析度遊戲內容',
-    cached: '正在載入已快取的高解析度遊戲內容',
+    downloading: '正在下載遊戲內容',
+    cached: '正在載入已快取的遊戲內容',
     back: '返回',
     fullscreen: '全螢幕',
     controls: '戰鬥操作',
@@ -321,6 +321,29 @@ export default function Home() {
     };
   }, [running, sendCommand, text.cached, text.downloading, text.loading]);
 
+  useEffect(() => {
+    if (!running || !ready || !inBattle) return;
+
+    const pauseForLostFocus = () => {
+      sendCommand('releaseAll');
+      sendCommand('pauseCombat');
+    };
+    const resumeForFocus = () => sendCommand('resumeCombat');
+    const onVisibilityChange = () => {
+      if (document.hidden) pauseForLostFocus();
+      else if (document.hasFocus()) resumeForFocus();
+    };
+
+    window.addEventListener('blur', pauseForLostFocus);
+    window.addEventListener('focus', resumeForFocus);
+    document.addEventListener('visibilitychange', onVisibilityChange);
+    return () => {
+      window.removeEventListener('blur', pauseForLostFocus);
+      window.removeEventListener('focus', resumeForFocus);
+      document.removeEventListener('visibilitychange', onVisibilityChange);
+    };
+  }, [inBattle, ready, running, sendCommand]);
+
   const selectLanguage = (next: Language) => {
     if (next === language) return;
     sendCommand('releaseAll');
@@ -341,7 +364,7 @@ export default function Home() {
 
   const goBack = () => {
     if (!running || !ready || atMainMenu) return;
-    sendCommand('tapKey', { definition: keys.escape });
+    sendCommand('requestBack', { definition: keys.escape });
   };
 
   const toggleFullscreen = async () => {
@@ -414,15 +437,16 @@ export default function Home() {
         </div>
       )}
 
-      <header className={`launcher-bar${ready && !atMainMenu ? '' : ' no-back'}`}>
-        {ready && !atMainMenu && (
-          <button className="back-button" type="button" aria-label={text.back} onClick={goBack}>
-            <span aria-hidden="true">←</span>
-            {text.back}
-          </button>
-        )}
-        <div className="header-actions">
-          {running && (
+      {ready && (
+        <header className={`launcher-bar${atMainMenu ? ' no-back' : ''}`}>
+          {!atMainMenu && (
+            <button className="back-button" type="button" aria-label={text.back} onClick={goBack}>
+              <span aria-hidden="true">←</span>
+              {text.back}
+            </button>
+          )}
+          {atMainMenu && (
+            <div className="header-actions">
             <button
               className="fullscreen-button"
               type="button"
@@ -432,25 +456,26 @@ export default function Home() {
             >
               <span aria-hidden="true">⛶</span>
             </button>
+              <div className="language-switch" role="group" aria-label="Language / 語言">
+                <button
+                  className={language === 'zh-TW' ? 'active' : ''}
+                  onClick={() => selectLanguage('zh-TW')}
+                  type="button"
+                >
+                  繁體中文
+                </button>
+                <button
+                  className={language === 'en' ? 'active' : ''}
+                  onClick={() => selectLanguage('en')}
+                  type="button"
+                >
+                  English
+                </button>
+              </div>
+            </div>
           )}
-          <div className="language-switch" role="group" aria-label="Language / 語言">
-            <button
-              className={language === 'zh-TW' ? 'active' : ''}
-              onClick={() => selectLanguage('zh-TW')}
-              type="button"
-            >
-              繁體中文
-            </button>
-            <button
-              className={language === 'en' ? 'active' : ''}
-              onClick={() => selectLanguage('en')}
-              type="button"
-            >
-              English
-            </button>
-          </div>
-        </div>
-      </header>
+        </header>
+      )}
 
       {running && ready && inBattle && mobileControls && (
         <section

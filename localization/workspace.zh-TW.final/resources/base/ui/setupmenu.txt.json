@@ -23,7 +23,7 @@
       "unit_kind": "whole",
       "payload_start": 0,
       "source": "Ur-Quan Masters HD Setup",
-      "translation": "烏爾關霸主 HD 設定"
+      "translation": "烏爾關霸主設定"
     },
     {
       "index": 1,
@@ -88,7 +88,7 @@
       "unit_kind": "whole",
       "payload_start": 0,
       "source": "Hi-res 640x480 resolution.\nRequires 'Hires2x' package installed.",
-      "translation": "高解析度 640x480。\n必須安裝「Hires2 x」套件。"
+      "translation": "解析度 640x480。\n必須安裝「Hires2 x」套件。"
     },
     {
       "index": 6,
@@ -101,7 +101,7 @@
       "unit_kind": "whole",
       "payload_start": 0,
       "source": "Hi-res 1280x960 resolution.\nRequires 'Hires4x' package installed.",
-      "translation": "高解析度 1280x960。\n必須安裝「Hires4 x」套件。"
+      "translation": "解析度 1280x960。\n必須安裝「Hires4 x」套件。"
     },
     {
       "index": 7,
@@ -218,7 +218,7 @@
       "unit_kind": "whole",
       "payload_start": 0,
       "source": "An interpolating scaler.\nProduces sharp edges, but at a higher resolution.\nAffects only 320x240 mode.",
-      "translation": "插值縮放器。\n以較高解析度產生銳利邊 緣。\n僅影響 320x240 模式。"
+      "translation": "插值縮放器。\n產生較細緻的銳利邊緣。\n僅影響 320x240 模式。"
     },
     {
       "index": 16,
@@ -231,7 +231,7 @@
       "unit_kind": "whole",
       "payload_start": 0,
       "source": "A high quality, very expensive interpolating scaler.\nProduces sharp edges, but at a higher resolution.\nAffects only 320x240 mode.",
-      "translation": "高品質且運算成本極高的插 值縮放器。\n以較高解析度產生銳利邊 緣。\n僅影響 320x240 模式。"
+      "translation": "高品質且運算成本極高的插 值縮放器。\n產生較細緻的銳利邊緣。\n僅影響 320x240 模式。"
     },
     {
       "index": 17,

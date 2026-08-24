@@ -9,7 +9,7 @@ const assets = [
   ['3dovoice.zip', 146_438_532, 'a14dc7d655297e1b6c6eedc2a4dee30a164646e6525e353bb7fdc5da75232b09'],
   ['3domusic.zip', 21_934_569, '7142332040c13a153856d22487aaf82e6b30fc4d22333bcf7607712843bca689'],
   ['3dovideo.zip', 885, '0fedb35025a8ff0cd9ff09aabe50e4dc4efc702b34471bf0f11de4aa501f7cbe'],
-  ['native1080-zh_TW.uqm', 189_687_374, 'f24d1f55e326fe20bb577c53eb12836ecff71af7a8b34ea2520537ec4ef1aef2'],
+  ['native1080-zh_TW.uqm', 189_574_489, 'f9a5e11aec783ef03c1e471ff097b57a7e1e7116ab0f72b74d6032257efdd455'],
 ];
 const preloadSource = readFileSync(resolve(import.meta.dirname, '..', 'engine', 'wasm', 'pre.js'), 'utf8');
 
