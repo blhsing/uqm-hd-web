@@ -105,6 +105,12 @@ if (-not $entry) {
 foreach ($asset in $assetSpecs) {
     $assetPath = Join-Path $addonRoot $asset.Name
     $targetPath = "/home/site/starcontrol2-app/game/content/addons/$($asset.Name)"
+    $remoteAssetUrl = "https://$($AppName.ToLowerInvariant()).azurewebsites.net/starcontrol2/game/content/addons/$($asset.Name)"
+    $remoteLength = (& node -e "fetch(process.argv[1], {method:'HEAD'}).then(r => console.log(r.ok ? (r.headers.get('content-length') || '') : '')).catch(() => console.log(''))" $remoteAssetUrl).Trim()
+    if ($LASTEXITCODE -eq 0 -and $remoteLength -eq [string]$asset.Bytes) {
+        Write-Host "Keeping unchanged verified game asset $($asset.Name) ($remoteLength bytes)."
+        continue
+    }
     Write-Host "Deploying verified game asset $($asset.Name)..."
     $assetDeployed = $false
     for ($attempt = 1; $attempt -le 3; $attempt++) {
