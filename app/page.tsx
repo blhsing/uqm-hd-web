@@ -1,58 +1,49 @@
 'use client';
 
 import { PointerEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import Image from 'next/image';
 
 type Language = 'en' | 'zh-TW';
 type WebKey = { key: string; code: string; keyCode: number; location?: number };
 type WebCommand = 'keyDown' | 'keyUp' | 'tapKey' | 'releaseAll' | 'focus' | 'resumeAudio';
+type CommandSender = (command: WebCommand, payload?: Record<string, unknown>) => void;
+type JoystickDirection = 'left' | 'right' | 'thrust';
 
 const AZURE_GAME_BASE = 'https://test-officialwebsite.azurewebsites.net/starcontrol2';
 
 const copy = {
   en: {
-    eyebrow: 'The Ur-Quan Masters HD',
     title: 'Star Control II — Web Edition',
-    description: 'The complete campaign and Super Melee, with browser saves and touch controls.',
     loading: 'Loading the complete game…',
     downloading: 'Downloading high-resolution game content',
     cached: 'Loading cached high-resolution game content',
-    play: 'Launch game',
     back: 'Back',
     fullscreen: 'Fullscreen',
-    backAgain: 'Back sent to the game. Tap again to return to the launcher.',
     controls: 'Battle controls',
     player1: 'Player 1',
     player2: 'Player 2',
+    joystick: 'Steering and thrust joystick',
     left: 'Turn left',
     right: 'Turn right',
     thrust: 'Thrust',
     fire: 'Fire',
     special: 'Special',
-    touchHint: 'Tap menus directly. Battle buttons appear automatically when combat begins.',
-    networkHint: 'Online Super Melee: both players choose Connect, enter 127.0.0.1, and share the same five-digit port as the room code.',
   },
   'zh-TW': {
-    eyebrow: '《星際控制 II》HD',
     title: '星際控制 II — 網頁版',
-    description: '完整戰役與超級對戰，支援瀏覽器存檔及觸控操作。',
     loading: '正在載入完整遊戲…',
     downloading: '正在下載高解析度遊戲內容',
     cached: '正在載入已快取的高解析度遊戲內容',
-    play: '啟動遊戲',
     back: '返回',
     fullscreen: '全螢幕',
-    backAgain: '已向遊戲送出返回指令；再按一次可回到啟動畫面。',
     controls: '戰鬥操作',
     player1: '玩家一',
     player2: '玩家二',
+    joystick: '轉向及推進搖桿',
     left: '左轉',
     right: '右轉',
     thrust: '推進',
     fire: '武器',
     special: '特殊能力',
-    touchHint: '選單可直接點選；進入戰鬥後會自動顯示觸控按鈕。',
-    networkHint: '網路超級對戰：兩邊都選「連線至遠端主機」，輸入 127.0.0.1，並共用同一個五位數連接埠作為房間碼。',
   },
 } as const;
 
@@ -71,11 +62,6 @@ const keys = {
 } satisfies Record<string, WebKey>;
 
 function preferredLanguage(): Language {
-  const saved = window.localStorage.getItem('uqm-language');
-  if (saved === 'en' || saved === 'zh-TW') {
-    return saved;
-  }
-
   const primary = navigator.languages?.[0] || navigator.language;
   const traditionalChinese = /^zh-(?:Hant(?:-|$)|TW(?:-|$)|HK(?:-|$)|MO(?:-|$))/i.test(primary);
   return traditionalChinese ? 'zh-TW' : 'en';
@@ -96,6 +82,164 @@ function isMobileBrowser(): boolean {
   return mobileUserAgent || modernIPad;
 }
 
+type VirtualJoystickProps = {
+  idPrefix: string;
+  label: string;
+  leftLabel: string;
+  rightLabel: string;
+  thrustLabel: string;
+  leftKey: WebKey;
+  rightKey: WebKey;
+  thrustKey: WebKey;
+  sendCommand: CommandSender;
+};
+
+function VirtualJoystick({
+  idPrefix,
+  label,
+  leftLabel,
+  rightLabel,
+  thrustLabel,
+  leftKey,
+  rightKey,
+  thrustKey,
+  sendCommand,
+}: VirtualJoystickProps) {
+  const pointerRef = useRef<number | null>(null);
+  const heldRef = useRef<Set<JoystickDirection>>(new Set());
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [activeDirections, setActiveDirections] = useState('');
+  const bindings: Record<JoystickDirection, WebKey> = {
+    left: leftKey,
+    right: rightKey,
+    thrust: thrustKey,
+  };
+
+  const releaseHeld = useCallback(() => {
+    for (const direction of heldRef.current) {
+      sendCommand('keyUp', { id: `${idPrefix}-${direction}` });
+    }
+    heldRef.current.clear();
+  }, [idPrefix, sendCommand]);
+
+  useEffect(() => {
+    const resetAfterBlur = () => {
+      pointerRef.current = null;
+      releaseHeld();
+      setPosition({ x: 0, y: 0 });
+      setActiveDirections('');
+    };
+    window.addEventListener('blur', resetAfterBlur);
+    return () => {
+      window.removeEventListener('blur', resetAfterBlur);
+      releaseHeld();
+    };
+  }, [releaseHeld]);
+
+  const applyDirections = (horizontal: number, vertical: number) => {
+    const next = new Set<JoystickDirection>();
+    if (horizontal <= -0.28) next.add('left');
+    if (horizontal >= 0.28) next.add('right');
+    if (vertical <= -0.2) next.add('thrust');
+
+    for (const direction of ['left', 'right', 'thrust'] as const) {
+      const wasHeld = heldRef.current.has(direction);
+      const shouldHold = next.has(direction);
+      if (shouldHold && !wasHeld) {
+        sendCommand('keyDown', {
+          id: `${idPrefix}-${direction}`,
+          definition: bindings[direction],
+        });
+      } else if (!shouldHold && wasHeld) {
+        sendCommand('keyUp', { id: `${idPrefix}-${direction}` });
+      }
+    }
+
+    heldRef.current = next;
+    setActiveDirections([...next].join(' '));
+  };
+
+  const updateFromPointer = (event: PointerEvent<HTMLDivElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const rawX = event.clientX - (rect.left + rect.width / 2);
+    const rawY = event.clientY - (rect.top + rect.height / 2);
+    const maxTravel = rect.width * 0.29;
+    const distance = Math.hypot(rawX, rawY);
+    const scale = distance > maxTravel ? maxTravel / distance : 1;
+    const x = rawX * scale;
+    const y = rawY * scale;
+
+    setPosition({ x, y });
+    applyDirections(rawX / maxTravel, rawY / maxTravel);
+  };
+
+  const finishPointer = () => {
+    pointerRef.current = null;
+    releaseHeld();
+    setPosition({ x: 0, y: 0 });
+    setActiveDirections('');
+  };
+
+  const beginPointer = (event: PointerEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    if (pointerRef.current !== null) return;
+    pointerRef.current = event.pointerId;
+    try {
+      event.currentTarget.setPointerCapture(event.pointerId);
+    } catch {
+      // Synthetic test events and older WebViews may not expose pointer capture.
+    }
+    sendCommand('resumeAudio');
+    updateFromPointer(event);
+  };
+
+  const movePointer = (event: PointerEvent<HTMLDivElement>) => {
+    if (pointerRef.current !== event.pointerId) return;
+    event.preventDefault();
+    updateFromPointer(event);
+  };
+
+  const endPointer = (event: PointerEvent<HTMLDivElement>) => {
+    if (pointerRef.current !== event.pointerId) return;
+    event.preventDefault();
+    finishPointer();
+  };
+
+  return (
+    <div className="joystick-shell">
+      <div
+        className="virtual-joystick"
+        role="group"
+        aria-label={label}
+        aria-roledescription="joystick"
+        data-active={activeDirections}
+        onContextMenu={(event) => event.preventDefault()}
+        onPointerDown={beginPointer}
+        onPointerMove={movePointer}
+        onPointerUp={endPointer}
+        onPointerCancel={endPointer}
+        onLostPointerCapture={endPointer}
+      >
+        <span className="joystick-direction joystick-left" aria-hidden="true">◀</span>
+        <span className="joystick-direction joystick-thrust" aria-hidden="true">▲</span>
+        <span className="joystick-direction joystick-right" aria-hidden="true">▶</span>
+        <span
+          className="joystick-knob"
+          aria-hidden="true"
+          style={{ transform: `translate3d(${position.x}px, ${position.y}px, 0)` }}
+        >
+          <span>✥</span>
+        </span>
+      </div>
+      <span className="joystick-labels" aria-hidden="true">
+        <small>{leftLabel}</small>
+        <small>{thrustLabel}</small>
+        <small>{rightLabel}</small>
+      </span>
+    </div>
+  );
+}
+
 export default function Home() {
   const [language, setLanguage] = useState<Language>('en');
   const [hydrated, setHydrated] = useState(false);
@@ -103,38 +247,37 @@ export default function Home() {
   const [running, setRunning] = useState(false);
   const [ready, setReady] = useState(false);
   const [inBattle, setInBattle] = useState(false);
+  const [atMainMenu, setAtMainMenu] = useState(true);
   const [battlePlayers, setBattlePlayers] = useState({ player1: true, player2: false });
   const [loadingDetail, setLoadingDetail] = useState<{ label: string; progress: number } | null>(null);
-  const [backNotice, setBackNotice] = useState(false);
-  const [basePath, setBasePath] = useState('');
   const [gameBase, setGameBase] = useState('');
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const lastBackRef = useRef(0);
   const text = copy[language];
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {
-      setLanguage(preferredLanguage());
-      setMobileControls(isMobileBrowser());
       const deploymentPath = window.location.pathname.startsWith('/starcontrol2')
         ? '/starcontrol2'
         : '';
       const localHost = /^(?:localhost|127(?:\.\d+){3}|\[?::1\]?)$/i.test(window.location.hostname);
-      setBasePath(deploymentPath);
+
+      setLanguage(preferredLanguage());
+      setMobileControls(isMobileBrowser());
       setGameBase((deploymentPath || localHost) ? deploymentPath : AZURE_GAME_BASE);
       setHydrated(true);
+      setRunning(true);
     });
     return () => window.cancelAnimationFrame(frame);
   }, []);
 
-  const sendCommand = useCallback((command: WebCommand, payload: Record<string, unknown> = {}) => {
+  const sendCommand = useCallback<CommandSender>((command, payload = {}) => {
     try {
       const frame = iframeRef.current;
       if (!frame?.contentWindow) return;
       const targetOrigin = new URL(frame.src, window.location.href).origin;
       frame.contentWindow.postMessage({ type: 'uqm-command', command, ...payload }, targetOrigin);
     } catch {
-      // The iframe may be navigating while the launcher is being reset.
+      // The iframe may be navigating while the selected language is reloaded.
     }
   }, []);
 
@@ -153,6 +296,7 @@ export default function Home() {
         window.setTimeout(() => sendCommand('focus'), 0);
       } else if (event.data?.type === 'uqm-state') {
         setInBattle(Boolean(event.data.inBattle));
+        if ('mainMenu' in event.data) setAtMainMenu(Boolean(event.data.mainMenu));
         setBattlePlayers({
           player1: Boolean(event.data.player1),
           player2: Boolean(event.data.player2),
@@ -178,17 +322,16 @@ export default function Home() {
   }, [running, sendCommand, text.cached, text.downloading, text.loading]);
 
   const selectLanguage = (next: Language) => {
-    window.localStorage.setItem('uqm-language', next);
+    if (next === language) return;
+    sendCommand('releaseAll');
+    setRunning(false);
     setLanguage(next);
-    if (running) {
-      sendCommand('releaseAll');
-      setReady(false);
-      setInBattle(false);
-      setBattlePlayers({ player1: true, player2: false });
-      setLoadingDetail(null);
-      setRunning(false);
-      window.setTimeout(() => setRunning(true), 0);
-    }
+    setReady(false);
+    setInBattle(false);
+    setAtMainMenu(true);
+    setBattlePlayers({ player1: true, player2: false });
+    setLoadingDetail(null);
+    window.setTimeout(() => setRunning(true), 0);
   };
 
   const gameUrl = useMemo(
@@ -197,28 +340,8 @@ export default function Home() {
   );
 
   const goBack = () => {
-    if (!running) {
-      if (window.history.length > 1) window.history.back();
-      return;
-    }
-
-    const now = Date.now();
-    if (now - lastBackRef.current < 1600) {
-      sendCommand('releaseAll');
-      setRunning(false);
-      setReady(false);
-      setInBattle(false);
-      setBattlePlayers({ player1: true, player2: false });
-      setLoadingDetail(null);
-      setBackNotice(false);
-      lastBackRef.current = 0;
-      return;
-    }
-
+    if (!running || !ready || atMainMenu) return;
     sendCommand('tapKey', { definition: keys.escape });
-    lastBackRef.current = now;
-    setBackNotice(true);
-    window.setTimeout(() => setBackNotice(false), 1600);
   };
 
   const toggleFullscreen = async () => {
@@ -232,7 +355,11 @@ export default function Home() {
 
   const hold = (id: string, definition: WebKey) => (event: PointerEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    event.currentTarget.setPointerCapture(event.pointerId);
+    try {
+      event.currentTarget.setPointerCapture(event.pointerId);
+    } catch {
+      // Pointer capture is unavailable for synthetic events in browser tests.
+    }
     sendCommand('resumeAudio');
     sendCommand('keyDown', { id, definition });
   };
@@ -241,7 +368,7 @@ export default function Home() {
     sendCommand('keyUp', { id });
   };
 
-  const control = (id: string, label: string, glyph: string, definition: WebKey, kind = '') => (
+  const control = (id: string, label: string, glyph: string, definition: WebKey, kind: string) => (
     <button
       className={kind}
       type="button"
@@ -258,64 +385,42 @@ export default function Home() {
   );
 
   if (!hydrated) {
-    return <main className="launcher-shell" aria-label="Star Control II" />;
+    return <main className="game-shell" aria-label="Star Control II" />;
   }
 
+  const dualPlayerControls = battlePlayers.player1 && battlePlayers.player2;
+
   return (
-    <main className={running ? 'game-shell' : 'launcher-shell'}>
-      {!running && (
-        <>
-          <Image
-            className="game-preview"
-            src={`${basePath}/assets/main-menu-zh-tw.png`}
-            alt="Traditional Chinese main menu of The Ur-Quan Masters HD"
-            fill
-            priority
-            sizes="100vw"
-            unoptimized
-          />
-          <div className="space-vignette" />
-          <section className="launch-card">
-            <p className="eyebrow">{text.eyebrow}</p>
-            <h1>{text.title}</h1>
-            <p className="description">{text.description}</p>
-            <button className="launch-button" type="button" onClick={() => setRunning(true)}>
-              {text.play}
-            </button>
-            <p className="touch-hint">{text.touchHint}</p>
-            <p className="network-hint">{text.networkHint}</p>
-          </section>
-        </>
-      )}
-
+    <main className="game-shell">
       {running && (
-        <>
-          <iframe
-            ref={iframeRef}
-            className="game-frame"
-            src={gameUrl}
-            title={text.title}
-            allow="autoplay; fullscreen; gamepad; cross-origin-isolated"
-          />
-          {!ready && (
-            <div className="loading-screen" role="status">
-              <span />
-              <p>{loadingDetail?.label || text.loading}</p>
-              {loadingDetail && (
-                <progress value={loadingDetail.progress} max={1}>
-                  {Math.round(loadingDetail.progress * 100)}%
-                </progress>
-              )}
-            </div>
-          )}
-        </>
+        <iframe
+          ref={iframeRef}
+          className="game-frame"
+          src={gameUrl}
+          title={text.title}
+          allow="autoplay; fullscreen; gamepad; cross-origin-isolated"
+        />
       )}
 
-      <header className="launcher-bar">
-        <button className="back-button" type="button" aria-label={text.back} onClick={goBack}>
-          <span aria-hidden="true">←</span>
-          {text.back}
-        </button>
+      {!ready && (
+        <div className="loading-screen" role="status">
+          <span />
+          <p>{loadingDetail?.label || text.loading}</p>
+          {loadingDetail && (
+            <progress value={loadingDetail.progress} max={1}>
+              {Math.round(loadingDetail.progress * 100)}%
+            </progress>
+          )}
+        </div>
+      )}
+
+      <header className={`launcher-bar${ready && !atMainMenu ? '' : ' no-back'}`}>
+        {ready && !atMainMenu && (
+          <button className="back-button" type="button" aria-label={text.back} onClick={goBack}>
+            <span aria-hidden="true">←</span>
+            {text.back}
+          </button>
+        )}
         <div className="header-actions">
           {running && (
             <button
@@ -347,35 +452,52 @@ export default function Home() {
         </div>
       </header>
 
-      {backNotice && <div className="back-notice" role="status">{text.backAgain}</div>}
-
       {running && ready && inBattle && mobileControls && (
-        <section className="battle-controls" aria-label={text.controls}>
-          {battlePlayers.player1 && <fieldset className="player-controls player-one">
-            <legend>{text.player1}</legend>
-            <div className="steering">
-              {control('p1-left', text.left, '◀', keys.p1Left)}
-              {control('p1-thrust', text.thrust, '▲', keys.p1Thrust, 'thrust')}
-              {control('p1-right', text.right, '▶', keys.p1Right)}
-            </div>
-            <div className="actions">
-              {control('p1-fire', text.fire, '●', keys.p1Fire, 'fire')}
-              {control('p1-special', text.special, '✦', keys.p1Special, 'special')}
-            </div>
-          </fieldset>}
+        <section
+          className={`battle-controls ${dualPlayerControls ? 'dual-player' : 'single-player'}`}
+          aria-label={text.controls}
+        >
+          {battlePlayers.player1 && (
+            <fieldset className="player-controls player-one">
+              <legend>{text.player1}</legend>
+              <VirtualJoystick
+                idPrefix="p1"
+                label={`${text.player1}: ${text.joystick}`}
+                leftLabel={text.left}
+                rightLabel={text.right}
+                thrustLabel={text.thrust}
+                leftKey={keys.p1Left}
+                rightKey={keys.p1Right}
+                thrustKey={keys.p1Thrust}
+                sendCommand={sendCommand}
+              />
+              <div className="actions">
+                {control('p1-special', text.special, '✦', keys.p1Special, 'special')}
+                {control('p1-fire', text.fire, '●', keys.p1Fire, 'fire')}
+              </div>
+            </fieldset>
+          )}
 
-          {battlePlayers.player2 && <fieldset className="player-controls player-two">
-            <legend>{text.player2}</legend>
-            <div className="steering">
-              {control('p2-left', text.left, '◀', keys.p2Left)}
-              {control('p2-thrust', text.thrust, '▲', keys.p2Thrust, 'thrust')}
-              {control('p2-right', text.right, '▶', keys.p2Right)}
-            </div>
-            <div className="actions">
-              {control('p2-fire', text.fire, '●', keys.p2Fire, 'fire')}
-              {control('p2-special', text.special, '✦', keys.p2Special, 'special')}
-            </div>
-          </fieldset>}
+          {battlePlayers.player2 && (
+            <fieldset className="player-controls player-two">
+              <legend>{text.player2}</legend>
+              <VirtualJoystick
+                idPrefix="p2"
+                label={`${text.player2}: ${text.joystick}`}
+                leftLabel={text.left}
+                rightLabel={text.right}
+                thrustLabel={text.thrust}
+                leftKey={keys.p2Left}
+                rightKey={keys.p2Right}
+                thrustKey={keys.p2Thrust}
+                sendCommand={sendCommand}
+              />
+              <div className="actions">
+                {control('p2-special', text.special, '✦', keys.p2Special, 'special')}
+                {control('p2-fire', text.fire, '●', keys.p2Fire, 'fire')}
+              </div>
+            </fieldset>
+          )}
         </section>
       )}
     </main>

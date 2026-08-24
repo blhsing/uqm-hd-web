@@ -123,6 +123,11 @@ window.uqmWeb = {
             ? Module._uqm_web_battle_state()
             : 0;
     },
+    mainMenuState() {
+        return typeof Module._uqm_web_main_menu_state === "function"
+            ? Module._uqm_web_main_menu_state()
+            : 0;
+    },
 };
 
 window.addEventListener("blur", () => window.uqmWeb.releaseAll());
@@ -145,13 +150,18 @@ Module.onRuntimeInitialized = () => {
         postToParent({ type: "uqm-ready", language: webLanguage });
 
         let previousBattleState = null;
+        let previousMainMenuState = null;
         window.setInterval(() => {
             const battleState = window.uqmWeb.battleState();
-            if (battleState !== previousBattleState) {
+            const mainMenuState = window.uqmWeb.mainMenuState();
+            if (battleState !== previousBattleState ||
+                    mainMenuState !== previousMainMenuState) {
                 previousBattleState = battleState;
+                previousMainMenuState = mainMenuState;
                 postToParent({
                     type: "uqm-state",
                     inBattle: Boolean(battleState & 1),
+                    mainMenu: Boolean(mainMenuState),
                     player1: Boolean(battleState & 2),
                     player2: Boolean(battleState & 4),
                 });

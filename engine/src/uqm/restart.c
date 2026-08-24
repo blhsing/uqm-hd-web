@@ -51,6 +51,10 @@
 
 #include "options.h" // JMS: To make the game recognize resFactorWasChanged even without network support.
 
+#ifdef __EMSCRIPTEN__
+extern volatile int uqm_web_main_menu_active;
+#endif
+
 
 // TODO: This entire module fails to uphold the GraphicsLock semantics
 //   This either has to be fixed, or GraphicsLock completely ignored,
@@ -590,6 +594,10 @@ RestartMenu (MENU_STATE *pMS)
 {
 	TimeCount TimeOut;
 
+#ifdef __EMSCRIPTEN__
+	uqm_web_main_menu_active = 1;
+#endif
+
 	ReinitQueue (&race_q[0]);
 	ReinitQueue (&race_q[1]);
 
@@ -641,6 +649,10 @@ RestartMenu (MENU_STATE *pMS)
 	SetMenuSounds (MENU_SOUND_UP | MENU_SOUND_DOWN, MENU_SOUND_SELECT);
 	SetDefaultMenuRepeatDelay ();
 	DoInput (pMS, TRUE);
+
+#ifdef __EMSCRIPTEN__
+	uqm_web_main_menu_active = 0;
+#endif
 	
 	if (optMainmenuMusic)
 		SleepThreadUntil (FadeMusic (0, ONE_SECOND));

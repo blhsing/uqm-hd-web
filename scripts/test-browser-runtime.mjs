@@ -149,12 +149,13 @@ async function main() {
   if (reusableProfile) await mkdir(profileDirectory, { recursive: true });
   await rm(path.join(profileDirectory, 'DevToolsActivePort'), { force: true });
   const browserPath = await existingBrowser();
+  const browserLocale = requestedLanguage === 'en' ? 'en-US' : 'zh-TW';
   const browserProcess = spawn(browserPath, [
     '--headless=new',
     '--disable-gpu',
     '--no-first-run',
     '--no-default-browser-check',
-    '--lang=zh-TW',
+    `--lang=${browserLocale}`,
     '--remote-debugging-port=0',
     `--user-data-dir=${profileDirectory}`,
     'about:blank',
@@ -173,8 +174,17 @@ async function main() {
       client.send('Page.enable'),
       client.send('Runtime.enable'),
       client.send('Network.enable'),
-      client.send('Emulation.setLocaleOverride', { locale: 'zh-TW' }),
+      client.send('Emulation.setLocaleOverride', { locale: browserLocale }),
     ]);
+    const browserLanguages = requestedLanguage === 'en'
+      ? ['en-US', 'en']
+      : ['zh-TW', 'zh', 'en-US', 'en'];
+    await client.send('Page.addScriptToEvaluateOnNewDocument', {
+      source: `Object.defineProperty(Navigator.prototype, 'languages', {
+        configurable: true,
+        get: () => ${JSON.stringify(browserLanguages)},
+      });`,
+    });
     if (emulateMobile) {
       await client.send('Page.addScriptToEvaluateOnNewDocument', {
         source: `
@@ -192,30 +202,24 @@ async function main() {
     await client.send('Page.navigate', { url: targetUrl });
 
     await waitFor(
-      () => client.evaluate(`Boolean(document.querySelector('.launch-button'))`),
+      () => client.evaluate(`Boolean(document.querySelector('iframe.game-frame'))`),
       20_000,
-      'the launcher',
+      'automatic game launch',
     );
-
-    if (requestedLanguage === 'en') {
-      await client.evaluate(`Array.from(document.querySelectorAll('.language-switch button'))
-        .find((button) => button.textContent.trim() === 'English')?.click()`);
-      await waitFor(
-        () => client.evaluate(`document.querySelector('.language-switch .active')?.textContent?.trim() === 'English'`),
-        5_000,
-        'the English language selection',
-      );
-    }
 
     const launcher = await client.evaluate(`(() => ({
       isolated: crossOriginIsolated,
       browserLanguages: navigator.languages,
       browserLanguage: navigator.language,
-      title: document.querySelector('h1')?.textContent,
+      autoStarted: Boolean(document.querySelector('iframe.game-frame')),
       activeLanguage: document.querySelector('.language-switch .active')?.textContent?.trim(),
+      launchButtonVisible: Boolean(document.querySelector('.launch-button')),
       touchControlsVisible: Boolean(document.querySelector('.battle-controls')),
     }))()`);
     if (!launcher.isolated) throw new Error('The launcher is not cross-origin isolated.');
+    if (!launcher.autoStarted || launcher.launchButtonVisible) {
+      throw new Error(`The game did not skip the launch screen: ${JSON.stringify(launcher)}.`);
+    }
     const expectedLanguageLabel = requestedLanguage === 'en' ? 'English' : '繁體中文';
     if (launcher.activeLanguage !== expectedLanguageLabel) {
       throw new Error(`Expected ${expectedLanguageLabel}, got ${launcher.activeLanguage}.`);
@@ -224,7 +228,6 @@ async function main() {
       throw new Error('Desktop browser unexpectedly displayed touch battle controls.');
     }
 
-    await client.evaluate(`document.querySelector('.launch-button').click()`);
     let runtimeSnapshot = null;
     let lastProgressLog = 0;
     let runtime;
@@ -238,11 +241,13 @@ async function main() {
         return {
           ready: !document.querySelector('.loading-screen'),
           isolated: game.crossOriginIsolated,
-          apiReady: typeof game.Module?._uqm_web_battle_state === 'function',
+          apiReady: typeof game.Module?._uqm_web_battle_state === 'function' &&
+            typeof game.Module?._uqm_web_main_menu_state === 'function',
           canvasWidth: game.document.querySelector('#canvas')?.width || 0,
           canvasHeight: game.document.querySelector('#canvas')?.height || 0,
           status: game.document.querySelector('#engine-status-text')?.textContent || '',
           language: game.uqmWeb?.language || '',
+          mainMenu: game.uqmWeb?.mainMenuState?.() || 0,
           assetCacheStats: game.uqmWeb?.assetCacheStats || null,
           parentProgress: document.querySelector('.loading-screen')?.textContent?.replace(/\s+/g, ' ').trim() || '',
         };
@@ -273,7 +278,9 @@ async function main() {
       throw new Error(`Expected at least ${expectedCacheHits} persistent asset-cache hits: ${JSON.stringify(runtime.assetCacheStats)}.`);
     }
     const visual = await client.evaluate(`(() => {
-      const canvas = document.querySelector('iframe')?.contentDocument?.querySelector('#canvas');
+      const frame = document.querySelector('iframe');
+      const game = frame?.contentWindow;
+      const canvas = frame?.contentDocument?.querySelector('#canvas');
       const context = canvas?.getContext('2d');
       if (!canvas || !context) return { width: 0, height: 0, sampled: 0, nonBlack: 0 };
       const pixels = context.getImageData(0, 0, canvas.width, canvas.height).data;
@@ -290,7 +297,14 @@ async function main() {
           if (pixels[offset] > 8 || pixels[offset + 1] > 8 || pixels[offset + 2] > 8) nonBlack += 1;
         }
       }
-      return { width: canvas.width, height: canvas.height, sampled, nonBlack };
+      return {
+        width: canvas.width,
+        height: canvas.height,
+        sampled,
+        nonBlack,
+        mainMenu: game?.uqmWeb?.mainMenuState?.() || 0,
+        backVisible: Boolean(document.querySelector('.back-button')),
+      };
     })()`);
     if (visual.width < 1440 || visual.height < 1080 ||
         !visual.sampled || visual.nonBlack < 20) {
@@ -304,34 +318,92 @@ async function main() {
         const frame = document.querySelector('iframe');
         const game = frame?.contentWindow;
         game.Module._uqm_web_battle_state = () => 7;
+        game.Module._uqm_web_main_menu_state = () => 0;
         await new Promise((resolve) => setTimeout(resolve, 400));
         const labels = Array.from(document.querySelectorAll('.battle-controls button'))
           .map((button) => button.getAttribute('aria-label'));
+        const joysticks = Array.from(document.querySelectorAll('.virtual-joystick'));
         const observed = [];
         game.document.addEventListener('keydown', (event) => observed.push({
           type: event.type,
           code: event.code,
           location: event.location,
-        }), { once: true, capture: true });
+        }), { capture: true });
+        const joystick = joysticks[0];
+        const joystickRect = joystick?.getBoundingClientRect();
+        const originalJoystickCapture = joystick?.setPointerCapture;
+        if (joystick) joystick.setPointerCapture = () => {};
+        joystick?.dispatchEvent(new PointerEvent('pointerdown', {
+          bubbles: true,
+          pointerId: 1,
+          buttons: 1,
+          clientX: joystickRect.left + joystickRect.width / 2,
+          clientY: joystickRect.top + joystickRect.height / 2,
+        }));
+        joystick?.dispatchEvent(new PointerEvent('pointermove', {
+          bubbles: true,
+          pointerId: 1,
+          buttons: 1,
+          clientX: joystickRect.left + joystickRect.width * 0.2,
+          clientY: joystickRect.top + joystickRect.height * 0.2,
+        }));
+        await new Promise((resolve) => setTimeout(resolve, 100));
+        joystick?.dispatchEvent(new PointerEvent('pointerup', {
+          bubbles: true,
+          pointerId: 1,
+          clientX: joystickRect.left + joystickRect.width * 0.2,
+          clientY: joystickRect.top + joystickRect.height * 0.2,
+        }));
+        if (joystick && originalJoystickCapture) joystick.setPointerCapture = originalJoystickCapture;
         const fire = Array.from(document.querySelectorAll('.battle-controls button'))
           .find((button) => button.getAttribute('aria-label') === '${requestedLanguage === 'en' ? 'Fire' : '武器'}');
+        const fireRect = fire?.getBoundingClientRect();
         const originalCapture = fire?.setPointerCapture;
         if (fire) fire.setPointerCapture = () => {};
-        fire?.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true, pointerId: 1 }));
+        fire?.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true, pointerId: 2 }));
         await new Promise((resolve) => setTimeout(resolve, 100));
-        fire?.dispatchEvent(new PointerEvent('pointerup', { bubbles: true, pointerId: 1 }));
+        fire?.dispatchEvent(new PointerEvent('pointerup', { bubbles: true, pointerId: 2 }));
         if (fire && originalCapture) fire.setPointerCapture = originalCapture;
+        const back = document.querySelector('.back-button');
+        back?.click();
         await new Promise((resolve) => setTimeout(resolve, 100));
-        return { labels, observed };
+        game.Module._uqm_web_main_menu_state = () => 1;
+        await new Promise((resolve) => setTimeout(resolve, 300));
+        return {
+          labels,
+          joystickCount: joysticks.length,
+          joystickOnLeft: joystickRect.right < innerWidth * 0.5,
+          actionsOnRight: fireRect.left > innerWidth * 0.5,
+          backVisibleOutsideMainMenu: Boolean(back),
+          backHiddenOnMainMenu: !document.querySelector('.back-button'),
+          observed,
+        };
       })()`);
-      if (mobile.labels.length !== 10 || mobile.observed[0]?.code !== 'ControlRight') {
+      const observedCodes = new Set(mobile.observed.map(({ code }) => code));
+      if (mobile.labels.length !== 4 || mobile.joystickCount !== 2 ||
+          !mobile.joystickOnLeft || !mobile.actionsOnRight ||
+          !mobile.backVisibleOutsideMainMenu || !mobile.backHiddenOnMainMenu ||
+          !observedCodes.has('ArrowLeft') || !observedCodes.has('ArrowUp') ||
+          !observedCodes.has('ControlRight') || !observedCodes.has('Escape')) {
         throw new Error(`Mobile battle controls failed: ${JSON.stringify(mobile)}.`);
       }
     }
 
     let flow = null;
     if (process.env.UQM_TEST_FLOW?.startsWith('super-melee')) {
-      await delay(Number(process.env.UQM_TEST_MENU_WAIT_MS) || 40_000);
+      const mainMenuUi = await waitFor(async () => {
+        const state = await client.evaluate(`(() => {
+          const game = document.querySelector('iframe')?.contentWindow;
+          return {
+            nativeState: game?.uqmWeb?.mainMenuState?.() || 0,
+            backVisible: Boolean(document.querySelector('.back-button')),
+          };
+        })()`);
+        return state.nativeState ? state : null;
+      }, Number(process.env.UQM_TEST_MENU_WAIT_MS) || 90_000, 'the native main menu');
+      if (mainMenuUi.backVisible) {
+        throw new Error(`Main-menu back-button visibility failed: ${JSON.stringify(mainMenuUi)}.`);
+      }
       let selectSuperMelee;
       if (['super-melee-click', 'super-melee-touch', 'super-melee-battle']
         .includes(process.env.UQM_TEST_FLOW)) {
@@ -429,10 +501,12 @@ async function main() {
             actualBattle: true,
             labels: Array.from(document.querySelectorAll('.battle-controls button'))
               .map((button) => button.getAttribute('aria-label')),
+            joystickCount: document.querySelectorAll('.virtual-joystick').length,
           }))()`);
-          const expectedButtons =
-            ((battle.battleState & 2) ? 5 : 0) + ((battle.battleState & 4) ? 5 : 0);
-          if (mobile.labels.length !== expectedButtons) {
+          const expectedPlayers =
+            ((battle.battleState & 2) ? 1 : 0) + ((battle.battleState & 4) ? 1 : 0);
+          if (mobile.labels.length !== expectedPlayers * 2 ||
+              mobile.joystickCount !== expectedPlayers) {
             throw new Error(`Actual battle touch controls failed: ${JSON.stringify(mobile)}.`);
           }
         }
@@ -453,16 +527,22 @@ async function main() {
       }
       if (process.env.UQM_TEST_FLOW === 'super-melee-back') {
         const back = await client.evaluate(`(async () => {
+          const game = document.querySelector('iframe')?.contentWindow;
           const button = document.querySelector('.back-button');
-          button.click();
+          let escapeObserved = false;
+          game?.document.addEventListener('keydown', (event) => {
+            if (event.code === 'Escape') escapeObserved = true;
+          }, { once: true, capture: true });
+          button?.click();
           await new Promise((resolve) => setTimeout(resolve, 250));
-          const notice = document.querySelector('.back-notice')?.textContent || '';
-          button.click();
-          await new Promise((resolve) => setTimeout(resolve, 250));
-          return { notice, returnedToLauncher: Boolean(document.querySelector('.launch-button')) };
+          return {
+            buttonPresent: Boolean(button),
+            escapeObserved,
+            launchScreenPresent: Boolean(document.querySelector('.launch-button')),
+          };
         })()`);
         flow = { ...flow, ...back };
-        if (!flow.notice || !flow.returnedToLauncher) {
+        if (!flow.buttonPresent || !flow.escapeObserved || flow.launchScreenPresent) {
           throw new Error(`Universal back control failed: ${JSON.stringify(flow)}.`);
         }
       }

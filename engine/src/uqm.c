@@ -64,6 +64,8 @@
 #ifdef __EMSCRIPTEN__
 #	include <emscripten/emscripten.h>
 
+volatile int uqm_web_main_menu_active = 0;
+
 EMSCRIPTEN_KEEPALIVE int
 uqm_web_battle_state (void)
 {
@@ -79,6 +81,12 @@ uqm_web_battle_state (void)
 	if (PlayerControl[1] & HUMAN_CONTROL)
 		state |= 4;
 	return state;
+}
+
+EMSCRIPTEN_KEEPALIVE int
+uqm_web_main_menu_state (void)
+{
+	return uqm_web_main_menu_active;
 }
 #endif
 

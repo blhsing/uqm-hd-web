@@ -5,6 +5,12 @@
   --cyan: #6cf6ff;
   --violet: #b06cff;
   --panel: rgb(3 10 32 / 72%);
+  --edge-bottom: max(16px, env(safe-area-inset-bottom));
+  --edge-left: max(18px, env(safe-area-inset-left));
+  --edge-right: max(18px, env(safe-area-inset-right));
+  --joystick-size: clamp(132px, 22vmin, 190px);
+  --fire-size: clamp(82px, 14vmin, 116px);
+  --special-size: clamp(68px, 11.5vmin, 94px);
 }
 
 * {
@@ -27,7 +33,6 @@ button {
   -webkit-tap-highlight-color: transparent;
 }
 
-.launcher-shell,
 .game-shell {
   position: relative;
   min-height: 100dvh;
@@ -36,22 +41,51 @@ button {
   color: white;
 }
 
-.game-preview {
+.game-frame {
   position: absolute;
+  z-index: 1;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  filter: saturate(.78) brightness(.45) blur(1px);
-  transform: scale(1.015);
+  border: 0;
+  background: #000;
+  touch-action: none;
 }
 
-.space-vignette {
+.loading-screen {
   position: absolute;
+  z-index: 10;
   inset: 0;
-  background:
-    radial-gradient(circle at 50% 42%, transparent 0 20%, rgb(1 3 14 / 32%) 58%, #01020a 100%),
-    linear-gradient(180deg, rgb(1 4 19 / 30%), rgb(2 4 18 / 76%));
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 18px;
+  background: radial-gradient(circle at center, rgb(24 20 61 / 92%), #02030b 68%);
+  color: #dffbff;
+}
+
+.loading-screen span {
+  width: 54px;
+  height: 54px;
+  border: 4px solid rgb(108 246 255 / 18%);
+  border-top-color: var(--cyan);
+  border-radius: 50%;
+  animation: loading-spin .8s linear infinite;
+}
+
+.loading-screen p {
+  margin: 0;
+  text-align: center;
+}
+
+.loading-screen progress {
+  width: min(72vw, 420px);
+  height: 8px;
+  accent-color: var(--cyan);
+}
+
+@keyframes loading-spin {
+  to { transform: rotate(360deg); }
 }
 
 .launcher-bar {
@@ -65,6 +99,10 @@ button {
   justify-content: space-between;
   padding: max(12px, env(safe-area-inset-top)) max(14px, env(safe-area-inset-right)) 8px max(14px, env(safe-area-inset-left));
   pointer-events: none;
+}
+
+.launcher-bar.no-back {
+  justify-content: flex-end;
 }
 
 .back-button,
@@ -134,191 +172,165 @@ button {
   box-shadow: 0 0 16px rgb(79 225 255 / 24%);
 }
 
-.launch-card {
-  position: absolute;
-  z-index: 2;
-  top: 50%;
-  left: 50%;
-  width: min(720px, calc(100% - 40px));
-  transform: translate(-50%, -50%);
-  padding: clamp(26px, 5vw, 56px);
-  border: 1px solid rgb(109 222 255 / 38%);
-  border-radius: 28px;
-  background: linear-gradient(145deg, rgb(2 8 30 / 90%), rgb(23 8 47 / 82%));
-  box-shadow: 0 28px 100px rgb(0 0 0 / 65%), inset 0 0 55px rgb(91 97 255 / 8%);
-  text-align: center;
-  backdrop-filter: blur(16px);
-}
-
-.eyebrow {
-  margin: 0 0 10px;
-  color: var(--cyan);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-}
-
-.launch-card h1 {
-  margin: 0;
-  font-size: clamp(30px, 5.2vw, 61px);
-  line-height: 1.08;
-  letter-spacing: -.035em;
-  text-shadow: 0 0 32px rgb(146 105 255 / 45%);
-}
-
-.description {
-  max-width: 580px;
-  margin: 20px auto 28px;
-  color: #d6def1;
-  font-size: clamp(15px, 2vw, 18px);
-  line-height: 1.65;
-}
-
-.launch-button {
-  min-width: min(280px, 100%);
-  min-height: 58px;
-  border: 1px solid rgb(154 241 255 / 75%);
-  border-radius: 15px;
-  background: linear-gradient(135deg, #078eb8, #7540b9);
-  color: white;
-  font-weight: 800;
-  letter-spacing: .08em;
-  box-shadow: 0 10px 35px rgb(39 165 218 / 28%), inset 0 1px rgb(255 255 255 / 26%);
-  cursor: pointer;
-}
-
-.touch-hint {
-  margin: 20px auto 0;
-  color: #a9b7d3;
-  font-size: 13px;
-  line-height: 1.5;
-}
-
-.network-hint {
-  max-width: 590px;
-  margin: 10px auto 0;
-  color: #b9eaf2;
-  font-size: 12px;
-  line-height: 1.55;
-}
-
-.game-frame {
-  position: absolute;
-  z-index: 1;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-  background: #000;
-  touch-action: none;
-}
-
-.loading-screen {
-  position: absolute;
-  z-index: 10;
-  inset: 0;
-  display: grid;
-  place-content: center;
-  justify-items: center;
-  gap: 18px;
-  background:
-    radial-gradient(circle at center, rgb(24 20 61 / 92%), #02030b 68%);
-  color: #dffbff;
-}
-
-.loading-screen span {
-  width: 54px;
-  height: 54px;
-  border: 4px solid rgb(108 246 255 / 18%);
-  border-top-color: var(--cyan);
-  border-radius: 50%;
-  animation: loading-spin .8s linear infinite;
-}
-
-.loading-screen p {
-  margin: 0;
-  text-align: center;
-}
-
-.loading-screen progress {
-  width: min(72vw, 420px);
-  height: 8px;
-  accent-color: var(--cyan);
-}
-
-@keyframes loading-spin {
-  to { transform: rotate(360deg); }
-}
-
-.back-notice {
-  position: fixed;
-  z-index: 30;
-  top: max(70px, calc(env(safe-area-inset-top) + 58px));
-  left: 50%;
-  width: max-content;
-  max-width: calc(100% - 32px);
-  transform: translateX(-50%);
-  padding: 10px 16px;
-  border: 1px solid rgb(108 246 255 / 45%);
-  border-radius: 12px;
-  background: rgb(2 8 30 / 92%);
-  color: #e7fdff;
-  text-align: center;
-  box-shadow: 0 8px 30px rgb(0 0 0 / 48%);
-}
-
 .battle-controls {
   position: fixed;
   z-index: 15;
-  inset: auto max(10px, env(safe-area-inset-right)) max(10px, env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-left));
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 24px;
+  inset: 0;
+  overflow: hidden;
   pointer-events: none;
+  user-select: none;
 }
 
 .player-controls {
-  display: flex;
-  align-items: flex-end;
-  gap: 12px;
+  position: static;
   min-width: 0;
   margin: 0;
-  padding: 8px;
-  border: 1px solid rgb(150 229 255 / 22%);
-  border-radius: 22px;
-  background: rgb(1 6 20 / 12%);
+  padding: 0;
+  border: 0;
   pointer-events: none;
 }
 
 .player-controls legend {
-  padding: 0 7px;
-  color: rgb(224 249 255 / 78%);
+  position: absolute;
+  z-index: 2;
+  bottom: calc(var(--edge-bottom) + var(--joystick-size) + 4px);
+  left: calc(var(--edge-left) + 14px);
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: rgb(1 6 20 / 42%);
+  color: rgb(224 249 255 / 86%);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: .08em;
   text-shadow: 0 1px 4px #000;
+  backdrop-filter: blur(4px);
 }
 
-.steering,
-.actions {
+.joystick-shell {
+  position: absolute;
+  bottom: var(--edge-bottom);
+  left: var(--edge-left);
+  width: var(--joystick-size);
+  height: var(--joystick-size);
+  pointer-events: auto;
+  touch-action: none;
+}
+
+.virtual-joystick {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: 2px solid rgb(174 235 255 / 56%);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at center, rgb(50 142 187 / 17%) 0 24%, transparent 25%),
+    radial-gradient(circle at center, rgb(5 47 76 / 50%), rgb(2 17 38 / 28%) 68%, rgb(4 10 26 / 18%) 69%);
+  box-shadow: inset 0 0 38px rgb(117 225 255 / 16%), 0 5px 22px rgb(0 0 0 / 32%);
+  backdrop-filter: blur(4px);
+  touch-action: none;
+}
+
+.virtual-joystick::before,
+.virtual-joystick::after {
+  position: absolute;
+  content: '';
+  background: rgb(187 238 255 / 18%);
+}
+
+.virtual-joystick::before {
+  top: 12%;
+  bottom: 12%;
+  left: calc(50% - .5px);
+  width: 1px;
+}
+
+.virtual-joystick::after {
+  top: calc(50% - .5px);
+  right: 12%;
+  left: 12%;
+  height: 1px;
+}
+
+.joystick-direction {
+  position: absolute;
+  z-index: 1;
+  color: rgb(218 249 255 / 46%);
+  font-size: clamp(17px, 3.2vmin, 27px);
+  line-height: 1;
+  text-shadow: 0 1px 5px #000;
+  transition: color 80ms ease, filter 80ms ease;
+}
+
+.joystick-left {
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+}
+
+.joystick-right {
+  top: 50%;
+  right: 10%;
+  transform: translateY(-50%);
+}
+
+.joystick-thrust {
+  top: 9%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.virtual-joystick[data-active~='left'] .joystick-left,
+.virtual-joystick[data-active~='right'] .joystick-right,
+.virtual-joystick[data-active~='thrust'] .joystick-thrust {
+  color: #fff;
+  filter: drop-shadow(0 0 8px var(--cyan));
+}
+
+.joystick-knob {
+  position: absolute;
+  z-index: 3;
+  top: 30%;
+  left: 30%;
+  display: grid;
+  width: 40%;
+  height: 40%;
+  place-items: center;
+  border: 2px solid rgb(222 251 255 / 78%);
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgb(38 154 196 / 78%), rgb(30 64 129 / 70%));
+  color: white;
+  box-shadow: inset 0 0 24px rgb(177 245 255 / 24%), 0 5px 16px rgb(0 0 0 / 38%);
+  font-size: clamp(21px, 4vmin, 34px);
+  will-change: transform;
+}
+
+.joystick-labels {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.player-controls .actions {
+  position: absolute;
+  right: var(--edge-right);
+  bottom: var(--edge-bottom);
   display: flex;
   align-items: flex-end;
-  gap: 8px;
+  gap: clamp(12px, 2.6vmin, 24px);
+  pointer-events: none;
 }
 
 .player-controls button {
   display: grid;
   place-items: center;
-  width: clamp(54px, 5vw, 76px);
-  height: clamp(54px, 5vw, 76px);
-  padding: 4px;
-  border: 1px solid rgb(183 239 255 / 64%);
+  padding: 6px;
+  border: 2px solid rgb(183 239 255 / 66%);
   border-radius: 50%;
-  background: rgb(15 73 111 / 48%);
   color: white;
-  box-shadow: inset 0 0 24px rgb(125 229 255 / 19%), 0 3px 14px rgb(0 0 0 / 26%);
   text-shadow: 0 1px 3px #000;
   backdrop-filter: blur(4px);
   pointer-events: auto;
@@ -327,96 +339,96 @@ button {
 }
 
 .player-controls button:active {
-  background: rgb(24 168 207 / 72%);
   border-color: #fff;
   transform: scale(.94);
 }
 
 .player-controls button span {
-  font-size: clamp(19px, 2vw, 28px);
+  font-size: clamp(22px, 4.3vmin, 38px);
   line-height: 1;
 }
 
 .player-controls button small {
   max-width: 100%;
   overflow: hidden;
-  color: rgb(255 255 255 / 84%);
-  font-size: clamp(8px, .72vw, 11px);
+  color: rgb(255 255 255 / 90%);
+  font-size: clamp(9px, 1.35vmin, 13px);
   line-height: 1;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .player-controls button.fire {
-  background: rgb(148 35 42 / 52%);
-  border-color: rgb(255 182 183 / 72%);
+  width: var(--fire-size);
+  height: var(--fire-size);
+  background: rgb(156 31 41 / 62%);
+  border-color: rgb(255 190 192 / 78%);
+  box-shadow: inset 0 0 30px rgb(255 153 157 / 18%), 0 5px 18px rgb(0 0 0 / 34%);
 }
 
 .player-controls button.special {
-  background: rgb(103 50 155 / 54%);
-  border-color: rgb(225 189 255 / 70%);
+  width: var(--special-size);
+  height: var(--special-size);
+  margin-bottom: clamp(24px, 4.2vmin, 42px);
+  background: rgb(103 50 155 / 62%);
+  border-color: rgb(225 189 255 / 76%);
+  box-shadow: inset 0 0 26px rgb(222 174 255 / 16%), 0 5px 18px rgb(0 0 0 / 34%);
 }
 
-.player-two {
-  flex-direction: row-reverse;
+.dual-player .player-two .joystick-shell {
+  top: max(76px, calc(env(safe-area-inset-top) + 66px));
+  bottom: auto;
 }
 
-.player-two .steering,
-.player-two .actions {
-  flex-direction: row-reverse;
+.dual-player .player-two .actions {
+  top: max(76px, calc(env(safe-area-inset-top) + 66px));
+  bottom: auto;
+  align-items: flex-start;
 }
 
-@media (max-width: 980px) {
-  .battle-controls {
-    gap: 8px;
-  }
+.dual-player .player-two legend {
+  top: max(58px, calc(env(safe-area-inset-top) + 49px));
+  bottom: auto;
+}
 
-  .player-controls {
-    gap: 6px;
-    padding: 5px;
-    border-radius: 18px;
-  }
-
-  .steering,
-  .actions {
-    gap: 4px;
-  }
-
-  .player-controls button {
-    width: clamp(44px, 8.5vw, 64px);
-    height: clamp(44px, 8.5vw, 64px);
-  }
+.dual-player .player-two button.special {
+  margin-top: clamp(24px, 4.2vmin, 42px);
+  margin-bottom: 0;
 }
 
 @media (max-width: 680px) {
+  :root {
+    --edge-left: max(10px, env(safe-area-inset-left));
+    --edge-right: max(10px, env(safe-area-inset-right));
+    --edge-bottom: max(10px, env(safe-area-inset-bottom));
+    --joystick-size: clamp(124px, 34vw, 160px);
+    --fire-size: clamp(78px, 21vw, 102px);
+    --special-size: clamp(64px, 17vw, 84px);
+  }
+
   .launcher-bar {
     align-items: flex-start;
+    padding-inline: max(8px, env(safe-area-inset-left)) max(8px, env(safe-area-inset-right));
   }
 
   .back-button {
-    padding-inline: 12px;
+    min-height: 40px;
+    padding: 6px 11px;
+  }
+
+  .fullscreen-button {
+    width: 42px;
+    min-height: 40px;
   }
 
   .language-switch {
-    flex-direction: column;
+    padding: 3px;
   }
 
   .language-switch button {
-    min-height: 30px;
-    padding: 3px 9px;
-    font-size: 12px;
-  }
-
-  .launch-card {
-    transform: translate(-50%, -47%);
-  }
-
-  .battle-controls {
-    transform: scale(.82);
-    transform-origin: center bottom;
-    width: 122%;
-    left: -11%;
-    right: auto;
+    min-height: 32px;
+    padding: 4px 8px;
+    font-size: 11px;
   }
 
   .player-controls legend,
@@ -425,8 +437,15 @@ button {
   }
 }
 
-@media (pointer: fine) and (min-width: 981px) {
-  .battle-controls {
-    opacity: .74;
+@media (max-height: 520px) {
+  :root {
+    --joystick-size: clamp(118px, 30vh, 150px);
+    --fire-size: clamp(74px, 23vh, 104px);
+    --special-size: clamp(60px, 19vh, 84px);
+  }
+
+  .dual-player .player-two .joystick-shell,
+  .dual-player .player-two .actions {
+    top: max(64px, calc(env(safe-area-inset-top) + 56px));
   }
 }
